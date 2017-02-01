@@ -9,7 +9,7 @@ Game::Game(bool& aShouldRun)
 void Game::Init()
 {
 	myGameWindow.create(sf::VideoMode(800, 800), "SpaceFarer");
-	myPlayer.Init("sprites/player.png");
+	myPlayer.Init("sprites/player.png", true);
 }
 
 void Game::Update(float aDeltaTime)
