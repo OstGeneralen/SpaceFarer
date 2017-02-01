@@ -7,31 +7,38 @@
     <Filter Include="Engine\Entity Hierarchy">
       <UniqueIdentifier>{639c4838-c7b8-402d-9eb5-0178424465dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{fb6c53a3-6064-43f3-bc6b-2f967c483b3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Engine\Entity Hierarchy</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Engine\Entity Hierarchy</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Engine\Actor.cpp">
+      <Filter>Engine\Entity Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Entity.cpp">
+      <Filter>Engine\Entity Hierarchy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h">
+    <ClInclude Include="Engine\MathTools.h" />
+    <ClInclude Include="Engine\Actor.h">
       <Filter>Engine\Entity Hierarchy</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="Engine\Entity.h">
       <Filter>Engine\Entity Hierarchy</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="Game\Player.h">
+      <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="MathTools.h">
-      <Filter>Engine</Filter>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

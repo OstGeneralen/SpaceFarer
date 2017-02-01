@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
+#include "..\Game\Player.h"
 
 class Game
 {
@@ -12,8 +13,6 @@ public:
 private:
 	sf::RenderWindow myGameWindow;
 	const sf::Color myClearColor = sf::Color(0, 150, 255, 255);
-	sf::Texture myPlayer;
-	sf::Sprite myPlayerSprite;
-	sf::Vector2f myPlayerPosition = { 0,0 };
+	Player myPlayer;
 	bool& myShouldRun;
 };
