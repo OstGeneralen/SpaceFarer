@@ -12,7 +12,7 @@ namespace sf
 class Actor : public Entity
 {
 public:
-	void Init(const char* const aTexturePath, const sf::Vector3f& aStartPosition = { 0,0,0 });
+	void Init(const char* const aTexturePath, const sf::Vector2f& aStartPosition = { 0,0});
 	virtual void Update(float aDeltaTime) = 0;
 	void Render(sf::RenderWindow& aRenderWindow);
 protected:

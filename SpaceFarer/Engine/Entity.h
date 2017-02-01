@@ -1,12 +1,12 @@
 #pragma once
-#include <SFML\System\Vector3.hpp>
+#include <SFML\System\Vector2.hpp>
 
 class Entity
 {
 public:
-	void SetPosition(const sf::Vector3f& aPosition);
-	const sf::Vector3f& GetPostition() const;
+	void SetPosition(const sf::Vector2f& aPosition);
+	const sf::Vector2f& GetPostition() const;
 protected:
-	sf::Vector3f myPosition;
+	sf::Vector2f myPosition;
 };
 

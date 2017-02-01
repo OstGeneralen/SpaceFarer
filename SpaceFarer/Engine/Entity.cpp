@@ -1,11 +1,11 @@
 #include "Entity.h"
 
-void Entity::SetPosition(const sf::Vector3f & aPosition)
+void Entity::SetPosition(const sf::Vector2f & aPosition)
 {
 	myPosition = aPosition;
 }
 
-const sf::Vector3f & Entity::GetPostition() const
+const sf::Vector2f & Entity::GetPostition() const
 {
 	return myPosition;
 }
