@@ -15,7 +15,7 @@ Player::Player()
 void Player::Update(float aDeltaTime)
 {
 	Movement(aDeltaTime);
-	mySprite.setRotation(MathTools::ToDegrees(myRotation));
+	mySprite.setRotation(MT::ToDegrees(myRotation));
 }
 
 void Player::Movement(float aDeltaTime)

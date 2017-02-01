@@ -10,7 +10,7 @@ void Actor::Init(const char * const aTexturePath, bool aOriginIsMiddle, const sf
 
 	if (aOriginIsMiddle)
 	{
-		MathTools::MTVector2 middlePoint;
+		MT::MTVector2 middlePoint;
 		middlePoint = MathTools::GetMiddlePoint(0, 0, mySprite.getTextureRect().width, mySprite.getTextureRect().height);
 		mySprite.setOrigin({ middlePoint.x, middlePoint.y });
 	}

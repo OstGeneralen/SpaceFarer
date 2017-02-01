@@ -27,3 +27,5 @@ namespace MathTools
 		return returnVector;
 	}
 }
+
+namespace MT = MathTools;
