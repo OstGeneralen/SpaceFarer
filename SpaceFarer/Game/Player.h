@@ -9,6 +9,7 @@ public:
 private:
 	void Movement(float aDeltaTime);
 	sf::Vector2f myDirection;
+	float myRotation;
 	float myMaxSpeed;
 	float mySpeed;
 };
