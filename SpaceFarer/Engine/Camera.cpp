@@ -1,0 +1,30 @@
+#include "Camera.h"
+#include "Actor.h"
+#include "SFML\Graphics\RenderWindow.hpp"
+#include "MathTools.h"
+
+Camera::Camera()
+{
+}
+
+void Camera::SetTarget(Actor* aTarget)
+{
+	myTarget = aTarget;
+}
+
+void Camera::Update(float aDeltaTime)
+{
+	if (myTarget != nullptr)
+	{
+		sf::Vector2f newCenter = myView.getCenter();
+		newCenter.x = MT::Lerp(newCenter.x, myTarget->GetPostition().x, 20.f * aDeltaTime);
+		newCenter.y = MT::Lerp(newCenter.y, myTarget->GetPostition().y, 20.f * aDeltaTime);
+		myView.setCenter(newCenter);
+	}
+}
+
+void Camera::UseView(sf::RenderWindow & aWindow)
+{
+	aWindow.setView(myView);
+}
+

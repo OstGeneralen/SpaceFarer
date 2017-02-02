@@ -13,6 +13,9 @@ void Game::Init()
 {
 	myGameWindow.create(sf::VideoMode(800, 800), "SpaceFarer");
 	myPlayer.Init("sprites/player.png", true);
+	myTempActor.Init("sprites/Trash/alien.png", true, { 20,20 });
+	myFrame.Init("sprites/frame.png");
+	myGameCamera.SetTarget(&myPlayer);
 }
 
 void Game::Update(float aDeltaTime)
@@ -32,7 +35,16 @@ void Game::Update(float aDeltaTime)
 		{
 			myShouldShowDebugInfo = !myShouldShowDebugInfo;
 		}
+		if (e.key.code == sf::Keyboard::Key::A)
+		{
+			myGameCamera.SetTarget(&myTempActor);
+		}
+		if (e.key.code == sf::Keyboard::Key::P)
+		{
+			myGameCamera.SetTarget(&myPlayer);
+		}
 	}
+
 
 	if (myShouldShowDebugInfo)
 	{
@@ -40,15 +52,22 @@ void Game::Update(float aDeltaTime)
 	}
 
 	myPlayer.Update(aDeltaTime);
+	myGameCamera.Update(aDeltaTime);
 }
 
 void Game::Render()
 {
 	myGameWindow.clear(myClearColor);
+	
+	myGameCamera.UseView(myGameWindow);
 
-	//Todo: Add Render code here
+	//Todo: Game Rendering
+	myTempActor.Render(myGameWindow);
 	myPlayer.Render(myGameWindow);
 
+	//GUI Rendering
+	myGuiCamera.UseView(myGameWindow);
+	myFrame.Render(myGameWindow);
 	if (myShouldShowDebugInfo)
 	{
 		myDebugTool->Render(myGameWindow);

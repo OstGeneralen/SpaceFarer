@@ -27,5 +27,6 @@ void Debug::FPSCounter::Update(float aDeltaTime)
 void Debug::FPSCounter::Render(sf::RenderWindow& aRenderWindow)
 {
 	DebugDecorator::Render(aRenderWindow);
+	myDebugText.setPosition({ static_cast<float>(-aRenderWindow.mapCoordsToPixel({0,0}).x), static_cast<float>(-aRenderWindow.mapCoordsToPixel({0,0}).y) });
 	aRenderWindow.draw(myDebugText);
 }

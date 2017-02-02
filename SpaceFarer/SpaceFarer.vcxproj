@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Actor.cpp" />
+    <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Engine\DebugTools.cpp" />
     <ClCompile Include="Engine\DebugTools\FPSCounter.cpp" />
     <ClCompile Include="Engine\Entity.cpp" />
@@ -29,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Actor.h" />
+    <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\DebugTools.h" />
     <ClInclude Include="Engine\DebugTools\DebugDecorator.h" />
     <ClInclude Include="Engine\DebugTools\DebugWidget.h" />

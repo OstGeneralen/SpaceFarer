@@ -27,6 +27,7 @@
     </ClCompile>
     <ClCompile Include="Engine\DebugTools.cpp" />
     <ClCompile Include="Engine\DebugTools\FPSCounter.cpp" />
+    <ClCompile Include="Engine\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -46,5 +47,6 @@
     <ClInclude Include="Engine\DebugTools\DebugDecorator.h" />
     <ClInclude Include="Engine\DebugTools\DebugWidget.h" />
     <ClInclude Include="Engine\DebugTools\FPSCounter.h" />
+    <ClInclude Include="Engine\Camera.h" />
   </ItemGroup>
 </Project>

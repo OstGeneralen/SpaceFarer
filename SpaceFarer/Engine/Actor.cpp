@@ -18,6 +18,10 @@ void Actor::Init(const char * const aTexturePath, bool aOriginIsMiddle, const sf
 	mySprite.setPosition(aStartPosition);
 }
 
+void Actor::Update(float aDeltaTime)
+{
+}
+
 void Actor::Render(sf::RenderWindow& aRenderWindow)
 {
 	mySprite.setPosition(myPosition);
