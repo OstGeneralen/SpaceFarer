@@ -99,7 +99,7 @@
     <OutDir>$(SolutionDir)$(Configuration)\..\ReleaseBuild\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Configuration)..\Build\</OutDir>
+    <OutDir>$(OutDir)..\Build\$(TargetName)$(TargetExt)</OutDir>
     <LibraryPath>../SFML/lib/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

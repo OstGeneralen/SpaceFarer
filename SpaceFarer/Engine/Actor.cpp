@@ -15,6 +15,7 @@ void Actor::Init(const char * const aTexturePath, bool aOriginIsMiddle, const sf
 		mySprite.setOrigin({ middlePoint.x, middlePoint.y });
 	}
 
+	myPosition = aStartPosition;
 	mySprite.setPosition(aStartPosition);
 }
 
