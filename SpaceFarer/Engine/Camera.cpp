@@ -20,6 +20,11 @@ void Camera::SetTarget(Actor* aTarget)
 	myTarget = aTarget;
 }
 
+void Camera::SetCenter(Actor * aTarget)
+{
+	myView.setCenter(aTarget->GetPosition());
+}
+
 void Camera::Update(float aDeltaTime)
 {
 	if (myTarget != nullptr)

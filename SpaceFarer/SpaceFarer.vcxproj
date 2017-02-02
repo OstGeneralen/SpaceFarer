@@ -25,6 +25,7 @@
     <ClCompile Include="Engine\DebugTools.cpp" />
     <ClCompile Include="Engine\DebugTools\FPSCounter.cpp" />
     <ClCompile Include="Engine\Entity.cpp" />
+    <ClCompile Include="Game\Background.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="main.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Engine\DebugTools\FPSCounter.h" />
     <ClInclude Include="Engine\Entity.h" />
     <ClInclude Include="Engine\MathTools.h" />
+    <ClInclude Include="Game\Background.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\Player.h" />
   </ItemGroup>

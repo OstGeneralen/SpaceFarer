@@ -4,8 +4,9 @@
 #include "..\Game\Player.h"
 #include "..\Engine\DebugTools.h"
 #include "..\Engine\Camera.h"
-#include <vector>
 #include "..\Game\Asteroid.h"
+#include <vector>
+#include "Background.h"
 
 class Game
 {
@@ -17,6 +18,7 @@ public:
 private:
 	void HandleCollision(Actor& aActor1, Actor& aActor2);
 
+	Background myBackground;
 	sf::RenderWindow myGameWindow;
 	const sf::Color myClearColor = sf::Color(0, 0, 0, 255);
 	Player myPlayer;

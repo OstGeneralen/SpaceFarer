@@ -20,6 +20,7 @@ Game::Game(bool& aShouldRun)
 void Game::Init()
 {
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
+
 	myPlayerTex.loadFromFile("sprites/player.png");
 	myAlienTex.loadFromFile("sprites/Trash/alien.png");
 	myAsteroidTex.loadFromFile("sprites/Trash/asteroid.png");
@@ -29,6 +30,7 @@ void Game::Init()
 	myTempActor.Init(&myAlienTex, true, { 200, 20 });
 	myFrame.Init(&myFrameTex);
 	myGameCamera.SetTarget(&myPlayer);
+	myGameCamera.SetCenter(&myPlayer);
 	
 	for (int i = 0; i < 10; ++i)
 	{
@@ -36,6 +38,8 @@ void Game::Init()
 		tmpAsteroid.Init(&myAsteroidTex, true, (0.25f + MT::Randf()) * 500.f * sf::Vector2f(sin(2 * MT_PI / 10 * i), cos(2 * MT_PI / 10 * i)));
 		myAsteroids.push_back(tmpAsteroid);
 	}
+
+	myBackground.CreateBackground(myGameWindow);
 }
 
 void Game::Update(float aDeltaTime)
@@ -103,6 +107,7 @@ void Game::Render()
 	myGameCamera.UseView(myGameWindow);
 
 	//Todo: Game Rendering
+	myBackground.Render(myGameWindow);
 	myTempActor.Render(myGameWindow);
 	myPlayer.Render(myGameWindow);
 
@@ -120,7 +125,6 @@ void Game::Render()
 	}
 
 	myGameWindow.display();
-
 }
 
 void Game::HandleCollision(Actor & aActor1, Actor & aActor2)
