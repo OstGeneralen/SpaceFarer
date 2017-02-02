@@ -20,7 +20,9 @@ void Game::Init()
 	myPlayer.Init("sprites/player.png", true);
 	myTempActor.Init("sprites/Trash/alien.png", true, { 200, 20 });
 	myFrame.Init("sprites/frame.png");
+	myGameCamera.SetCenter(&myPlayer);
 	myGameCamera.SetTarget(&myPlayer);
+	myBackground.CreateBackground(myGameWindow);
 }
 
 void Game::Update(float aDeltaTime)
@@ -73,6 +75,7 @@ void Game::Render()
 	myGameCamera.UseView(myGameWindow);
 
 	//Todo: Game Rendering
+	myBackground.Render(myGameWindow);
 	myTempActor.Render(myGameWindow);
 	myPlayer.Render(myGameWindow);
 

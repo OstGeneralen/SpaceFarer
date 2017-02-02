@@ -4,6 +4,7 @@
 #include "..\Game\Player.h"
 #include "..\Engine\DebugTools.h"
 #include "..\Engine\Camera.h"
+#include "Background.h"
 
 class Game
 {
@@ -13,8 +14,9 @@ public:
 	void Update(float aDeltaTime);
 	void Render();
 private:
+	Background myBackground;
 	sf::RenderWindow myGameWindow;
-	const sf::Color myClearColor = sf::Color(0, 150, 255, 255);
+	const sf::Color myClearColor = sf::Color(0, 0, 0, 255);
 	Player myPlayer;
 	Actor myTempActor;
 	Actor myFrame;

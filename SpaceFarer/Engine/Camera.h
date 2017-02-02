@@ -15,6 +15,7 @@ public:
 	Camera();
 	void Resize(float aWidth, float aHeight);
 	void SetTarget(Actor* aTarget);
+	void SetCenter(Actor* aTarget);
 	void Update(float aDeltaTime);
 	void UseView(sf::RenderWindow& aWindow);
 private:
