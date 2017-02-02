@@ -5,7 +5,12 @@
 Game::Game(bool& aShouldRun)
 	: myShouldRun(aShouldRun)
 {
+#ifdef _DEBUG
+	myShouldShowDebugInfo = true;
+#else
 	myShouldShowDebugInfo = false;
+#endif
+
 	myDebugTool = new D::FPSCounter(new D::Tools());
 }
 
@@ -43,6 +48,12 @@ void Game::Update(float aDeltaTime)
 		{
 			myGameCamera.SetTarget(&myPlayer);
 		}
+	}
+
+	if (e.type == sf::Event::Resized)
+	{
+		myGameCamera.Resize(static_cast<float>(myGameWindow.getSize().x), static_cast<float>(myGameWindow.getSize().y));
+		myGuiCamera.Resize(static_cast<float>(myGameWindow.getSize().x), static_cast<float>(myGameWindow.getSize().y));
 	}
 
 
