@@ -7,7 +7,7 @@ void Actor::Init(const char * const aTexturePath, bool aOriginIsMiddle, const sf
 	myTexture.loadFromFile(aTexturePath);
 	mySprite.setTextureRect({ 0,0, static_cast<int>(myTexture.getSize().x), static_cast<int>(myTexture.getSize().y) });
 	mySprite.setTexture(myTexture);
-
+	
 	if (aOriginIsMiddle)
 	{
 		MT::MTVector2 middlePoint;

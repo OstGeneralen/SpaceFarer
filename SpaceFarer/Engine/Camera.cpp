@@ -5,6 +5,9 @@
 
 Camera::Camera()
 {
+	float aW = static_cast<float>(sf::VideoMode::getDesktopMode().width);
+	float aH = static_cast<float>(sf::VideoMode::getDesktopMode().height);
+	myView = sf::View({0,0,aW,aH});
 }
 
 void Camera::SetTarget(Actor* aTarget)
