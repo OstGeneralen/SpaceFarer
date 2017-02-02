@@ -18,7 +18,7 @@ void Game::Init()
 {
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
 	myPlayer.Init("sprites/player.png", true);
-	myTempActor.Init("sprites/Trash/alien.png", true, { 20,20 });
+	myTempActor.Init("sprites/Trash/alien.png", true, { 200,200 });
 	myFrame.Init("sprites/frame.png");
 	myGameCamera.SetTarget(&myPlayer);
 }
