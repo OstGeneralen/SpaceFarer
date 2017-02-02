@@ -6,7 +6,7 @@ Debug::FPSCounter::FPSCounter(DebugWidget* aDebugWidget)
 {
 	myCurrentFPS = 0;
 	myTimer = 0;
-	myTimeBetweenUpdates = 1;
+	myTimeBetweenUpdates = 0.5f;
 }
 
 void Debug::FPSCounter::Update(float aDeltaTime)
