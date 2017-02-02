@@ -4,8 +4,8 @@
 class Entity
 {
 public:
-	void SetPosition(const sf::Vector2f& aPosition);
-	const sf::Vector2f& GetPostition() const;
+	virtual void SetPosition(const sf::Vector2f& aPosition);
+	virtual const sf::Vector2f& GetPosition() const;
 protected:
 	sf::Vector2f myPosition;
 };

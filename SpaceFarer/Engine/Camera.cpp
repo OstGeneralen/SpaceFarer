@@ -22,7 +22,7 @@ void Camera::SetTarget(Actor* aTarget)
 
 void Camera::SetCenter(Actor * aTarget)
 {
-	myView.setCenter(aTarget->GetPostition());
+	myView.setCenter(aTarget->GetPosition());
 }
 
 void Camera::Update(float aDeltaTime)
@@ -30,8 +30,10 @@ void Camera::Update(float aDeltaTime)
 	if (myTarget != nullptr)
 	{
 		sf::Vector2f newCenter = myView.getCenter();
+
 		newCenter.x = MT::Lerp(newCenter.x, myTarget->GetPostition().x, 5.f * aDeltaTime);
 		newCenter.y = MT::Lerp(newCenter.y, myTarget->GetPostition().y, 5.f * aDeltaTime);
+
 		myView.setCenter(newCenter);
 	}
 }
