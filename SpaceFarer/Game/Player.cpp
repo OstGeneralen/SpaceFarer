@@ -50,5 +50,6 @@ void Player::Movement(float aDeltaTime)
 	myDirection.x = cosf(myRotation);
 	myDirection.y = sinf(myRotation);
 
-	myPosition += myDirection * mySpeed * aDeltaTime;
+	myVelocity = myDirection * mySpeed;
+	myTransform.move(myVelocity * aDeltaTime);
 }

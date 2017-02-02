@@ -2,6 +2,7 @@
 #include <SFML\Graphics\Sprite.hpp>
 #include <SFML\Graphics\Texture.hpp>
 #include <SFML\Graphics\Rect.hpp>
+#include <SFML\System\Vector2.hpp>
 #include "Entity.h"
 
 namespace sf
@@ -12,10 +13,18 @@ namespace sf
 class Actor : public Entity
 {
 public:
-	void Init(const char* const aTexturePath, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0});
-	virtual void Update(float aDeltaTime);
-	void Render(sf::RenderWindow& aRenderWindow);
+	void				Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0});
+	virtual void			Update(float aDeltaTime);
+	void				Render(sf::RenderWindow& aRenderWindow);
+	void				SetPosition(const sf::Vector2f& aPosition) override;
+	const sf::Vector2f& GetPosition() const override;
+	void				SetVelocity(const sf::Vector2f& aVelocity);
+	const sf::Vector2f& GetVelocity() const;
+	void				ChangeVelocity(const sf::Vector2f& aVelocity);
+	const float			GetRadius() const;
 protected:
-	sf::Texture myTexture;
-	sf::Sprite mySprite;
+	sf::Texture*		myTexture;
+	sf::Sprite			mySprite;
+	sf::Transformable	myTransform;
+	sf::Vector2f		myVelocity;
 };

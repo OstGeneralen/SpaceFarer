@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Asteroid.cpp" />
     <ClCompile Include="Engine\Actor.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Engine\DebugTools.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Asteroid.h" />
     <ClInclude Include="Engine\Actor.h" />
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Engine\DebugTools.h" />
