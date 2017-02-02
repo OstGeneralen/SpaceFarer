@@ -2,6 +2,7 @@
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
 #include "..\Game\Player.h"
+#include "..\Engine\DebugTools.h"
 
 class Game
 {
@@ -14,5 +15,7 @@ private:
 	sf::RenderWindow myGameWindow;
 	const sf::Color myClearColor = sf::Color(0, 150, 255, 255);
 	Player myPlayer;
+	Debug::DebugWidget* myDebugTool;
 	bool& myShouldRun;
+	bool myShouldShowDebugInfo;
 };

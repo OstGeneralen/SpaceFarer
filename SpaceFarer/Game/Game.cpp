@@ -1,9 +1,12 @@
 #include "Game.h"
+#include <iostream>
+#include "..\Engine\DebugTools\FPSCounter.h"
 
 Game::Game(bool& aShouldRun)
 	: myShouldRun(aShouldRun)
 {
-
+	myShouldShowDebugInfo = false;
+	myDebugTool = new D::FPSCounter(new D::Tools());
 }
 
 void Game::Init()
@@ -23,8 +26,20 @@ void Game::Update(float aDeltaTime)
 		myShouldRun = false;
 	}
 
-	myPlayer.Update(aDeltaTime);
+	if (e.type == sf::Event::KeyPressed)
+	{
+		if (e.key.code == sf::Keyboard::Key::D)
+		{
+			myShouldShowDebugInfo = !myShouldShowDebugInfo;
+		}
+	}
 
+	if (myShouldShowDebugInfo)
+	{
+		myDebugTool->Update(aDeltaTime);
+	}
+
+	myPlayer.Update(aDeltaTime);
 }
 
 void Game::Render()
@@ -33,6 +48,11 @@ void Game::Render()
 
 	//Todo: Add Render code here
 	myPlayer.Render(myGameWindow);
+
+	if (myShouldShowDebugInfo)
+	{
+		myDebugTool->Render(myGameWindow);
+	}
 
 	myGameWindow.display();
 

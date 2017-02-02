@@ -25,6 +25,8 @@
     <ClCompile Include="Game\Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\DebugTools.cpp" />
+    <ClCompile Include="Engine\DebugTools\FPSCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -40,5 +42,9 @@
     <ClInclude Include="Game\Game.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\DebugTools.h" />
+    <ClInclude Include="Engine\DebugTools\DebugDecorator.h" />
+    <ClInclude Include="Engine\DebugTools\DebugWidget.h" />
+    <ClInclude Include="Engine\DebugTools\FPSCounter.h" />
   </ItemGroup>
 </Project>
