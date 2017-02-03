@@ -55,7 +55,8 @@ void Camera::UseView(sf::RenderWindow & aWindow)
 
 bool Camera::CanSee(const sf::Vector2f & aPosition)
 {
-	return true;
+	sf::FloatRect myViewInWorldSpace(myTarget->GetPosition() - myView.getSize() * 0.5f, myView.getSize());
+	return myViewInWorldSpace.contains(aPosition);
 }
 
 void Camera::Zoom(const float aFactor)

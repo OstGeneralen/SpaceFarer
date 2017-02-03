@@ -87,15 +87,18 @@ void Game::Update(float aDeltaTime)
 
 	for (unsigned i = 0; i < myActors.size(); i++)
 	{
-		for (unsigned j = 0; j < myActors.size(); j++)
+		if (myGameCamera.CanSee(myActors[i]->GetPosition()))
 		{
-			if (j != i)
+			for (unsigned j = 0; j < myActors.size(); j++)
 			{
-				HandleCollision(*myActors[i], *myActors[j]);
+				if (j != i)
+				{
+					HandleCollision(*myActors[i], *myActors[j]);
 
+				}
 			}
+			myActors[i]->Update(aDeltaTime);
 		}
-		myActors[i]->Update(aDeltaTime);
 	}
 
 
