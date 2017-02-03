@@ -25,14 +25,24 @@ void Camera::SetCenter(Actor * aTarget)
 	myView.setCenter(aTarget->GetPosition());
 }
 
+const sf::Vector2f & Camera::GetCenter() const
+{
+	return myTargetCenter;
+}
+
+const sf::Vector2f & Camera::GetTargetPosition() const
+{
+	return myTarget->GetPosition();
+}
+
 void Camera::Update(float aDeltaTime)
 {
 	if (myTarget != nullptr)
 	{
 		sf::Vector2f newCenter = myView.getCenter();
 
-		newCenter.x = MT::Lerp(newCenter.x, myTarget->GetPostition().x, 5.f * aDeltaTime);
-		newCenter.y = MT::Lerp(newCenter.y, myTarget->GetPostition().y, 5.f * aDeltaTime);
+		newCenter.x = MT::Lerp(newCenter.x, myTarget->GetPosition().x, 5.f * aDeltaTime);
+		newCenter.y = MT::Lerp(newCenter.y, myTarget->GetPosition().y, 5.f * aDeltaTime);
 
 		myView.setCenter(newCenter);
 	}
@@ -41,5 +51,20 @@ void Camera::Update(float aDeltaTime)
 void Camera::UseView(sf::RenderWindow & aWindow)
 {
 	aWindow.setView(myView);
+}
+
+bool Camera::CanSee(const sf::Vector2f & aPosition)
+{
+	return true;
+}
+
+void Camera::Zoom(const float aFactor)
+{
+	myView.zoom(aFactor);
+}
+
+const sf::Transform & Camera::GetTransform() const
+{
+	return myView.getTransform();
 }
 

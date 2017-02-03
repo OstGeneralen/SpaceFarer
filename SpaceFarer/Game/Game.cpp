@@ -32,11 +32,14 @@ void Game::Init()
 	myGameCamera.SetTarget(&myPlayer);
 	myGameCamera.SetCenter(&myPlayer);
 	
-	for (int i = 0; i < 10; ++i)
+	myActors.reserve(500);
+	myActors.push_back(&myPlayer);
+	myActors.push_back(&myTempActor);
+	for (int i = 0; i < 100; ++i)
 	{
-		Asteroid tmpAsteroid;
-		tmpAsteroid.Init(&myAsteroidTex, true, (0.25f + MT::Randf()) * 500.f * sf::Vector2f(sin(2 * MT_PI / 10 * i), cos(2 * MT_PI / 10 * i)));
-		myAsteroids.push_back(tmpAsteroid);
+		Asteroid* tmpAsteroid = new Asteroid();
+		tmpAsteroid->Init(&myAsteroidTex, true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sin(rand()), cos(rand())));
+		myActors.push_back(tmpAsteroid);
 	}
 
 	myBackground.CreateBackground(myGameWindow);
@@ -75,28 +78,36 @@ void Game::Update(float aDeltaTime)
 		myGuiCamera.Resize(static_cast<float>(myGameWindow.getSize().x), static_cast<float>(myGameWindow.getSize().y));
 	}
 
-
 	if (myShouldShowDebugInfo)
 	{
 		myDebugTool->Update(aDeltaTime);
 	}
 
-	myPlayer.Update(aDeltaTime);
 	myGameCamera.Update(aDeltaTime);
 
-	for (unsigned i = 0; i < myAsteroids.size(); i++)
+	for (unsigned i = 0; i < myActors.size(); i++)
 	{
-		HandleCollision(myAsteroids[i], myPlayer);
-
-		for (unsigned j = 0; j < myAsteroids.size(); j++)
+		for (unsigned j = 0; j < myActors.size(); j++)
 		{
 			if (j != i)
 			{
-				HandleCollision(myAsteroids[i], myAsteroids[j]);
+				HandleCollision(*myActors[i], *myActors[j]);
+
 			}
 		}
+		myActors[i]->Update(aDeltaTime);
+	}
 
-		myAsteroids[i].Update(aDeltaTime);
+
+	for (int i = myActors.size()-1; i >= 0; --i)
+	{
+		if (MT::Length(myGameCamera.GetTargetPosition() - myActors[i]->GetPosition()) > 4000 && myActors[i] != &myPlayer && myActors[i] != &myTempActor)
+		{
+			delete myActors[i];
+			myActors[i] = nullptr;
+			myActors[i] = myActors.back();
+			myActors.pop_back();
+		}
 	}
 }
 
@@ -108,12 +119,13 @@ void Game::Render()
 
 	//Todo: Game Rendering
 	myBackground.Render(myGameWindow);
-	myTempActor.Render(myGameWindow);
-	myPlayer.Render(myGameWindow);
 
-	for (unsigned i = 0; i < myAsteroids.size(); i++)
+	for (unsigned i = 0; i < myActors.size(); i++)
 	{
-		myAsteroids[i].Render(myGameWindow);
+		if (myGameCamera.CanSee(myActors[i]->GetPosition()))
+		{
+			myActors[i]->Render(myGameWindow);
+		}
 	}
 
 	//GUI Rendering

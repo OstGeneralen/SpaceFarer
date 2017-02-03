@@ -13,18 +13,19 @@ namespace sf
 class Actor : public Entity
 {
 public:
-	void				Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0});
-	virtual void			Update(float aDeltaTime);
-	void				Render(sf::RenderWindow& aRenderWindow);
-	void				SetPosition(const sf::Vector2f& aPosition) override;
-	const sf::Vector2f& GetPosition() const override;
-	void				SetVelocity(const sf::Vector2f& aVelocity);
-	const sf::Vector2f& GetVelocity() const;
-	void				ChangeVelocity(const sf::Vector2f& aVelocity);
-	const float			GetRadius() const;
+	void						Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0});
+	virtual void				Update(float aDeltaTime);
+	void						Render(sf::RenderWindow& aRenderWindow);
+	void						SetPosition(const sf::Vector2f& aPosition) override;
+	const sf::Vector2f&			GetPosition() const override;
+	const sf::Transform&		GetTransform() const;
+	void						SetVelocity(const sf::Vector2f& aVelocity);
+	const sf::Vector2f&			GetVelocity() const;
+	void						ChangeVelocity(const sf::Vector2f& aVelocity);
+	const float					GetRadius() const;
 protected:
-	sf::Texture*		myTexture;
-	sf::Sprite			mySprite;
-	sf::Transformable	myTransform;
-	sf::Vector2f		myVelocity;
+	sf::Texture*				myTexture;
+	sf::Sprite					mySprite;
+	sf::Transformable			myTransform;
+	sf::Vector2f				myVelocity;
 };

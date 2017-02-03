@@ -20,6 +20,11 @@ namespace MathTools
 		return aRadian * (180.f / MT_PI);
 	}
 
+	static float ToRadians(const float aDegree)
+	{
+		return (aDegree * MT_PI) / 180.f;
+	}
+
 	static MTVector2 GetMiddlePoint(int aX, int aY, int aW, int aH)
 	{
 		MTVector2 returnVector;

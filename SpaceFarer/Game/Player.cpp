@@ -9,33 +9,32 @@ Player::Player()
 	myMaxSpeed = 300.f;
 	mySpeed = 0;
 	myDirection = { 0,0 };
-	myRotation = 0;
 }
 
 void Player::Update(float aDeltaTime)
 {
+	myTransform.move(myVelocity * aDeltaTime);
 	Movement(aDeltaTime);
-	mySprite.setRotation(MT::ToDegrees(myRotation));
 }
 
 void Player::Movement(float aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
-		myRotation += 1.f * aDeltaTime;
+		myTransform.rotate(MT::ToDegrees(static_cast<float>(MT_PI) * aDeltaTime));
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 	{
-		myRotation -= 1.f * aDeltaTime;
+		myTransform.rotate(-MT::ToDegrees(static_cast<float>(MT_PI) * aDeltaTime));
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && mySpeed <= myMaxSpeed)
 	{
-		mySpeed += 100 * aDeltaTime;
+		myVelocity += myDirection * 200.f * aDeltaTime;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && mySpeed >= 0.f)
 	{
-		mySpeed -= 200 * aDeltaTime;
+		myVelocity -= myDirection * 200.f * aDeltaTime;
 	}
 	
 	if (mySpeed > myMaxSpeed)
@@ -47,9 +46,8 @@ void Player::Movement(float aDeltaTime)
 		mySpeed = 0;
 	}
 
-	myDirection.x = cosf(myRotation);
-	myDirection.y = sinf(myRotation);
+	myDirection.x = cosf(MT::ToRadians(myTransform.getRotation()));
+	myDirection.y = sinf(MT::ToRadians(myTransform.getRotation()));
 
-	myVelocity = myDirection * mySpeed;
 	myTransform.move(myVelocity * aDeltaTime);
 }

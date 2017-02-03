@@ -12,7 +12,7 @@ void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f
 	{
 		MT::MTVector2 middlePoint;
 		middlePoint = MathTools::GetMiddlePoint(0, 0, mySprite.getTextureRect().width, mySprite.getTextureRect().height);
-		mySprite.setOrigin({ middlePoint.x, middlePoint.y });
+		mySprite.setOrigin(middlePoint.x, middlePoint.y);
 	}
 
 	myTransform.setPosition(aStartPosition);
@@ -27,6 +27,7 @@ void Actor::Update(float aDeltaTime)
 void Actor::Render(sf::RenderWindow& aRenderWindow)
 {
 	mySprite.setPosition(myTransform.getPosition());
+	mySprite.setRotation(myTransform.getRotation());
 	aRenderWindow.draw(mySprite);
 }
 
@@ -38,6 +39,11 @@ void Actor::SetPosition(const sf::Vector2f & aPosition)
 const sf::Vector2f & Actor::GetPosition() const
 {
 	return myTransform.getPosition();
+}
+
+const sf::Transform & Actor::GetTransform() const
+{
+	return myTransform.getTransform();
 }
 
 void Actor::SetVelocity(const sf::Vector2f & aVelocity)
