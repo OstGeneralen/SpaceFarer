@@ -7,7 +7,7 @@ class Subject
 public:
 	void AttatchObserver(Observer* aObserver);
 	void DetatchObserver(Observer* aObserver);
-private:
+protected:
 	void NotifyObservers(GameEvent aEvent);
 	void NotifyObservers(GameEvent aEvent, int aValue);
 	void NotifyObservers(GameEvent aEvent, float aX, float aY);

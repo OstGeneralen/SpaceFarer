@@ -30,6 +30,9 @@
     <ClCompile Include="Engine\Camera.cpp" />
     <ClCompile Include="Game\Asteroid.cpp" />
     <ClCompile Include="Game\Background.cpp" />
+    <ClCompile Include="Game\Observer\Observer.cpp" />
+    <ClCompile Include="Game\Observer\Subject.cpp" />
+    <ClCompile Include="Game\GUI\Gui.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -52,5 +55,9 @@
     <ClInclude Include="Engine\Camera.h" />
     <ClInclude Include="Game\Asteroid.h" />
     <ClInclude Include="Game\Background.h" />
+    <ClInclude Include="Game\Observer\GameEvents.h" />
+    <ClInclude Include="Game\Observer\Observer.h" />
+    <ClInclude Include="Game\Observer\Subject.h" />
+    <ClInclude Include="Game\GUI\Gui.h" />
   </ItemGroup>
 </Project>

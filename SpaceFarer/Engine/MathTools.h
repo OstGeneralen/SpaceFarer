@@ -35,7 +35,7 @@ namespace MathTools
 
 	static float Randf()
 	{
-		return abs(sinf(rand()));
+		return static_cast<float>(abs(sinf(static_cast<float>(rand()))));
 	}
 
 	static float Dot(const sf::Vector2f& aVector1, const sf::Vector2f& aVector2)

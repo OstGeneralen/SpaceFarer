@@ -13,7 +13,7 @@ namespace sf
 class Actor : public Entity
 {
 public:
-	void						Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0});
+	virtual void				Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0});
 	virtual void				Update(float aDeltaTime);
 	void						Render(sf::RenderWindow& aRenderWindow);
 	void						SetPosition(const sf::Vector2f& aPosition) override;

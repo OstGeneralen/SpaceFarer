@@ -27,6 +27,9 @@
     <ClCompile Include="Engine\Entity.cpp" />
     <ClCompile Include="Game\Background.cpp" />
     <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\GUI\Gui.cpp" />
+    <ClCompile Include="Game\Observer\Observer.cpp" />
+    <ClCompile Include="Game\Observer\Subject.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -42,6 +45,10 @@
     <ClInclude Include="Engine\MathTools.h" />
     <ClInclude Include="Game\Background.h" />
     <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\Observer\GameEvents.h" />
+    <ClInclude Include="Game\GUI\Gui.h" />
+    <ClInclude Include="Game\Observer\Observer.h" />
+    <ClInclude Include="Game\Observer\Subject.h" />
     <ClInclude Include="Game\Player.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

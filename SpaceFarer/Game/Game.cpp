@@ -20,15 +20,19 @@ Game::Game(bool& aShouldRun)
 void Game::Init()
 {
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
-
+	
 	myPlayerTex.loadFromFile("sprites/player.png");
 	myAlienTex.loadFromFile("sprites/Trash/alien.png");
 	myAsteroidTex.loadFromFile("sprites/Trash/asteroid.png");
 	myFrameTex.loadFromFile("sprites/frame.png");
 
+	myGui.Load("sprites/GuiBar.png", "fonts/helvetica.ttf");
+	myGui.SetPositions(myGameWindow);
+	
+	myPlayer.AttatchObserver(&myGui);
+
 	myPlayer.Init(&myPlayerTex, true);
 	myTempActor.Init(&myAlienTex, true, { 200, 20 });
-	myFrame.Init(&myFrameTex);
 	myGameCamera.SetTarget(&myPlayer);
 	myGameCamera.SetCenter(&myPlayer);
 	
@@ -38,7 +42,7 @@ void Game::Init()
 	for (int i = 0; i < 100; ++i)
 	{
 		Asteroid* tmpAsteroid = new Asteroid();
-		tmpAsteroid->Init(&myAsteroidTex, true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sin(rand()), cos(rand())));
+		tmpAsteroid->Init(&myAsteroidTex, true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))));
 		myActors.push_back(tmpAsteroid);
 	}
 
@@ -133,7 +137,7 @@ void Game::Render()
 
 	//GUI Rendering
 	myGuiCamera.UseView(myGameWindow);
-	myFrame.Render(myGameWindow);
+	myGui.Render(myGameWindow);
 	if (myShouldShowDebugInfo)
 	{
 		myDebugTool->Render(myGameWindow);

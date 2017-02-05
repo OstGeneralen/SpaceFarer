@@ -7,6 +7,7 @@
 #include "..\Game\Asteroid.h"
 #include <vector>
 #include "Background.h"
+#include "GUI\Gui.h"
 
 class Game
 {
@@ -24,7 +25,7 @@ private:
 	Player					myPlayer;
 	Actor					myTempActor;
 	std::vector<Actor*>		myActors;
-	Actor					myFrame;
+	Gui						myGui;
 	Debug::DebugWidget*		myDebugTool;
 	bool&					myShouldRun;
 	bool					myShouldShowDebugInfo;
