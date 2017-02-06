@@ -1,19 +1,17 @@
 #pragma once
 #include "..\Engine\Actor.h"
 #include "Observer\Subject.h"
+#include "Ship.h"
 
-class Player : public Actor, public Subject
+class Player : public Entity, public Subject
 {
 public:
 	Player();
-	void			Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0 }) override;
-	void			Update(float aDeltaTime) override;
+	void			Update(float aDeltaTime);
+	void			Render(sf::RenderWindow& aRenderWindow);
+	void			AttatchObserver(Observer* aObserver) override;
+	void			GiveShip(Ship* aShip);
+	Ship&			GetShip() const;
 private:
-	void			Movement(float aDeltaTime);
-	sf::Vector2f	myDirection;
-	float			myMaxSpeed;
-	float			mySpeed;
-	int				myFuel;
-	int				myFuelConsumption;
-	bool			myInertiaEnabled;
+	Ship*			myShip = nullptr;
 };

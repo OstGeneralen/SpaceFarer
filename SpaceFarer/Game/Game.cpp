@@ -26,19 +26,38 @@ void Game::Init()
 
 	myGui.Load("fonts/helvetica.ttf");
 	
+
+	
+	ShipFittings fittings;
+	fittings.myFuelTank = 100;
+	fittings.myFuelUsage = 2;
+	fittings.myAcceleration = 200;
+	fittings.myHasInertia = true;
+	fittings.myName = "Debug Ship";
+	fittings.myTurnSpeed = 150;
+	fittings.myValue = 10000;
+	fittings.myInertiaFactor = 3;
+	
+
+	myTempShip = Ship(fittings);
+	myTempShip.Init(GET_TEXTURE("player"), true);
+	
+	myPlayer.GiveShip(&myTempShip);
+
+	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 });
+	
 	myPlayer.AttatchObserver(&myGui);
 
-	myPlayer.Init(GET_TEXTURE("player"), true);
-	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 });
+	myPlayer.GetShip().SetUp();
 	
 	myGui.SetPositions(myGameWindow);
 
-	myGameCamera.SetTarget(&myPlayer);
-	myGameCamera.SetCenter(&myPlayer);
+	myGameCamera.SetTarget(&myPlayer.GetShip());
+	myGameCamera.SetCenter(&myPlayer.GetShip());
 	
 	
 	myActors.reserve(500);
-	myActors.push_back(&myPlayer);
+	myActors.push_back(&myPlayer.GetShip());
 	myActors.push_back(&myTempActor);
 	for (int i = 0; i < 100; ++i)
 	{
@@ -75,7 +94,7 @@ void Game::Update(float aDeltaTime)
 		}
 		if (e.key.code == sf::Keyboard::Key::P)
 		{
-			myGameCamera.SetTarget(&myPlayer);
+			myGameCamera.SetTarget(&myPlayer.GetShip());
 		}
 	}
 
@@ -116,7 +135,7 @@ void Game::Update(float aDeltaTime)
 
 	for (int i = myActors.size()-1; i >= 0; --i)
 	{
-		if (MT::Length(myGameCamera.GetTargetPosition() - myActors[i]->GetPosition()) > 4000 && myActors[i] != &myPlayer && myActors[i] != &myTempActor)
+		if (MT::Length(myGameCamera.GetTargetPosition() - myActors[i]->GetPosition()) > 4000 && myActors[i] != &myPlayer.GetShip() && myActors[i] != &myTempActor)
 		{
 			delete myActors[i];
 			myActors[i] = nullptr;

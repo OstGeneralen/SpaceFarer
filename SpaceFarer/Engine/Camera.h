@@ -2,7 +2,7 @@
 #include "SFML\Graphics\View.hpp"
 #include "SFML\System\Vector2.hpp"
 
-class Actor;
+class Entity;
 
 namespace sf
 {
@@ -14,8 +14,8 @@ class Camera
 public:
 	Camera();
 	void Resize(float aWidth, float aHeight);
-	void SetTarget(Actor* aTarget);
-	void SetCenter(Actor* aTarget);
+	void SetTarget(Entity* aTarget);
+	void SetCenter(Entity* aTarget);
 	const sf::Vector2f& GetCenter() const;
 	const sf::Vector2f& GetTargetPosition() const;
 	void Update(float aDeltaTime);
@@ -24,7 +24,7 @@ public:
 	void Zoom(const float aFactor);
 	const sf::Transform& GetTransform() const;
 private:
-	Actor* myTarget = nullptr;
+	Entity* myTarget = nullptr;
 	sf::Vector2f myTargetCenter;
 	sf::View myView;
 };

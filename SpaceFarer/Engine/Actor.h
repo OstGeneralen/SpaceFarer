@@ -25,7 +25,7 @@ public:
 	void						ChangeVelocity(const sf::Vector2f& aVelocity);
 	const float					GetRadius() const;
 protected:
-	sf::Texture*				myTexture;
+	sf::Texture*				myTexture = nullptr;
 	sf::Sprite					mySprite;
 	sf::Transformable			myTransform;
 	sf::Vector2f				myVelocity;

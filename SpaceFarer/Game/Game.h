@@ -8,6 +8,7 @@
 #include <vector>
 #include "Background.h"
 #include "GUI\Gui.h"
+#include "Ship.h"
 
 class Game
 {
@@ -31,4 +32,5 @@ private:
 	bool					myShouldShowDebugInfo;
 	Camera					myGameCamera;
 	Camera					myGuiCamera;
+	Ship					myTempShip;
 };

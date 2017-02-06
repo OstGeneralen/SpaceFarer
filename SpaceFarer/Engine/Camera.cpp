@@ -15,12 +15,12 @@ void Camera::Resize(float aWidth, float aHeight)
 	myView = sf::View({ 0,0,aWidth,aHeight });
 }
 
-void Camera::SetTarget(Actor* aTarget)
+void Camera::SetTarget(Entity* aTarget)
 {
 	myTarget = aTarget;
 }
 
-void Camera::SetCenter(Actor * aTarget)
+void Camera::SetCenter(Entity* aTarget)
 {
 	myView.setCenter(aTarget->GetPosition());
 }

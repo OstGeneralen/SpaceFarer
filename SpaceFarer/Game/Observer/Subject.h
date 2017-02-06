@@ -5,8 +5,8 @@
 class Subject
 {
 public:
-	void AttatchObserver(Observer* aObserver);
-	void DetatchObserver(Observer* aObserver);
+	virtual void AttatchObserver(Observer* aObserver);
+	virtual void DetatchObserver(Observer* aObserver);
 protected:
 	void NotifyObservers(GameEvent aEvent);
 	void NotifyObservers(GameEvent aEvent, int aValue);

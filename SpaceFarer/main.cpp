@@ -7,7 +7,7 @@ int main()
 	sf::Clock clock;
 	sf::Time time;
 
-	bool shouldRun;
+	bool shouldRun = true;
 	Game game(shouldRun);
 
 	game.Init();
