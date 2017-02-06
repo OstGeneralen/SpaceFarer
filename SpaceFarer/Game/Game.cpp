@@ -1,6 +1,7 @@
 #include "Game.h"
 #include <iostream>
 #include "..\Engine\DebugTools\FPSCounter.h"
+#include "..\Engine\DebugTools\VersionStamp.h"
 #include "..\Engine\MathTools.h"
 #define RANDOM_SEED 25062009
 
@@ -14,7 +15,7 @@ Game::Game(bool& aShouldRun)
 	myShouldShowDebugInfo = false;
 #endif
 
-	myDebugTool = new D::FPSCounter(new D::Tools());
+	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
 }
 
 void Game::Init()
@@ -47,6 +48,8 @@ void Game::Init()
 	}
 
 	myBackground.CreateBackground(myGameWindow);
+
+	myDebugTool->Load(myGameWindow);
 }
 
 void Game::Update(float aDeltaTime)

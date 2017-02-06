@@ -8,6 +8,11 @@ namespace Debug
 	public:
 		DebugDecorator(DebugWidget* aWidget) : myWidget(aWidget) {};
 		
+		void Load(const sf::RenderWindow& aRenderWindow)
+		{
+			myWidget->Load(aRenderWindow);
+		}
+
 		void Update(float aDeltaTime) override
 		{
 			myWidget->Update(aDeltaTime);

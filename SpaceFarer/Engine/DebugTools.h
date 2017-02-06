@@ -14,6 +14,7 @@ namespace Debug
 	{
 	public:
 		Tools();
+		void Load(const sf::RenderWindow& aRenderWindow) override;
 		void Update(float aDeltaTime) override;
 		void Render(sf::RenderWindow& aRenderWindow) override;
 	};

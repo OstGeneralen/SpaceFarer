@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\DebugTools\VersionStamp.cpp" />
     <ClCompile Include="Game\Asteroid.cpp" />
     <ClCompile Include="Engine\Actor.cpp" />
     <ClCompile Include="Engine\Camera.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\DebugTools\VersionStamp.h" />
     <ClInclude Include="Game\Asteroid.h" />
     <ClInclude Include="Engine\Actor.h" />
     <ClInclude Include="Engine\Camera.h" />

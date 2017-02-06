@@ -7,8 +7,8 @@ namespace Debug
 	{
 	public:
 		FPSCounter(DebugWidget* aDebugWidget);
-		void Update(float aDeltaTime);
-		void Render(sf::RenderWindow& aRenderWindow);
+		void Update(float aDeltaTime) override;
+		void Render(sf::RenderWindow& aRenderWindow) override;
 	private:
 		int myCurrentFPS;
 		float myTimer;

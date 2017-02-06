@@ -8,6 +8,10 @@ namespace Debug
 	
 	}
 
+	void Tools::Load(const sf::RenderWindow & aRenderWindow)
+	{
+	}
+
 	void Tools::Update(float aDeltaTime)
 	{
 	}
