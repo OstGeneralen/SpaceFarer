@@ -9,6 +9,7 @@ Player::Player()
 	myMaxSpeed = 300.f;
 	mySpeed = 0;
 	myDirection = { 0,0 };
+	myInertiaEnabled = false;
 }
 
 void Player::Init(sf::Texture * aTexture, bool aOriginIsMiddle, const sf::Vector2f & aStartPosition)
@@ -28,6 +29,8 @@ void Player::Update(float aDeltaTime)
 
 void Player::Movement(float aDeltaTime)
 {
+	myInertiaEnabled = false;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
 		myTransform.rotate(MT::ToDegrees(static_cast<float>(MT_PI) * aDeltaTime));
@@ -44,6 +47,26 @@ void Player::Movement(float aDeltaTime)
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && mySpeed >= 0.f)
 	{
 		myVelocity -= myDirection * 200.f * aDeltaTime;
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::I))
+	{
+		myInertiaEnabled = true;
+	}
+
+	if (myInertiaEnabled)
+	{
+		myVelocity.x = MathTools::Lerp(myVelocity.x, 0, 2.f * aDeltaTime);
+		myVelocity.y = MathTools::Lerp(myVelocity.y, 0, 2.f * aDeltaTime);
+		
+		if (abs(myVelocity.x - 0.f) < 0.1f)
+		{
+			myVelocity.x = 0;
+		}
+		if (abs(myVelocity.y - 0.f) < 0.1f)
+		{
+			myVelocity.y = 0;
+		}
 	}
 	
 	if (mySpeed > myMaxSpeed)

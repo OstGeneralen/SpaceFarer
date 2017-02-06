@@ -38,7 +38,7 @@ void Gui::Notify(GameEvent aEvent, float aX, float aY)
 {
 	if (aEvent == EVENT_PLAYER_NEW_VELOCITY)
 	{
-		myMovementString = "Directional Vectors\nX: " + std::to_string(aX) + "\nY: " + std::to_string(aY);
+		myMovementString = "Directional Vectors\nX: " + std::to_string(static_cast<int>(aX)) + "\nY: " + std::to_string(static_cast<int>(aY));
 		myMovementText.setString(myMovementString);
 	}
 }
