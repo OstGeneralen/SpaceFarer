@@ -1,6 +1,8 @@
 # SpaceFarer
 *Currently this list is in its childhood, we will probably dream up a lot of more stuff and possibly implement it as well*
 
+**For a detailed changelog we refer to the projects [Wiki](https://github.com/SpaceFarerOrg/SpaceFarer/wiki)**
+
 ##Currently featuring
 - Zero-G navigation of ship
 - Space soccer with asteroids
@@ -10,3 +12,4 @@
 - Space Shipping, deliver goods from A to B
 - Space Pirates, who doesn't love a good fight
 - Space flight economics, manage your fuel/energy to avoid dying alone in space. It's bad enough to do it on the ground (which you will)
+
