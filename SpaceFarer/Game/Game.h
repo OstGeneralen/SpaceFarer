@@ -31,9 +31,4 @@ private:
 	bool					myShouldShowDebugInfo;
 	Camera					myGameCamera;
 	Camera					myGuiCamera;
-
-	sf::Texture				myPlayerTex;
-	sf::Texture				myAlienTex;
-	sf::Texture				myAsteroidTex;
-	sf::Texture				myFrameTex;
 };

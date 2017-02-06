@@ -13,7 +13,7 @@ namespace sf
 class Gui : public Observer 
 {
 public:
-	void			Load(const std::string& aTexPath, const std::string& aFontPath);
+	void			Load(const std::string& aFontPath);
 	void			SetPositions(const sf::RenderWindow& aRenderWindow);
 	void			Render(sf::RenderWindow& aRenderWindow);
 	void			Notify(GameEvent aEvent, int aValue) override;

@@ -3,6 +3,7 @@
 #include "..\Engine\DebugTools\FPSCounter.h"
 #include "..\Engine\DebugTools\VersionStamp.h"
 #include "..\Engine\MathTools.h"
+#include "..\TextureBank.h"
 #define RANDOM_SEED 25062009
 
 Game::Game(bool& aShouldRun)
@@ -21,19 +22,15 @@ Game::Game(bool& aShouldRun)
 void Game::Init()
 {
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
-	
-	myPlayerTex.loadFromFile("sprites/player.png");
-	myAlienTex.loadFromFile("sprites/Trash/alien.png");
-	myAsteroidTex.loadFromFile("sprites/Trash/asteroid.png");
-	myFrameTex.loadFromFile("sprites/frame.png");
+	TextureBank::GetInstance()->Load();
 
-	myGui.Load("sprites/GuiBar.png", "fonts/helvetica.ttf");
+	myGui.Load("fonts/helvetica.ttf");
 	myGui.SetPositions(myGameWindow);
 	
 	myPlayer.AttatchObserver(&myGui);
 
-	myPlayer.Init(&myPlayerTex, true);
-	myTempActor.Init(&myAlienTex, true, { 200, 20 });
+	myPlayer.Init(GET_TEXTURE("player"), true);
+	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 });
 	myGameCamera.SetTarget(&myPlayer);
 	myGameCamera.SetCenter(&myPlayer);
 	
@@ -43,7 +40,7 @@ void Game::Init()
 	for (int i = 0; i < 100; ++i)
 	{
 		Asteroid* tmpAsteroid = new Asteroid();
-		tmpAsteroid->Init(&myAsteroidTex, true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))));
+		tmpAsteroid->Init(GET_TEXTURE("asteroid"), true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))));
 		myActors.push_back(tmpAsteroid);
 	}
 

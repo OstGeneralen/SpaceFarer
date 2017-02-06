@@ -19,6 +19,5 @@ private:
 	sf::Sprite myLayerOneSprite;
 	sf::Sprite myLayerTwoSprite;
 	sf::Sprite myLayerThreeSprite;
-	sf::Texture myBackGroundTexture;
 	std::vector<sf::Vector2f> myRenderPositions;
 };

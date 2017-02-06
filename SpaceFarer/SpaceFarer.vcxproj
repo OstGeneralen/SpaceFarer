@@ -33,6 +33,7 @@
     <ClCompile Include="Game\Observer\Subject.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TextureBank.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\DebugTools\VersionStamp.h" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Game\Observer\Observer.h" />
     <ClInclude Include="Game\Observer\Subject.h" />
     <ClInclude Include="Game\Player.h" />
+    <ClInclude Include="TextureBank.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{798C067D-B261-43DC-A304-5436E09176EB}</ProjectGuid>

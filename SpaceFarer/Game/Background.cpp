@@ -1,19 +1,20 @@
 #include "Background.h"
 #include "SFML\Graphics\RenderWindow.hpp"
+#include "..\TextureBank.h"
 
 Background::Background()
 {
-	myBackGroundTexture.loadFromFile("sprites/backgroundStars.png");
-	myLayerOneSprite.setTextureRect({ 0,0,128,128 });
-	myLayerTwoSprite.setTextureRect({ 128,0,128,128 });
-	myLayerThreeSprite.setTextureRect({ 256, 0, 128,128 });
-	myLayerOneSprite.setTexture(myBackGroundTexture);
-	myLayerTwoSprite.setTexture(myBackGroundTexture);
-	myLayerThreeSprite.setTexture(myBackGroundTexture);
 }
 
 void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 {
+
+	myLayerOneSprite.setTextureRect({ 0,0,128,128 });
+	myLayerTwoSprite.setTextureRect({ 128,0,128,128 });
+	myLayerThreeSprite.setTextureRect({ 256, 0, 128,128 });
+	myLayerOneSprite.setTexture(*GET_TEXTURE("backgroundStars"));
+	myLayerTwoSprite.setTexture(*GET_TEXTURE("backgroundStars"));
+	myLayerThreeSprite.setTexture(*GET_TEXTURE("backgroundStars"));
 
 	myRenderPositions.clear();
 

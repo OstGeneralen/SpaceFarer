@@ -1,10 +1,10 @@
 #include "Gui.h"
 #include "SFML\Graphics\RenderWindow.hpp"
+#include "..\..\TextureBank.h"
 
-void Gui::Load(const std::string & aTexPath, const std::string & aFontPath)
+void Gui::Load(const std::string & aFontPath)
 {
-	myBarTex.loadFromFile(aTexPath);
-	myBarActor.Init(&myBarTex, true);
+	myBarActor.Init(GET_TEXTURE("guiBar"), true);
 
 	myTextFont.loadFromFile(aFontPath);
 	myBalanceText = sf::Text("", myTextFont, 12U);
