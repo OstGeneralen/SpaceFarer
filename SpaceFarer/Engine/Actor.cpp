@@ -41,6 +41,11 @@ const sf::Vector2f & Actor::GetPosition() const
 	return myTransform.getPosition();
 }
 
+const sf::Vector2f & Actor::GetSize() const
+{
+	return{ mySprite.getLocalBounds().width, mySprite.getLocalBounds().height };
+}
+
 const sf::Transform & Actor::GetTransform() const
 {
 	return myTransform.getTransform();

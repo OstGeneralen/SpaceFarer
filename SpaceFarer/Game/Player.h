@@ -13,5 +13,7 @@ private:
 	sf::Vector2f	myDirection;
 	float			myMaxSpeed;
 	float			mySpeed;
+	int				myFuel;
+	int				myFuelConsumption;
 	bool			myInertiaEnabled;
 };

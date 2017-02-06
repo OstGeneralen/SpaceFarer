@@ -10,12 +10,15 @@ Player::Player()
 	mySpeed = 0;
 	myDirection = { 0,0 };
 	myInertiaEnabled = false;
+	myFuel = 100000;
+	myFuelConsumption = 1;
 }
 
 void Player::Init(sf::Texture * aTexture, bool aOriginIsMiddle, const sf::Vector2f & aStartPosition)
 {
 	Actor::Init(aTexture, aOriginIsMiddle, aStartPosition);
 	NotifyObservers(EVENT_PLAYER_NEW_BALANCE, 0);
+	NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, myFuel);
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, 0, 0);
 }
 
@@ -31,33 +34,47 @@ void Player::Movement(float aDeltaTime)
 {
 	myInertiaEnabled = false;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+	if (myFuel < 0)
 	{
-		myTransform.rotate(MT::ToDegrees(static_cast<float>(MT_PI) * aDeltaTime));
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
-	{
-		myTransform.rotate(-MT::ToDegrees(static_cast<float>(MT_PI) * aDeltaTime));
+		myFuel = 0;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && mySpeed <= myMaxSpeed)
+	if (myFuel > 0)
 	{
-		myVelocity += myDirection * 200.f * aDeltaTime;
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && mySpeed >= 0.f)
-	{
-		myVelocity -= myDirection * 200.f * aDeltaTime;
-	}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+		{
+			myTransform.rotate(MT::ToDegrees(static_cast<float>(MT_PI) * aDeltaTime));
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+		{
+			myTransform.rotate(-MT::ToDegrees(static_cast<float>(MT_PI) * aDeltaTime));
+		}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::I))
-	{
-		myInertiaEnabled = true;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && mySpeed <= myMaxSpeed)
+		{
+			myVelocity += myDirection * 200.f * aDeltaTime;
+			myFuel -= myFuelConsumption;
+			NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, myFuel);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && mySpeed >= 0.f)
+		{
+			myVelocity -= myDirection * 200.f * aDeltaTime;
+			myFuel -= myFuelConsumption;
+			NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, myFuel);
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::I))
+		{
+			myInertiaEnabled = true;
+			myFuel -= myFuelConsumption * 2;
+			NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, myFuel);
+		}
 	}
 
 	if (myInertiaEnabled)
 	{
-		myVelocity.x = MathTools::Lerp(myVelocity.x, 0, 2.f * aDeltaTime);
-		myVelocity.y = MathTools::Lerp(myVelocity.y, 0, 2.f * aDeltaTime);
+		myVelocity.x = MathTools::Lerp(myVelocity.x, 0, 2.5f * aDeltaTime);
+		myVelocity.y = MathTools::Lerp(myVelocity.y, 0, 2.5f * aDeltaTime);
 		
 		if (abs(myVelocity.x - 0.f) < 0.1f)
 		{

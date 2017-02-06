@@ -28,14 +28,17 @@ void Game::Init()
 	myFrameTex.loadFromFile("sprites/frame.png");
 
 	myGui.Load("sprites/GuiBar.png", "fonts/helvetica.ttf");
-	myGui.SetPositions(myGameWindow);
 	
 	myPlayer.AttatchObserver(&myGui);
 
 	myPlayer.Init(&myPlayerTex, true);
+	
+	myGui.SetPositions(myGameWindow);
+	
 	myTempActor.Init(&myAlienTex, true, { 200, 20 });
 	myGameCamera.SetTarget(&myPlayer);
 	myGameCamera.SetCenter(&myPlayer);
+	
 	
 	myActors.reserve(500);
 	myActors.push_back(&myPlayer);
@@ -81,8 +84,13 @@ void Game::Update(float aDeltaTime)
 
 	if (e.type == sf::Event::Resized)
 	{
+		myGameCamera.UseView(myGameWindow);
 		myGameCamera.Resize(static_cast<float>(myGameWindow.getSize().x), static_cast<float>(myGameWindow.getSize().y));
+
+		myGuiCamera.UseView(myGameWindow);
 		myGuiCamera.Resize(static_cast<float>(myGameWindow.getSize().x), static_cast<float>(myGameWindow.getSize().y));
+		myDebugTool->Load(myGameWindow);
+		myGui.SetPositions(myGameWindow);
 	}
 
 	if (myShouldShowDebugInfo)

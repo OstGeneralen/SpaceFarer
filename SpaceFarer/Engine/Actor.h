@@ -18,6 +18,7 @@ public:
 	void						Render(sf::RenderWindow& aRenderWindow);
 	void						SetPosition(const sf::Vector2f& aPosition) override;
 	const sf::Vector2f&			GetPosition() const override;
+	const sf::Vector2f&			GetSize() const;
 	const sf::Transform&		GetTransform() const;
 	void						SetVelocity(const sf::Vector2f& aVelocity);
 	const sf::Vector2f&			GetVelocity() const;
