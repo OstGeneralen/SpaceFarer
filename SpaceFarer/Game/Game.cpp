@@ -25,13 +25,13 @@ void Game::Init()
 	TextureBank::GetInstance()->Load();
 
 	myGui.Load("fonts/helvetica.ttf");
-	myGui.SetPositions(myGameWindow);
 	
 	myPlayer.AttatchObserver(&myGui);
 
 	myPlayer.Init(GET_TEXTURE("player"), true);
 	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 });
-	myGui.Load("fonts/helvetica.ttf");
+	
+	myGui.SetPositions(myGameWindow);
 
 	myGameCamera.SetTarget(&myPlayer);
 	myGameCamera.SetCenter(&myPlayer);
