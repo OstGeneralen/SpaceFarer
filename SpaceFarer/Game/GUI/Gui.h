@@ -23,6 +23,8 @@ private:
 	sf::Font		myTextFont;
 	sf::Text		myBalanceText;
 	sf::Text		myMovementText;
+	sf::Text		myFuelText;
+	sf::String		myFuelString;
 	sf::String		myBalanceString;
 	sf::String		myMovementString;
 	Actor			myBarActor;

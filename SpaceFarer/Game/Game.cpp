@@ -31,8 +31,11 @@ void Game::Init()
 
 	myPlayer.Init(GET_TEXTURE("player"), true);
 	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 });
+	myGui.Load("fonts/helvetica.ttf");
+
 	myGameCamera.SetTarget(&myPlayer);
 	myGameCamera.SetCenter(&myPlayer);
+	
 	
 	myActors.reserve(500);
 	myActors.push_back(&myPlayer);
@@ -78,8 +81,13 @@ void Game::Update(float aDeltaTime)
 
 	if (e.type == sf::Event::Resized)
 	{
+		myGameCamera.UseView(myGameWindow);
 		myGameCamera.Resize(static_cast<float>(myGameWindow.getSize().x), static_cast<float>(myGameWindow.getSize().y));
+
+		myGuiCamera.UseView(myGameWindow);
 		myGuiCamera.Resize(static_cast<float>(myGameWindow.getSize().x), static_cast<float>(myGameWindow.getSize().y));
+		myDebugTool->Load(myGameWindow);
+		myGui.SetPositions(myGameWindow);
 	}
 
 	if (myShouldShowDebugInfo)
