@@ -37,6 +37,7 @@
     <ClCompile Include="Game\Ship\ShipFactory.cpp" />
     <ClCompile Include="Game\Ship\ShipTypes.cpp" />
     <ClCompile Include="Game\States\FlyingState.cpp" />
+    <ClCompile Include="Game\States\MenuState.cpp" />
     <ClCompile Include="Game\States\State.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TextureBank.cpp" />
@@ -64,11 +65,9 @@
     <ClInclude Include="Game\Ship\ShipFactory.h" />
     <ClInclude Include="Game\Ship\ShipTypes.h" />
     <ClInclude Include="Game\States\FlyingState.h" />
+    <ClInclude Include="Game\States\MenuState.h" />
     <ClInclude Include="Game\States\State.h" />
     <ClInclude Include="TextureBank.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{798C067D-B261-43DC-A304-5436E09176EB}</ProjectGuid>

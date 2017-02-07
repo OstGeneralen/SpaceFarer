@@ -41,7 +41,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	myBackground.CreateBackground(*myGameWindow);
 }
 
-void FlyingState::Update(float aDeltaTime)
+void FlyingState::Update(float aDeltaTime, GameState& aGameState)
 {
 	myGameCamera.Update(aDeltaTime);
 

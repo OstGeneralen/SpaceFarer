@@ -3,12 +3,8 @@
 #include "SFML\Graphics.hpp"
 #include "..\Engine\DebugTools.h"
 #include "States\FlyingState.h"
+#include "States\MenuState.h"
 #include "..\Engine\Camera.h"
-
-enum class GameState
-{
-	Flying,
-};
 
 class Game
 {
@@ -21,7 +17,9 @@ private:
 
 	GameState				myGameState;
 
+	MenuState				myMenuState;
 	FlyingState				myFlyingState;
+	
 	Camera					myDebugCamera;
 	bool&					myShouldRun;
 	Debug::DebugWidget*		myDebugTool;

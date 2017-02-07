@@ -23,7 +23,7 @@ Game::Game(bool& aShouldRun)
 
 void Game::Init()
 {
-	myGameState = GameState::Flying;
+	myGameState = GameState::Menu;
 
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
 	TextureBank::GetInstance()->Load();
@@ -56,8 +56,20 @@ void Game::Update(float aDeltaTime)
 	switch (myGameState)
 	{
 	case GameState::Flying:
-		myFlyingState.Update(aDeltaTime);
+		if (!myFlyingState.GetIsLoaded())
+		{
+			myFlyingState.Load(&myGameWindow);
+			break;
+		}
+		myFlyingState.Update(aDeltaTime, myGameState);
 		break;
+	case GameState::Menu:
+		if (!myMenuState.GetIsLoaded())
+		{
+			myMenuState.Load(&myGameWindow);
+			break;
+		}
+		myMenuState.Update(aDeltaTime, myGameState);
 	default:
 		break;
 	}
@@ -71,8 +83,16 @@ void Game::Render()
 	switch (myGameState)
 	{
 	case GameState::Flying:
-		myFlyingState.Render();
+		if (myFlyingState.GetIsLoaded())
+		{
+			myFlyingState.Render();
+		}
 		break;
+	case GameState::Menu:
+		if (myMenuState.GetIsLoaded())
+		{
+			myMenuState.Render();
+		}
 	default:
 		break;
 	}
