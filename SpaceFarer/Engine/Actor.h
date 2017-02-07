@@ -29,4 +29,5 @@ protected:
 	sf::Sprite					mySprite;
 	sf::Transformable			myTransform;
 	sf::Vector2f				myVelocity;
+	float						myMass;
 };
