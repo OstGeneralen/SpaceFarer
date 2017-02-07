@@ -2,7 +2,7 @@
 #include <SFML\Graphics\RenderWindow.hpp>
 #include "MathTools.h"
 
-void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f& aStartPosition)
+void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f& aStartPosition, const float aMass, const float aRestitution)
 {
 	myTexture = aTexture;
 	mySprite.setTextureRect({ 0,0, static_cast<int>(myTexture->getSize().x), static_cast<int>(myTexture->getSize().y) });
@@ -17,6 +17,8 @@ void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f
 
 	myTransform.setPosition(aStartPosition);
 	mySprite.setPosition(aStartPosition);
+	myMass = aMass;
+	myRestitution = aRestitution;
 }
 
 void Actor::Update(float aDeltaTime)
@@ -69,4 +71,14 @@ void Actor::ChangeVelocity(const sf::Vector2f & aVelocity)
 const float Actor::GetRadius() const
 {
 	return static_cast<float>(myTexture->getSize().x) / 2.f;
+}
+
+const float Actor::GetMass() const
+{
+	return myMass;
+}
+
+const float Actor::GetRestitution() const
+{
+	return myRestitution;
 }

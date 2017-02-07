@@ -60,6 +60,18 @@ namespace MathTools
 		tmpVector.y = aVectorToNormalize.y / Length(aVectorToNormalize);
 		aVectorToNormalize = tmpVector;
 	}
+
+	template <typename T>
+	static T Min(T aNr1, T aNr2)
+	{
+		return aNr1 < aNr2 ? aNr1 : aNr2;
+	}
+
+	template <typename T>
+	static T Max(T aNr1, T aNr2)
+	{
+		return aNr1 > aNr2 ? aNr1 : aNr2;
+	}
 }
 
 namespace MT = MathTools;

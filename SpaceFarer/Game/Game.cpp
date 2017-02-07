@@ -4,6 +4,7 @@
 #include "..\Engine\DebugTools\VersionStamp.h"
 #include "..\Engine\MathTools.h"
 #include "..\TextureBank.h"
+#include "..\Engine\MathTools.h"
 #define RANDOM_SEED 25062009
 
 Game::Game(bool& aShouldRun)
@@ -44,7 +45,7 @@ void Game::Init()
 	
 	myPlayer.GiveShip(&myTempShip);
 
-	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 });
+	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 }, 10000, 1);
 	
 	myPlayer.AttatchObserver(&myGui);
 
@@ -62,7 +63,7 @@ void Game::Init()
 	for (int i = 0; i < 100; ++i)
 	{
 		Asteroid* tmpAsteroid = new Asteroid();
-		tmpAsteroid->Init(GET_TEXTURE("asteroid"), true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))));
+		tmpAsteroid->Init(GET_TEXTURE("asteroid"), true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))), 25.f, 0.5f);
 		myActors.push_back(tmpAsteroid);
 	}
 
@@ -187,8 +188,14 @@ void Game::HandleCollision(Actor & aActor1, Actor & aActor2)
 		if (velocityScalar > 0)
 			return;
 
-		normal *= velocityScalar;
-		aActor1.ChangeVelocity(normal);
-		aActor2.ChangeVelocity(-normal);
+		float e = MT::Min(aActor1.GetRestitution(), aActor2.GetRestitution());
+
+		float j = -(1 + e) * velocityScalar;
+		j /= ((1.f / aActor1.GetMass()) + (1.f / aActor2.GetMass()));
+
+		//normal *= velocityScalar;
+		sf::Vector2f impulse = j * normal;
+		aActor1.ChangeVelocity(-1.f / (aActor1.GetMass()) * impulse);
+		aActor2.ChangeVelocity(1.f / (aActor2.GetMass()) * impulse);
 	}
 }
