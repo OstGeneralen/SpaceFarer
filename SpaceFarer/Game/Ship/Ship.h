@@ -1,8 +1,9 @@
 #pragma once
-#include "..\Engine\Actor.h"
-#include "Observer\Subject.h"
+#include "..\..\Engine\Actor.h"
+#include "..\Observer\Subject.h"
 #include "SFML\Graphics\Text.hpp"
 #include "SFML\System\Vector2.hpp"
+#include <vector>
 
 struct ShipFittings
 {
@@ -21,13 +22,16 @@ class Ship : public Actor, public Subject
 public:
 	Ship() = default;
 	Ship(ShipFittings aFittings);	
-	void			SetUp();
-	void			Update(float aDeltaTime) override;
+	void				SetUp();
+	void				Update(float aDeltaTime) override;
+	const sf::String&	GetName() const;
 protected:
-	ShipFittings	myFittings;
-	float			myCurrentFuel;
-	sf::Vector2f	myDirection;
-	bool			myInertiaEnabled;
+	void				DoMovement(float aDeltaTime);
+	void				UpdateInertia(float aDeltaTime);
+	ShipFittings		myFittings;
+	float				myCurrentFuel;
+	sf::Vector2f		myDirection;
+	bool				myInertiaEnabled;
 	
 
 };

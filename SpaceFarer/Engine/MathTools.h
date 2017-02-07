@@ -15,6 +15,11 @@ namespace MathTools
 		return ((1.0f - aLerpValue) * aStartValue) + (aLerpValue * aEndValue);
 	}
 
+	static sf::Vector2f Lerp(const sf::Vector2f& aStartValue, const sf::Vector2f& aEndValue, float aLerpValue)
+	{
+		return{ Lerp(aStartValue.x, aEndValue.x, aLerpValue), Lerp(aStartValue.y, aEndValue.y, aLerpValue) };
+	}
+
 	static float ToDegrees(float aRadian)
 	{
 		return aRadian * (180.f / MT_PI);

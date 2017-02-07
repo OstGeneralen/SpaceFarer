@@ -8,7 +8,7 @@
 #include <vector>
 #include "Background.h"
 #include "GUI\Gui.h"
-#include "Ship.h"
+#include "Ship\Ship.h"
 
 class Game
 {

@@ -1,9 +1,9 @@
 #pragma once
 #include "..\Observer\Observer.h"
 #include "SFML\Graphics\Texture.hpp"
-#include "SFML\Graphics\Text.hpp"
 #include "..\..\Engine\Actor.h"
 #include <string>
+#include "GuiText.h"
 
 namespace sf
 {
@@ -13,20 +13,18 @@ namespace sf
 class Gui : public Observer 
 {
 public:
-	void			Load(const std::string& aFontPath);
+	void			Load();
 	void			SetPositions(const sf::RenderWindow& aRenderWindow);
 	void			Render(sf::RenderWindow& aRenderWindow);
 	void			Notify(GameEvent aEvent, int aValue) override;
 	void			Notify(GameEvent aEvent, float aX, float aY) override;
+	void			Notify(GameEvent aEvent, const sf::String& aString) override;
 private:
 	sf::Texture		myBarTex;
-	sf::Font		myTextFont;
-	sf::Text		myBalanceText;
-	sf::Text		myMovementText;
-	sf::Text		myFuelText;
-	sf::String		myFuelString;
-	sf::String		myBalanceString;
-	sf::String		myMovementString;
+	GuiText			myFuelText;
+	GuiText			myBalanceText;
+	GuiText			myVelocityText;
+	GuiText			myShipText;
 	Actor			myBarActor;
 
 };
