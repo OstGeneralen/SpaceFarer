@@ -1,7 +1,7 @@
 #pragma once
 #include "..\Engine\Actor.h"
 #include "Observer\Subject.h"
-#include "Ship.h"
+#include "Ship\Ship.h"
 
 class Player : public Entity, public Subject
 {

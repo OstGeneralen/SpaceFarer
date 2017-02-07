@@ -1,8 +1,9 @@
 #pragma once
-#include "..\Engine\Actor.h"
-#include "Observer\Subject.h"
+#include "..\..\Engine\Actor.h"
+#include "..\Observer\Subject.h"
 #include "SFML\Graphics\Text.hpp"
 #include "SFML\System\Vector2.hpp"
+#include <vector>
 
 struct ShipFittings
 {
@@ -24,6 +25,8 @@ public:
 	void			SetUp();
 	void			Update(float aDeltaTime) override;
 protected:
+	void			DoMovement(float aDeltaTime);
+	void			UpdateInertia(float aDeltaTime);
 	ShipFittings	myFittings;
 	float			myCurrentFuel;
 	sf::Vector2f	myDirection;

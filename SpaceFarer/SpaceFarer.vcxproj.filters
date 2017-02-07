@@ -35,7 +35,7 @@
     <ClCompile Include="Game\GUI\Gui.cpp" />
     <ClCompile Include="Engine\DebugTools\VersionStamp.cpp" />
     <ClCompile Include="TextureBank.cpp" />
-    <ClCompile Include="Game\Ship.cpp" />
+    <ClCompile Include="Game\Ship\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -64,6 +64,6 @@
     <ClInclude Include="Game\GUI\Gui.h" />
     <ClInclude Include="Engine\DebugTools\VersionStamp.h" />
     <ClInclude Include="TextureBank.h" />
-    <ClInclude Include="Game\Ship.h" />
+    <ClInclude Include="Game\Ship\Ship.h" />
   </ItemGroup>
 </Project>
