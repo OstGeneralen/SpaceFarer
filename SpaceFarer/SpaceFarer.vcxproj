@@ -34,6 +34,8 @@
     <ClCompile Include="Game\Observer\Subject.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Ship\Ship.cpp" />
+    <ClCompile Include="Game\Ship\ShipFactory.cpp" />
+    <ClCompile Include="Game\Ship\ShipTypes.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TextureBank.cpp" />
   </ItemGroup>
@@ -57,7 +59,12 @@
     <ClInclude Include="Game\Observer\Subject.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Ship\Ship.h" />
+    <ClInclude Include="Game\Ship\ShipFactory.h" />
+    <ClInclude Include="Game\Ship\ShipTypes.h" />
     <ClInclude Include="TextureBank.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{798C067D-B261-43DC-A304-5436E09176EB}</ProjectGuid>

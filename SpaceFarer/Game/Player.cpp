@@ -19,21 +19,16 @@ void Player::Render(sf::RenderWindow & aRenderWindow)
 	myShip->Render(aRenderWindow);
 }
 
-void Player::AttatchObserver(Observer * aObserver)
-{
-	Subject::AttatchObserver(aObserver);
-	myShip->AttatchObserver(aObserver);
-}
-
 void Player::GiveShip(Ship * aShip)
 {
-	if (myShip != nullptr)
+	myShip = aShip;
+
+	for (unsigned int index = 0; index < myObservers.size(); ++index)
 	{
-		delete myShip;
-		myShip = nullptr;
+		myShip->AttatchObserver(myObservers[index]);
 	}
 
-	myShip = aShip;
+	NotifyObservers(EVENT_PLAYER_NEW_SHIP, myShip->GetName());
 }
 
 Ship & Player::GetShip() const

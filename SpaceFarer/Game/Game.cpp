@@ -3,7 +3,9 @@
 #include "..\Engine\DebugTools\FPSCounter.h"
 #include "..\Engine\DebugTools\VersionStamp.h"
 #include "..\Engine\MathTools.h"
+#include "Ship\ShipFactory.h"
 #include "..\TextureBank.h"
+
 #define RANDOM_SEED 25062009
 
 Game::Game(bool& aShouldRun)
@@ -24,29 +26,17 @@ void Game::Init()
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
 	TextureBank::GetInstance()->Load();
 
-	myGui.Load("fonts/helvetica.ttf");
+	myGui.Load();
 	
 
-	
-	ShipFittings fittings;
-	fittings.myFuelTank = 100;
-	fittings.myFuelUsage = 2;
-	fittings.myAcceleration = 200;
-	fittings.myHasInertia = true;
-	fittings.myName = "Debug Ship";
-	fittings.myTurnSpeed = 150;
-	fittings.myValue = 10000;
-	fittings.myInertiaFactor = 3;
-	
-
-	myTempShip = Ship(fittings);
+	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
 	myTempShip.Init(GET_TEXTURE("player"), true);
 	
-	myPlayer.GiveShip(&myTempShip);
-
 	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 });
 	
 	myPlayer.AttatchObserver(&myGui);
+
+	myPlayer.GiveShip(&myTempShip);
 
 	myPlayer.GetShip().SetUp();
 	
@@ -54,7 +44,6 @@ void Game::Init()
 
 	myGameCamera.SetTarget(&myPlayer.GetShip());
 	myGameCamera.SetCenter(&myPlayer.GetShip());
-	
 	
 	myActors.reserve(500);
 	myActors.push_back(&myPlayer.GetShip());

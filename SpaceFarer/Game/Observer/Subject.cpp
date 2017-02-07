@@ -40,3 +40,11 @@ void Subject::NotifyObservers(GameEvent aEvent, float aX, float aY)
 		myObservers[index]->Notify(aEvent, aX, aY);
 	}
 }
+
+void Subject::NotifyObservers(GameEvent aEvent, const sf::String& aString)
+{
+	for (unsigned int index = 0; index < myObservers.size(); ++index)
+	{
+		myObservers[index]->Notify(aEvent, aString);
+	}
+}

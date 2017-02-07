@@ -2,7 +2,7 @@
 #include "SFML\Graphics\RenderWindow.hpp"
 #include "..\..\TextureBank.h"
 
-void Gui::Load(const std::string & aFontPath)
+void Gui::Load()
 {
 	myBarActor.Init(GET_TEXTURE("guiBar"), true);
 }
@@ -19,6 +19,9 @@ void Gui::SetPositions(const sf::RenderWindow & aRenderWindow)
 
 	myFuelText.SetOriginToMiddle();
 	myFuelText.SetPosition({ myBalanceText.GetPosition().x, myBalanceText.GetPosition().y + myBalanceText.GetSize().y * 2 });
+
+	myShipText.SetOriginToMiddle(true, true);
+	myShipText.SetPosition(myBarActor.GetTransform().transformPoint(0, 0));
 }
 
 void Gui::Render(sf::RenderWindow & aRenderWindow)
@@ -27,6 +30,7 @@ void Gui::Render(sf::RenderWindow & aRenderWindow)
 	myBalanceText.Render(aRenderWindow);
 	myVelocityText.Render(aRenderWindow);
 	myFuelText.Render(aRenderWindow);
+	myShipText.Render(aRenderWindow);
 }
 
 void Gui::Notify(GameEvent aEvent, int aValue)
@@ -51,5 +55,13 @@ void Gui::Notify(GameEvent aEvent, float aX, float aY)
 	if (aEvent == EVENT_PLAYER_NEW_VELOCITY)
 	{
 		myVelocityText.SetString("Directional Vectors\nX: " + std::to_string(static_cast<int>(aX)) + "\nY: " + std::to_string(static_cast<int>(aY)));
+	}
+}
+
+void Gui::Notify(GameEvent aEvent, const sf::String & aString)
+{
+	if (aEvent == EVENT_PLAYER_NEW_SHIP)
+	{
+		myShipText.SetString(aString);
 	}
 }

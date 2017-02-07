@@ -22,15 +22,16 @@ class Ship : public Actor, public Subject
 public:
 	Ship() = default;
 	Ship(ShipFittings aFittings);	
-	void			SetUp();
-	void			Update(float aDeltaTime) override;
+	void				SetUp();
+	void				Update(float aDeltaTime) override;
+	const sf::String&	GetName() const;
 protected:
-	void			DoMovement(float aDeltaTime);
-	void			UpdateInertia(float aDeltaTime);
-	ShipFittings	myFittings;
-	float			myCurrentFuel;
-	sf::Vector2f	myDirection;
-	bool			myInertiaEnabled;
+	void				DoMovement(float aDeltaTime);
+	void				UpdateInertia(float aDeltaTime);
+	ShipFittings		myFittings;
+	float				myCurrentFuel;
+	sf::Vector2f		myDirection;
+	bool				myInertiaEnabled;
 	
 
 };

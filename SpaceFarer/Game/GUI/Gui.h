@@ -13,16 +13,18 @@ namespace sf
 class Gui : public Observer 
 {
 public:
-	void			Load(const std::string& aFontPath);
+	void			Load();
 	void			SetPositions(const sf::RenderWindow& aRenderWindow);
 	void			Render(sf::RenderWindow& aRenderWindow);
 	void			Notify(GameEvent aEvent, int aValue) override;
 	void			Notify(GameEvent aEvent, float aX, float aY) override;
+	void			Notify(GameEvent aEvent, const sf::String& aString) override;
 private:
 	sf::Texture		myBarTex;
 	GuiText			myFuelText;
 	GuiText			myBalanceText;
 	GuiText			myVelocityText;
+	GuiText			myShipText;
 	Actor			myBarActor;
 
 };

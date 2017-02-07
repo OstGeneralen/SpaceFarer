@@ -9,7 +9,6 @@ public:
 	Player();
 	void			Update(float aDeltaTime);
 	void			Render(sf::RenderWindow& aRenderWindow);
-	void			AttatchObserver(Observer* aObserver) override;
 	void			GiveShip(Ship* aShip);
 	Ship&			GetShip() const;
 private:

@@ -46,6 +46,11 @@ void Ship::Update(float aDeltaTime)
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, myVelocity.x, myVelocity.y);
 }
 
+const sf::String & Ship::GetName() const
+{
+	return myFittings.myName;
+}
+
 void Ship::DoMovement(float aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
