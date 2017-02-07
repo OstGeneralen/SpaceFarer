@@ -8,6 +8,19 @@ namespace sf
 	class RenderWindow;
 }
 
+enum class SceneryType
+{
+	SmallStar
+};
+
+struct SceneryData
+{
+	sf::Vector2f	myPosition;
+	sf::Vector2f	myScale;
+	float			myRotation;
+	SceneryType		myType;
+};
+
 class Background
 {
 public:
@@ -20,4 +33,11 @@ private:
 	sf::Sprite myLayerTwoSprite;
 	sf::Sprite myLayerThreeSprite;
 	std::vector<sf::Vector2f> myRenderPositions;
+
+	sf::Texture* mySmallStarTexture;
+	sf::Vector2f myLastRenderPosition;
+	std::vector<SceneryData> myScenery;
+	float myUpdateRadius;
+
+	void UpdateStars();
 };

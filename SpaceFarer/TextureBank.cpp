@@ -20,7 +20,7 @@ void TextureBank::Load()
 	AddTexture("cursor", "cursor.png");
 	AddTexture("frame", "frame.png");
 	AddTexture("guiBar", "GuiBar.png");
-	AddTexture("backgroundStars", "backgroundStars.png");
+	AddTexture("smallStar", "smallStar.png");
 	AddTexture("alienGreen", "Trash/alien.png");
 	AddTexture("alienBlue", "Trash/alienBlue.png");
 	AddTexture("asteroid", "Trash/asteroid.png");

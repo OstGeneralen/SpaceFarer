@@ -1,6 +1,8 @@
 #include "Background.h"
 #include "SFML\Graphics\RenderWindow.hpp"
 #include "..\TextureBank.h"
+#include "..\Engine\MathTools.h"
+#include <assert.h>
 
 Background::Background()
 {
@@ -8,13 +10,13 @@ Background::Background()
 
 void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 {
-
+	/*
 	myLayerOneSprite.setTextureRect({ 0,0,128,128 });
 	myLayerTwoSprite.setTextureRect({ 128,0,128,128 });
 	myLayerThreeSprite.setTextureRect({ 256, 0, 128,128 });
-	myLayerOneSprite.setTexture(*GET_TEXTURE("backgroundStars"));
-	myLayerTwoSprite.setTexture(*GET_TEXTURE("backgroundStars"));
-	myLayerThreeSprite.setTexture(*GET_TEXTURE("backgroundStars"));
+	myLayerOneSprite.setTexture(*GET_TEXTURE("smallStar"));
+	myLayerTwoSprite.setTexture(*GET_TEXTURE("smallStar"));
+	myLayerThreeSprite.setTexture(*GET_TEXTURE("smallStar"));
 
 	myRenderPositions.clear();
 
@@ -35,7 +37,11 @@ void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 			myRenderPositions.push_back({ static_cast<float>(x), static_cast<float>(y) });
 		}
 	}
-	
+	*/
+	mySmallStarTexture = GET_TEXTURE("smallStar");
+	UpdateStars();
+	myLastRenderPosition = aRenderWindow.getView().getCenter();
+	myUpdateRadius = 500;
 }
 
 void Background::Render(sf::RenderWindow & aRenderWindow)
@@ -45,6 +51,7 @@ void Background::Render(sf::RenderWindow & aRenderWindow)
 	int cameraX = static_cast<int>(aRenderWindow.getView().getCenter().x);
 	int cameraY = static_cast<int>(aRenderWindow.getView().getCenter().y);
 
+	/*
 	for (unsigned int index = 0; index < myRenderPositions.size(); ++index)
 	{
 		
@@ -70,5 +77,46 @@ void Background::Render(sf::RenderWindow & aRenderWindow)
 
 		myLayerOneSprite.setPosition(myRenderPositions[index]);
 		aRenderWindow.draw(myLayerOneSprite);
+	}
+	*/
+
+	if (MT::Length(sf::Vector2f(cameraX, cameraY) - myLastRenderPosition) > myUpdateRadius / 2)
+	{
+		myLastRenderPosition = sf::Vector2f(cameraX, cameraY);
+		UpdateStars();
+	}
+
+	sf::Sprite renderingSprite;
+	for (unsigned i = 0; i < myScenery.size(); ++i)
+	{
+		switch (myScenery[i].myType)
+		{
+		case SceneryType::SmallStar:
+			renderingSprite.setTexture(*mySmallStarTexture);
+			break;
+		default:
+			assert(false && "Non-existing type :D");
+			break;
+		}
+		renderingSprite.setOrigin(0.5f, 0.5f);
+		renderingSprite.setScale(myScenery[i].myScale);
+		renderingSprite.setPosition(myScenery[i].myPosition);
+		renderingSprite.setRotation(myScenery[i].myRotation);
+		aRenderWindow.draw(renderingSprite);
+	}
+}
+
+void Background::UpdateStars()
+{
+	for (unsigned i = 0; i < 10; i++)
+	{
+		SceneryData tmpScenery;
+		float angle = rand();
+		tmpScenery.myPosition.x = myLastRenderPosition.x + MT::Randf() * 5 * myUpdateRadius * cos(angle);
+		tmpScenery.myPosition.y = myLastRenderPosition.y + MT::Randf() * 5 * myUpdateRadius * sin(angle);
+		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
+		tmpScenery.myScale = (0.25f + 0.75f * MT::Randf()) * sf::Vector2f(1, 1);
+		tmpScenery.myType = SceneryType::SmallStar;
+		myScenery.push_back(tmpScenery);
 	}
 }

@@ -51,10 +51,10 @@ void Game::Init()
 	myActors.reserve(500);
 	myActors.push_back(&myPlayer.GetShip());
 	myActors.push_back(&myTempActor);
-	for (int i = 0; i < 100; ++i)
+	for (int i = 0; i < 50; ++i)
 	{
 		Asteroid* tmpAsteroid = new Asteroid();
-		tmpAsteroid->Init(GET_TEXTURE("asteroid"), true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))), 25.f, 0.5f);
+		tmpAsteroid->Init(GET_TEXTURE("asteroid"), true, (0.25f + MT::Randf()) * 2000.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))), 25.f, 0.5f);
 		myActors.push_back(tmpAsteroid);
 	}
 
@@ -184,7 +184,6 @@ void Game::HandleCollision(Actor & aActor1, Actor & aActor2)
 		float j = -(1 + e) * velocityScalar;
 		j /= ((1.f / aActor1.GetMass()) + (1.f / aActor2.GetMass()));
 
-		//normal *= velocityScalar;
 		sf::Vector2f impulse = j * normal;
 		aActor1.ChangeVelocity(-1.f / (aActor1.GetMass()) * impulse);
 		aActor2.ChangeVelocity(1.f / (aActor2.GetMass()) * impulse);
