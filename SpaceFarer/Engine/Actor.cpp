@@ -15,6 +15,7 @@ void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f
 		mySprite.setOrigin(middlePoint.x, middlePoint.y);
 	}
 
+	myVelocity = { 0,0 };
 	myTransform.setPosition(aStartPosition);
 	mySprite.setPosition(aStartPosition);
 	myMass = aMass;

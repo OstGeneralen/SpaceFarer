@@ -7,6 +7,7 @@ enum class GameState
 {
 	Menu,
 	Flying,
+	SpaceStation,
 };
 
 struct StateData

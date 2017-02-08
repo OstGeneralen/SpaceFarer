@@ -3,14 +3,14 @@
 void State::Load(sf::RenderWindow * aGameWindow)
 {
 	myGameWindow = aGameWindow;
-	myIsLoaded = true;
+}
+
+void State::Unload()
+{
+	myGameWindow = nullptr;
 }
 
 void State::WindowResize()
 {
 }
 
-bool State::GetIsLoaded() const
-{
-	return myIsLoaded;
-}

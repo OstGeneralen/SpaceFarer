@@ -24,7 +24,7 @@ void Ship::SetUp()
 }
 
 void Ship::Update(float aDeltaTime)
-{
+ {
 	if (myCurrentFuel < 0)
 	{
 		myCurrentFuel = 0;

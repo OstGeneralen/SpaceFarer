@@ -2,10 +2,12 @@
 #include "..\..\Engine\MathTools.h"
 #include "..\Ship\ShipFactory.h"
 #include "..\..\TextureBank.h"
+#include "StateManger.h"
 
 
 void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 {
+
 	State::Load(aRenderWindow);
 
 	myGameCamera = Camera(*aRenderWindow);
@@ -15,7 +17,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	mySpaceStation.Init(GET_TEXTURE("spaceStation"), true, { 800,900 }, 100000);
 
-	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
+ 	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
 	myTempShip.Init(GET_TEXTURE("player"), true);
 
 	myPlayer.GiveShip(&myTempShip);
@@ -50,6 +52,11 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 }
 
+void FlyingState::Unload()
+{
+	myActors.clear();
+}
+
 void FlyingState::Update(float aDeltaTime)
 {
 	myGameCamera.Update(aDeltaTime);
@@ -70,6 +77,10 @@ void FlyingState::Update(float aDeltaTime)
 		}
 	}
 
+	if (myPlayer.GetShip().CheckIfColliding(mySpaceStation))
+	{
+		StateManager::GetInstance().ChangeState(GameState::SpaceStation, *myGameWindow);
+	}
 
 	for (int i = myActors.size() - 1; i >= 0; --i)
 	{

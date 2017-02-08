@@ -44,6 +44,7 @@
     <ClCompile Include="Game\States\MenuState.cpp" />
     <ClCompile Include="Game\Station\SpaceStation.cpp" />
     <ClCompile Include="Game\States\StateManger.cpp" />
+    <ClCompile Include="Game\States\SpaceStationState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -81,5 +82,6 @@
     <ClInclude Include="Game\States\MenuState.h" />
     <ClInclude Include="Game\Station\SpaceStation.h" />
     <ClInclude Include="Game\States\StateManger.h" />
+    <ClInclude Include="Game\States\SpaceStationState.h" />
   </ItemGroup>
 </Project>

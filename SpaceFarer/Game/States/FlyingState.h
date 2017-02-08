@@ -16,6 +16,7 @@ class FlyingState : public State
 {
 public:
 	void Load(sf::RenderWindow* aRenderWindow) override;
+	void Unload() override;
 	void Update(float aDeltaTime) override;
 	void Render() override;
 	void WindowResize() override;

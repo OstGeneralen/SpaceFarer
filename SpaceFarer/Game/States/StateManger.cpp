@@ -2,6 +2,7 @@
 #include "SFML\Graphics\RenderWindow.hpp"
 #include "FlyingState.h"
 #include "MenuState.h"
+#include "SpaceStationState.h"
 
 StateManager & StateManager::GetInstance()
 {
@@ -12,6 +13,11 @@ StateManager & StateManager::GetInstance()
 
 void StateManager::ChangeState(GameState aTo, sf::RenderWindow& aRenderWindow)
 {
+	if (myCurrentState != -1)
+	{
+		myStates[myCurrentState].myState->Unload();
+	}
+
 	for (unsigned int index = 0; index < myStates.size(); ++index)
 	{
 		if (myStates[index].myStateType == aTo)
@@ -53,4 +59,5 @@ StateManager::StateManager()
 
 	AddState(GameState::Menu, new MenuState);
 	AddState(GameState::Flying, new FlyingState);
+	AddState(GameState::SpaceStation, new SpaceStationState);
 }
