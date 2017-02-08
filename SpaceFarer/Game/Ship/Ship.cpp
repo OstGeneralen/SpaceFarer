@@ -53,6 +53,8 @@ const sf::String & Ship::GetName() const
 
 void Ship::DoMovement(float aDeltaTime)
 {
+	float usedFuel = 0;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
 		myTransform.rotate(myFittings.myTurnSpeed * aDeltaTime);
@@ -65,15 +67,34 @@ void Ship::DoMovement(float aDeltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 	{
 		myVelocity += myDirection * myFittings.myAcceleration * aDeltaTime;
-		myCurrentFuel -= myFittings.myFuelUsage * aDeltaTime;
-		NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 	{
 		myVelocity -= myDirection * myFittings.myAcceleration * aDeltaTime;
-		myCurrentFuel -= myFittings.myFuelUsage * aDeltaTime;
-		NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+	{
+		myVelocity -= mySideDirection * myFittings.myAcceleration * aDeltaTime;
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	{
+		myVelocity += mySideDirection * myFittings.myAcceleration * aDeltaTime;
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
+	}
+
+	myCurrentFuel -= usedFuel;
+
+	if (usedFuel > 0)
+	{
+		NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(usedFuel));
+	}
+
+	mySideDirection.x = cosf(MT::ToRadians(myTransform.getRotation() + 90));
+	mySideDirection.y = sinf(MT::ToRadians(myTransform.getRotation() + 90));
 
 	myDirection.x = cosf(MT::ToRadians(myTransform.getRotation()));
 	myDirection.y = sinf(MT::ToRadians(myTransform.getRotation()));

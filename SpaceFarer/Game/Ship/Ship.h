@@ -31,6 +31,7 @@ protected:
 	ShipFittings		myFittings;
 	float				myCurrentFuel;
 	sf::Vector2f		myDirection;
+	sf::Vector2f		mySideDirection;
 	bool				myInertiaEnabled;
 	
 
