@@ -6,7 +6,7 @@ class MenuState : public State
 {
 public:
 	void Load(sf::RenderWindow* aGameWindow) override;
-	void Update(float aDeltaTime, GameState& aGameState) override;
+	void Update(float aDeltaTime) override;
 	void Render() override;
 private:
 	GuiText myTempText;

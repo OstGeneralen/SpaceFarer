@@ -3,6 +3,7 @@
 #include "..\Ship\ShipFactory.h"
 #include "..\..\TextureBank.h"
 
+
 void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 {
 	State::Load(aRenderWindow);
@@ -11,6 +12,8 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	myGuiCamera = Camera(*aRenderWindow);
 
 	myGui.Load();
+
+	mySpaceStation.Init(GET_TEXTURE("spaceStation"), true, { 800,900 }, 100000);
 
 	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
 	myTempShip.Init(GET_TEXTURE("player"), true);
@@ -41,11 +44,13 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 		myActors.push_back(tmpAsteroid);
 	}
 
+	myActors.push_back(&mySpaceStation);
+
 	myBackground.CreateBackground(*myGameWindow);
 
 }
 
-void FlyingState::Update(float aDeltaTime, GameState& aGameState)
+void FlyingState::Update(float aDeltaTime)
 {
 	myGameCamera.Update(aDeltaTime);
 
@@ -111,9 +116,8 @@ void FlyingState::WindowResize()
 
 void FlyingState::HandleCollision(Actor & aActor1, Actor & aActor2)
 {
-	float distance = abs(MT::Length(aActor1.GetPosition() - aActor2.GetPosition()));
 
-	if (distance < aActor1.GetRadius() + aActor2.GetRadius())
+	if (aActor1.CheckIfColliding(aActor2))
 	{
 		sf::Vector2f normal = aActor2.GetPosition() - aActor1.GetPosition();
 		MT::Normalize(normal);

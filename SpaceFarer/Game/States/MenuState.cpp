@@ -1,5 +1,6 @@
 #include "MenuState.h"
 #include "SFML\Window\Event.hpp"
+#include "StateManger.h"
 
 void MenuState::Load(sf::RenderWindow * aGameWindow)
 {
@@ -13,11 +14,11 @@ void MenuState::Load(sf::RenderWindow * aGameWindow)
 
 }
 
-void MenuState::Update(float aDeltaTime, GameState& aGameState)
+void MenuState::Update(float aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
 	{
-		aGameState = GameState::Flying;
+		StateManager::GetInstance().ChangeState(GameState::Flying, *myGameWindow);
 	}
 }
 

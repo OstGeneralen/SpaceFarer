@@ -27,6 +27,8 @@ public:
 	void						SetPosition(const sf::Vector2f& aPosition) override;
 	void						SetVelocity(const sf::Vector2f& aVelocity);
 
+	virtual bool				CheckIfColliding(const Actor& aOther) const;
+
 	void						ChangeVelocity(const sf::Vector2f& aVelocity);
 protected:
 	sf::Texture*				myTexture = nullptr;

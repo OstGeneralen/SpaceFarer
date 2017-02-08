@@ -39,6 +39,8 @@
     <ClCompile Include="Game\States\FlyingState.cpp" />
     <ClCompile Include="Game\States\MenuState.cpp" />
     <ClCompile Include="Game\States\State.cpp" />
+    <ClCompile Include="Game\States\StateManger.cpp" />
+    <ClCompile Include="Game\Station\SpaceStation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TextureBank.cpp" />
   </ItemGroup>
@@ -67,6 +69,8 @@
     <ClInclude Include="Game\States\FlyingState.h" />
     <ClInclude Include="Game\States\MenuState.h" />
     <ClInclude Include="Game\States\State.h" />
+    <ClInclude Include="Game\States\StateManger.h" />
+    <ClInclude Include="Game\Station\SpaceStation.h" />
     <ClInclude Include="TextureBank.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
