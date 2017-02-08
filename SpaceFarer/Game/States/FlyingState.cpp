@@ -7,6 +7,9 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 {
 	State::Load(aRenderWindow);
 
+	myGameCamera = Camera(*aRenderWindow);
+	myGuiCamera = Camera(*aRenderWindow);
+
 	myGui.Load();
 
 	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
@@ -39,6 +42,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	}
 
 	myBackground.CreateBackground(*myGameWindow);
+
 }
 
 void FlyingState::Update(float aDeltaTime, GameState& aGameState)

@@ -13,6 +13,7 @@ class Camera
 {
 public:
 	Camera();
+	Camera(const sf::RenderWindow& aRenderWindow);
 	void Resize(float aWidth, float aHeight);
 	void SetTarget(Entity* aTarget);
 	void SetCenter(Entity* aTarget);

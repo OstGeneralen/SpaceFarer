@@ -10,6 +10,13 @@ Camera::Camera()
 	Resize(aW, aH);
 }
 
+Camera::Camera(const sf::RenderWindow & aRenderWindow)
+{
+	float aW = aRenderWindow.getSize().x;
+	float aH = aRenderWindow.getSize().y;
+	Resize(aW, aH);
+}
+
 void Camera::Resize(float aWidth, float aHeight)
 {
 	myView = sf::View({ 0,0,aWidth,aHeight });

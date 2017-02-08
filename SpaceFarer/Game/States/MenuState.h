@@ -1,7 +1,7 @@
 #pragma once
 #include "State.h"
 #include "..\GUI\GuiText.h"
-
+#include "..\..\Engine\Camera.h"
 class MenuState : public State
 {
 public:
@@ -10,5 +10,6 @@ public:
 	void Render() override;
 private:
 	GuiText myTempText;
+	Camera myCamera;
 
 };

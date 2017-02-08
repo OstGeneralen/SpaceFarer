@@ -3,7 +3,7 @@
 #include "..\Engine\DebugTools\VersionStamp.h"
 #include "..\Engine\MathTools.h"
 #include "..\TextureBank.h"
-
+#include "SFML\Graphics\Shader.hpp"
 
 #define RANDOM_SEED 25062009
 
@@ -17,18 +17,20 @@ Game::Game(bool& aShouldRun)
 	myShouldShowDebugInfo = false;
 #endif
 
-	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
-	myDebugTool->Load(myGameWindow);
 }
 
 void Game::Init()
 {
 	myGameState = GameState::Menu;
-
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
+//	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
 	TextureBank::GetInstance()->Load();
 
-	myFlyingState.Load(&myGameWindow);
+	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
+	myDebugTool->Load(myGameWindow);
+	
+	myMenuState.Load(&myGameWindow);
+
 }
 
 void Game::Update(float aDeltaTime)
@@ -78,6 +80,7 @@ void Game::Update(float aDeltaTime)
 
 void Game::Render()
 {
+
 	myGameWindow.clear(myClearColor);
 
 	switch (myGameState)
@@ -96,12 +99,14 @@ void Game::Render()
 	default:
 		break;
 	}
-
+	
 	myDebugCamera.UseView(myGameWindow);
 	if (myShouldShowDebugInfo)
 	{
 		myDebugTool->Render(myGameWindow);
 	}
+	
 
+	
 	myGameWindow.display();
 }
