@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "Actor.h"
 #include "SFML\Graphics\RenderWindow.hpp"
+#include "SFML\Graphics\RenderTexture.hpp"
 #include "MathTools.h"
 
 Camera::Camera()
@@ -25,6 +26,11 @@ void Camera::SetCenter(Entity* aTarget)
 	myView.setCenter(aTarget->GetPosition());
 }
 
+void Camera::SetRotation(float aRotation)
+{
+	myView.setRotation(aRotation);
+}
+
 const sf::Vector2f & Camera::GetCenter() const
 {
 	return myTargetCenter;
@@ -41,14 +47,14 @@ void Camera::Update(float aDeltaTime)
 	{
 		sf::Vector2f newCenter = myView.getCenter();
 
-		newCenter.x = MT::Lerp(newCenter.x, myTarget->GetPosition().x, 5.f * aDeltaTime);
-		newCenter.y = MT::Lerp(newCenter.y, myTarget->GetPosition().y, 5.f * aDeltaTime);
+		newCenter.x = MT::Lerp(newCenter.x, myTarget->GetPosition().x, 75.f * aDeltaTime);
+		newCenter.y = MT::Lerp(newCenter.y, myTarget->GetPosition().y, 75.f * aDeltaTime);
 
 		myView.setCenter(newCenter);
 	}
 }
 
-void Camera::UseView(sf::RenderWindow & aWindow)
+void Camera::UseView(sf::RenderTexture & aWindow)
 {
 	aWindow.setView(myView);
 }

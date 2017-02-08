@@ -8,7 +8,7 @@ class Player : public Entity, public Subject
 public:
 	Player();
 	void			Update(float aDeltaTime);
-	void			Render(sf::RenderWindow& aRenderWindow);
+	void			Render(sf::RenderTexture& aRenderWindow);
 	void			GiveShip(Ship* aShip);
 	Ship&			GetShip() const;
 private:

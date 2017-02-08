@@ -1,5 +1,5 @@
 #include "VersionStamp.h"
-#include "SFML\Graphics\RenderWindow.hpp"
+#include "SFML\Graphics\RenderTexture.hpp"
 
 namespace Debug
 {
@@ -10,13 +10,13 @@ namespace Debug
 		myDebugText.setString(myDebugString);
 	}
 
-	void VersionStamp::Load(const sf::RenderWindow & aRenderWindow)
+	void VersionStamp::Load(const sf::RenderTexture & aRenderWindow)
 	{
 		DebugDecorator::Load(aRenderWindow);
 		myDebugText.setPosition(10, aRenderWindow.getSize().y - (myDebugText.getLocalBounds().height * 2));
 	}
 
-	void VersionStamp::Render(sf::RenderWindow& aRenderWindow)
+	void VersionStamp::Render(sf::RenderTexture& aRenderWindow)
 	{
 		aRenderWindow.draw(myDebugText);
 	}

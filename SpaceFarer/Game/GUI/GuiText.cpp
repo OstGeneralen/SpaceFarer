@@ -1,5 +1,5 @@
 #include "GuiText.h"
-#include "SFML\Graphics\RenderWindow.hpp"
+#include "SFML\Graphics\RenderTexture.hpp"
 
 GuiText::GuiText()
 {
@@ -69,7 +69,7 @@ void GuiText::SetOriginToMiddle(bool aInX, bool aInY)
 	}
 }
 
-void GuiText::Render(sf::RenderWindow & aRenderWindow)
+void GuiText::Render(sf::RenderTexture & aRenderWindow)
 {
 	aRenderWindow.draw(myText);
 }

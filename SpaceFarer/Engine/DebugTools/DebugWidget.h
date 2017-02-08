@@ -3,7 +3,7 @@
 
 namespace sf
 {
-	class RenderWindow;
+	class RenderTexture;
 }
 
 namespace Debug
@@ -19,9 +19,9 @@ namespace Debug
 			myDebugText.setOutlineColor(sf::Color(0, 0, 0, 255));
 			myDebugText.setOutlineThickness(1);
 		}
-		virtual void Load(const sf::RenderWindow& aRenderWindow) = 0;
+		virtual void Load(const sf::RenderTexture& aRenderWindow) = 0;
 		virtual void Update(float aDeltaTime) = 0;
-		virtual void Render(sf::RenderWindow& aRenderWindow) = 0;
+		virtual void Render(sf::RenderTexture& aRenderWindow) = 0;
 	protected:
 		sf::Text myDebugText;
 		sf::Font myDebugFont;

@@ -1,6 +1,6 @@
 #include "State.h"
 
-void State::Load(sf::RenderWindow * aGameWindow)
+void State::Load(sf::RenderTexture * aGameWindow)
 {
 	myGameWindow = aGameWindow;
 	myIsLoaded = true;

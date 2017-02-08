@@ -7,7 +7,7 @@
 
 namespace sf
 {
-	class RenderWindow;
+	class RenderTexture;
 }
 
 class Actor : public Entity
@@ -15,7 +15,7 @@ class Actor : public Entity
 public:
 	virtual void				Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0}, const float aMass = 10.f, const float aRestitution = 1.f);
 	virtual void				Update(float aDeltaTime);
-	void						Render(sf::RenderWindow& aRenderWindow);
+	void						Render(sf::RenderTexture& aRenderWindow);
 	const sf::Vector2f&			GetPosition() const override;
 	const sf::Vector2f&			GetSize() const;
 	const sf::Vector2f&			GetVelocity() const;

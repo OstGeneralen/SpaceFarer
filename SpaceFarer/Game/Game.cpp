@@ -18,17 +18,19 @@ Game::Game(bool& aShouldRun)
 #endif
 
 	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
-	myDebugTool->Load(myGameWindow);
+	myDebugTool->Load(myRenderTexture);
 }
 
 void Game::Init()
 {
 	myGameState = GameState::Menu;
 
-	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
+	myGameWindow.create(sf::VideoMode(800, 800), "SpaceFarer");
+	//myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
+	myRenderTexture.create(myGameWindow.getSize().x, myGameWindow.getSize().y);
 	TextureBank::GetInstance()->Load();
 
-	myFlyingState.Load(&myGameWindow);
+	myFlyingState.Load(&myRenderTexture);
 }
 
 void Game::Update(float aDeltaTime)
@@ -44,7 +46,7 @@ void Game::Update(float aDeltaTime)
 
 	if (e.type == sf::Event::Resized)
 	{
-		myDebugTool->Load(myGameWindow);
+		myDebugTool->Load(myRenderTexture);
 		myFlyingState.WindowResize();
 	}
 
@@ -58,7 +60,7 @@ void Game::Update(float aDeltaTime)
 	case GameState::Flying:
 		if (!myFlyingState.GetIsLoaded())
 		{
-			myFlyingState.Load(&myGameWindow);
+			myFlyingState.Load(&myRenderTexture);
 			break;
 		}
 		myFlyingState.Update(aDeltaTime, myGameState);
@@ -66,7 +68,7 @@ void Game::Update(float aDeltaTime)
 	case GameState::Menu:
 		if (!myMenuState.GetIsLoaded())
 		{
-			myMenuState.Load(&myGameWindow);
+			myMenuState.Load(&myRenderTexture);
 			break;
 		}
 		myMenuState.Update(aDeltaTime, myGameState);
@@ -79,6 +81,7 @@ void Game::Update(float aDeltaTime)
 void Game::Render()
 {
 	myGameWindow.clear(myClearColor);
+	myRenderTexture.clear(myClearColor);
 
 	switch (myGameState)
 	{
@@ -97,11 +100,13 @@ void Game::Render()
 		break;
 	}
 
-	myDebugCamera.UseView(myGameWindow);
+	myDebugCamera.UseView(myRenderTexture);
 	if (myShouldShowDebugInfo)
 	{
-		myDebugTool->Render(myGameWindow);
+		myDebugTool->Render(myRenderTexture);
 	}
 
+	myGameWindow.draw(sf::Sprite(myRenderTexture.getTexture()));
+	myRenderTexture.display();
 	myGameWindow.display();
 }

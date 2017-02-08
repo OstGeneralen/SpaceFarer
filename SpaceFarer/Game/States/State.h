@@ -1,5 +1,5 @@
 #pragma once
-#include "SFML\Graphics\RenderWindow.hpp"
+#include "SFML\Graphics\RenderTexture.hpp"
 
 enum class GameState
 {
@@ -11,12 +11,12 @@ enum class GameState
 class State
 {
 public:
-	virtual void Load(sf::RenderWindow* aGameWindow);
+	virtual void Load(sf::RenderTexture* aGameWindow);
 	virtual void Update(float aDeltaTime, GameState& aGameState) = 0;
 	virtual void Render() = 0;
 	virtual void WindowResize();
 	bool GetIsLoaded() const;
 protected:
-	sf::RenderWindow* myGameWindow = nullptr;
+	sf::RenderTexture* myGameWindow = nullptr;
 	bool myIsLoaded = false;
 };

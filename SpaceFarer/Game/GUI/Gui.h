@@ -7,15 +7,15 @@
 
 namespace sf
 {
-	class RenderWindow;
+	class RenderTexture;
 }
 
 class Gui : public Observer 
 {
 public:
 	void			Load();
-	void			SetPositions(const sf::RenderWindow& aRenderWindow);
-	void			Render(sf::RenderWindow& aRenderWindow);
+	void			SetPositions(const sf::RenderTexture& aRenderWindow);
+	void			Render(sf::RenderTexture& aRenderWindow);
 	void			Notify(GameEvent aEvent, int aValue) override;
 	void			Notify(GameEvent aEvent, float aX, float aY) override;
 	void			Notify(GameEvent aEvent, const sf::String& aString) override;

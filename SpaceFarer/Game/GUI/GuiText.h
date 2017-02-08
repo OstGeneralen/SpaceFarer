@@ -3,7 +3,7 @@
 
 namespace sf
 {
-	class RenderWindow;
+	class RenderTexture;
 }
 
 class GuiText
@@ -11,7 +11,7 @@ class GuiText
 public:
 	GuiText();
 	sf::Text&			GetSFText();
-	void				Render(sf::RenderWindow& aRenderWindow);
+	void				Render(sf::RenderTexture& aRenderWindow);
 	void				SetString(const sf::String& aString);
 	void				SetColor(const sf::Color& aColor);
 	void				SetOriginToMiddle(bool aInX = true, bool aInY = false);

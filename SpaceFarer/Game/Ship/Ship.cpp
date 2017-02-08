@@ -46,6 +46,11 @@ void Ship::Update(float aDeltaTime)
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, myVelocity.x, myVelocity.y);
 }
 
+float Ship::GetRotation() const
+{
+	return myTransform.getRotation();
+}
+
 const sf::String & Ship::GetName() const
 {
 	return myFittings.myName;
@@ -53,6 +58,8 @@ const sf::String & Ship::GetName() const
 
 void Ship::DoMovement(float aDeltaTime)
 {
+	float fuelToDrain = 0;
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
 		myTransform.rotate(myFittings.myTurnSpeed * aDeltaTime);
@@ -65,18 +72,36 @@ void Ship::DoMovement(float aDeltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 	{
 		myVelocity += myDirection * myFittings.myAcceleration * aDeltaTime;
-		myCurrentFuel -= myFittings.myFuelUsage * aDeltaTime;
-		NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
+		fuelToDrain += myFittings.myFuelUsage * aDeltaTime;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 	{
 		myVelocity -= myDirection * myFittings.myAcceleration * aDeltaTime;
-		myCurrentFuel -= myFittings.myFuelUsage * aDeltaTime;
-		NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
+		fuelToDrain += myFittings.myFuelUsage * aDeltaTime;
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+	{
+		myVelocity -= mySideDirection * myFittings.myAcceleration * aDeltaTime;
+		fuelToDrain += myFittings.myFuelUsage * aDeltaTime;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	{
+		fuelToDrain += myFittings.myFuelUsage * aDeltaTime;
+		myVelocity += mySideDirection * myFittings.myAcceleration * aDeltaTime;
+	}
+
+	mySideDirection.x = cosf(MT::ToRadians(myTransform.getRotation() + 90));
+	mySideDirection.y = sinf(MT::ToRadians(myTransform.getRotation() + 90));
 	myDirection.x = cosf(MT::ToRadians(myTransform.getRotation()));
 	myDirection.y = sinf(MT::ToRadians(myTransform.getRotation()));
+
+	myCurrentFuel -= fuelToDrain;
+	
+	if (fuelToDrain > 0)
+	{
+		NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
+	}
 }
 
 void Ship::UpdateInertia(float aDeltaTime)

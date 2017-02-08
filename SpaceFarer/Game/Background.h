@@ -5,7 +5,7 @@
 
 namespace sf
 {
-	class RenderWindow;
+	class RenderTexture;
 }
 
 enum class SceneryType
@@ -26,8 +26,8 @@ class Background
 public:
 	Background();
 	//void Update(float aDeltaTime);
-	void CreateBackground(const sf::RenderWindow& aRenderWindow);
-	void Render(sf::RenderWindow& aRenderWindow);
+	void CreateBackground(const sf::RenderTexture& aRenderWindow);
+	void Render(sf::RenderTexture& aRenderWindow);
 private:
 	sf::Sprite myLayerOneSprite;
 	sf::Sprite myLayerTwoSprite;

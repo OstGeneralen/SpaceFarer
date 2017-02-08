@@ -1,5 +1,5 @@
 #include "Actor.h"
-#include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\Graphics\RenderTexture.hpp>
 #include "MathTools.h"
 
 void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f& aStartPosition, const float aMass, const float aRestitution)
@@ -26,7 +26,7 @@ void Actor::Update(float aDeltaTime)
 	myTransform.move(myVelocity * aDeltaTime);
 }
 
-void Actor::Render(sf::RenderWindow& aRenderWindow)
+void Actor::Render(sf::RenderTexture& aRenderWindow)
 {
 	mySprite.setPosition(myTransform.getPosition());
 	mySprite.setRotation(myTransform.getRotation());
