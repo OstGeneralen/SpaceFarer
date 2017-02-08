@@ -24,7 +24,7 @@ namespace Debug
 	{
 	public:
 		VersionStamp(DebugWidget* aDebugWidget);
-		void Load(const sf::RenderTexture& aRenderWindow) override;
-		void Render(sf::RenderTexture& aRenderWindow) override;
+		void Load(const sf::RenderWindow& aRenderWindow) override;
+		void Render(sf::RenderWindow& aRenderWindow) override;
 	};
 }

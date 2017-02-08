@@ -1,5 +1,5 @@
 #include "DebugTools.h"
-#include "SFML\Graphics\RenderTexture.hpp"
+#include "SFML\Graphics\RenderWindow.hpp"
 
 namespace Debug
 {
@@ -8,7 +8,7 @@ namespace Debug
 	
 	}
 
-	void Tools::Load(const sf::RenderTexture & aRenderWindow)
+	void Tools::Load(const sf::RenderWindow & aRenderWindow)
 	{
 	}
 
@@ -16,7 +16,7 @@ namespace Debug
 	{
 	}
 
-	void Tools::Render(sf::RenderTexture& aRenderWindow)
+	void Tools::Render(sf::RenderWindow& aRenderWindow)
 	{
 
 	}

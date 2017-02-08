@@ -24,7 +24,6 @@ public:
 	Ship(ShipFittings aFittings);	
 	void				SetUp();
 	void				Update(float aDeltaTime) override;
-	float				GetRotation() const;
 	const sf::String&	GetName() const;
 protected:
 	void				DoMovement(float aDeltaTime);
@@ -32,7 +31,6 @@ protected:
 	ShipFittings		myFittings;
 	float				myCurrentFuel;
 	sf::Vector2f		myDirection;
-	sf::Vector2f		mySideDirection;
 	bool				myInertiaEnabled;
 	
 

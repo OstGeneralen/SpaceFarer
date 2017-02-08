@@ -25,6 +25,5 @@ private:
 	Debug::DebugWidget*		myDebugTool;
 	bool					myShouldShowDebugInfo;
 	const sf::Color			myClearColor = sf::Color(0, 0, 0, 255);
-	sf::RenderTexture		myRenderTexture;
 	sf::RenderWindow		myGameWindow;
 };

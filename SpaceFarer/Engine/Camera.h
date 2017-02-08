@@ -6,7 +6,7 @@ class Entity;
 
 namespace sf
 {
-	class RenderTexture;
+	class RenderWindow;
 }
 
 class Camera
@@ -16,11 +16,10 @@ public:
 	void Resize(float aWidth, float aHeight);
 	void SetTarget(Entity* aTarget);
 	void SetCenter(Entity* aTarget);
-	void SetRotation(float aRotation);
 	const sf::Vector2f& GetCenter() const;
 	const sf::Vector2f& GetTargetPosition() const;
 	void Update(float aDeltaTime);
-	void UseView(sf::RenderTexture& aWindow);
+	void UseView(sf::RenderWindow& aWindow);
 	bool CanSee(const sf::Vector2f& aPosition);
 	void Zoom(const float aFactor);
 	const sf::Transform& GetTransform() const;

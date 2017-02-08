@@ -3,14 +3,13 @@
 #include "..\Ship\ShipFactory.h"
 #include "..\..\TextureBank.h"
 
-void FlyingState::Load(sf::RenderTexture * aRenderWindow)
+void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 {
-
 	State::Load(aRenderWindow);
 
 	myGui.Load();
 
-	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Standard);
+	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
 	myTempShip.Init(GET_TEXTURE("player"), true);
 
 	myPlayer.GiveShip(&myTempShip);

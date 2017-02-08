@@ -1,5 +1,5 @@
 #include "Gui.h"
-#include "SFML\Graphics\RenderTexture.hpp"
+#include "SFML\Graphics\RenderWindow.hpp"
 #include "..\..\TextureBank.h"
 
 void Gui::Load()
@@ -7,7 +7,7 @@ void Gui::Load()
 	myBarActor.Init(GET_TEXTURE("guiBar"), true);
 }
 
-void Gui::SetPositions(const sf::RenderTexture & aRenderWindow)
+void Gui::SetPositions(const sf::RenderWindow & aRenderWindow)
 {
 	myBarActor.SetPosition({(aRenderWindow.getSize().x / 2.f), aRenderWindow.getSize().y - (myBarActor.GetSize().y / 2.f)});
 	
@@ -24,7 +24,7 @@ void Gui::SetPositions(const sf::RenderTexture & aRenderWindow)
 	myShipText.SetPosition(myBarActor.GetTransform().transformPoint(0, 0));
 }
 
-void Gui::Render(sf::RenderTexture & aRenderWindow)
+void Gui::Render(sf::RenderWindow & aRenderWindow)
 {
 	myBarActor.Render(aRenderWindow);
 	myBalanceText.Render(aRenderWindow);

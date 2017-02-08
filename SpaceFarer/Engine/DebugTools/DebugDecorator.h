@@ -8,7 +8,7 @@ namespace Debug
 	public:
 		DebugDecorator(DebugWidget* aWidget) : myWidget(aWidget) {};
 		
-		void Load(const sf::RenderTexture& aRenderWindow)
+		void Load(const sf::RenderWindow& aRenderWindow)
 		{
 			myWidget->Load(aRenderWindow);
 		}
@@ -18,7 +18,7 @@ namespace Debug
 			myWidget->Update(aDeltaTime);
 		}
 		
-		void Render(sf::RenderTexture& aRenderWindow) override
+		void Render(sf::RenderWindow& aRenderWindow) override
 		{
 			myWidget->Render(aRenderWindow);
 		}

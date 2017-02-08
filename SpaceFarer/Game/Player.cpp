@@ -3,7 +3,7 @@
 #include <SFML\Window\Keyboard.hpp>
 #include "..\Engine\MathTools.h"
 #include <cmath>
-#include "SFML\Graphics\RenderTexture.hpp"
+#include "SFML\Graphics\RenderWindow.hpp"
 
 Player::Player()
 {
@@ -14,7 +14,7 @@ void Player::Update(float aDeltaTime)
 	myShip->Update(aDeltaTime);
 }
 
-void Player::Render(sf::RenderTexture & aRenderWindow)
+void Player::Render(sf::RenderWindow & aRenderWindow)
 {
 	myShip->Render(aRenderWindow);
 }

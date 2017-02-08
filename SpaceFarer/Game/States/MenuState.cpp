@@ -1,7 +1,7 @@
 #include "MenuState.h"
 #include "SFML\Window\Event.hpp"
 
-void MenuState::Load(sf::RenderTexture * aGameWindow)
+void MenuState::Load(sf::RenderWindow * aGameWindow)
 {
 	State::Load(aGameWindow);
 

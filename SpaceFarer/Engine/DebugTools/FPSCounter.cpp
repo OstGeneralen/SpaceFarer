@@ -1,5 +1,5 @@
 #include "FPSCounter.h"
-#include "SFML\Graphics\RenderTexture.hpp"
+#include "SFML\Graphics\RenderWindow.hpp"
 
 Debug::FPSCounter::FPSCounter(DebugWidget* aDebugWidget)
 	: Debug::DebugDecorator(aDebugWidget)
@@ -24,7 +24,7 @@ void Debug::FPSCounter::Update(float aDeltaTime)
 	myDebugText.setString(myDebugString);
 }
 
-void Debug::FPSCounter::Render(sf::RenderTexture& aRenderWindow)
+void Debug::FPSCounter::Render(sf::RenderWindow& aRenderWindow)
 {
 	DebugDecorator::Render(aRenderWindow);
 	myDebugText.setPosition({ static_cast<float>(-aRenderWindow.mapCoordsToPixel({0,0}).x), static_cast<float>(-aRenderWindow.mapCoordsToPixel({0,0}).y) });

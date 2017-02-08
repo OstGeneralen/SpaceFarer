@@ -1,5 +1,5 @@
 #include "Background.h"
-#include "SFML\Graphics\RenderTexture.hpp"
+#include "SFML\Graphics\RenderWindow.hpp"
 #include "..\TextureBank.h"
 #include "..\Engine\MathTools.h"
 #include <assert.h>
@@ -8,7 +8,7 @@ Background::Background()
 {
 }
 
-void Background::CreateBackground(const sf::RenderTexture & aRenderWindow)
+void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 {
 	/*
 	myLayerOneSprite.setTextureRect({ 0,0,128,128 });
@@ -44,7 +44,7 @@ void Background::CreateBackground(const sf::RenderTexture & aRenderWindow)
 	myUpdateRadius = 500;
 }
 
-void Background::Render(sf::RenderTexture & aRenderWindow)
+void Background::Render(sf::RenderWindow & aRenderWindow)
 { 
 	int windowW = aRenderWindow.getSize().x;
 	int windowH = aRenderWindow.getSize().y;
