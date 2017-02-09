@@ -10,16 +10,21 @@
 #include "..\Background.h"
 #include "..\GUI\Gui.h"
 #include "..\Ship\Ship.h"
+#include "..\Station\SpaceStation.h"
 
 class FlyingState : public State
 {
 public:
 	void Load(sf::RenderWindow* aRenderWindow) override;
-	void Update(float aDeltaTime, GameState& aGameState) override;
+	void LoadWithPosition(const sf::Vector2f& aPosition) override;
+	void Unload() override;
+	void Update(float aDeltaTime) override;
 	void Render() override;
 	void WindowResize() override;
 private:
 	void					HandleCollision(Actor& aActor1, Actor& aActor2);
+
+	SpaceStation			mySpaceStation;
 
 	Background				myBackground;
 	Player					myPlayer;

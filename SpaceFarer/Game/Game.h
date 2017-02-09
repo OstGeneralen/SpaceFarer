@@ -2,8 +2,6 @@
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
 #include "..\Engine\DebugTools.h"
-#include "States\FlyingState.h"
-#include "States\MenuState.h"
 #include "..\Engine\Camera.h"
 
 class Game
@@ -14,11 +12,6 @@ public:
 	void					Update(float aDeltaTime);
 	void					Render();
 private:
-
-	GameState				myGameState;
-
-	MenuState				myMenuState;
-	FlyingState				myFlyingState;
 	
 	Camera					myDebugCamera;
 	bool&					myShouldRun;

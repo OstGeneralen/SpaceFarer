@@ -80,7 +80,7 @@ void Background::Render(sf::RenderWindow & aRenderWindow)
 	}
 	*/
 
-	if (MT::Length(sf::Vector2f(cameraX, cameraY) - myLastRenderPosition) > myUpdateRadius / 2)
+	if (MT::Length(sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY)) - myLastRenderPosition) > myUpdateRadius / 2)
 	{
 		myLastRenderPosition = sf::Vector2f(cameraX, cameraY);
 		UpdateStars();
@@ -111,7 +111,7 @@ void Background::UpdateStars()
 	for (unsigned i = 0; i < 10; i++)
 	{
 		SceneryData tmpScenery;
-		float angle = rand();
+		float angle = static_cast<float>(rand());
 		tmpScenery.myPosition.x = myLastRenderPosition.x + MT::Randf() * 5 * myUpdateRadius * cos(angle);
 		tmpScenery.myPosition.y = myLastRenderPosition.y + MT::Randf() * 5 * myUpdateRadius * sin(angle);
 		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();

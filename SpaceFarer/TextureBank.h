@@ -2,7 +2,7 @@
 #include <string>
 #include "SFML\Graphics\Texture.hpp"
 
-#define GET_TEXTURE(aName) TextureBank::GetInstance()->GetTexture(aName)
+#define GET_TEXTURE(aName) TextureBank::GetInstance().GetTexture(aName)
 
 struct TextureData
 {
@@ -13,17 +13,14 @@ struct TextureData
 class TextureBank
 {
 public:
-	static	TextureBank*		GetInstance();
-	
-	void						Load();
+	static	TextureBank&		GetInstance();
+
 	sf::Texture*				GetTexture(const std::string& aName);
 	
 private:
-	TextureBank() = default;
+	TextureBank();
 	void						AddTexture(const std::string& aName, const std::string& aFilePath);
 
-
-	static	TextureBank*		myInstancePtr;
 	std::vector<TextureData>	myTextures;
 	sf::Texture					myErrorTexture;
 };

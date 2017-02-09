@@ -1,18 +1,28 @@
 #include "TextureBank.h"
 #include <iostream>
 
-TextureBank* TextureBank::myInstancePtr = nullptr;
 
-TextureBank * TextureBank::GetInstance()
+TextureBank& TextureBank::GetInstance()
 {
-	if (!myInstancePtr)
-	{
-		myInstancePtr = new TextureBank();
-	}
-	return myInstancePtr;
+	static TextureBank instance;
+	return instance;
 }
 
-void TextureBank::Load()
+
+sf::Texture * TextureBank::GetTexture(const std::string & aName)
+{
+	for (unsigned i = 0; i < myTextures.size(); ++i)
+	{
+		if (myTextures[i].myName == aName)
+		{
+			return &myTextures[i].myTexture;
+		}
+	}
+	std::cout << "Could not find a texture with the name " << aName << "." << std::endl;
+	return &myErrorTexture;
+}
+
+TextureBank::TextureBank()
 {
 	myErrorTexture.loadFromFile("sprites/Trash/error.png");
 
@@ -26,19 +36,7 @@ void TextureBank::Load()
 	AddTexture("asteroid", "Trash/asteroid.png");
 	AddTexture("shot", "Trash/shot.png");
 	AddTexture("star", "Trash/Star.png");
-}
-
-sf::Texture * TextureBank::GetTexture(const std::string & aName)
-{
-	for (unsigned i = 0; i < myTextures.size(); ++i)
-	{
-		if (myTextures[i].myName == aName)
-		{
-			return &myTextures[i].myTexture;
-		}
-	}
-	std::cout << "Could not find a texture with the name " << aName << "." << std::endl;
-	return &myErrorTexture;
+	AddTexture("spaceStation", "spaceStation.png");
 }
 
 void TextureBank::AddTexture(const std::string & aName, const std::string & aFilePath)

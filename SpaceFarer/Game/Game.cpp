@@ -1,9 +1,7 @@
 #include "Game.h"
 #include "..\Engine\DebugTools\FPSCounter.h"
 #include "..\Engine\DebugTools\VersionStamp.h"
-#include "..\Engine\MathTools.h"
-#include "..\TextureBank.h"
-
+#include "States\StateManger.h"
 
 #define RANDOM_SEED 25062009
 
@@ -17,18 +15,17 @@ Game::Game(bool& aShouldRun)
 	myShouldShowDebugInfo = false;
 #endif
 
-	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
-	myDebugTool->Load(myGameWindow);
 }
 
 void Game::Init()
 {
-	myGameState = GameState::Menu;
-
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
-	TextureBank::GetInstance()->Load();
 
-	myFlyingState.Load(&myGameWindow);
+	StateManager::GetInstance().ChangeState(GameState::Menu, myGameWindow);
+
+	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
+	myDebugTool->Load(myGameWindow);
+
 }
 
 void Game::Update(float aDeltaTime)
@@ -45,7 +42,7 @@ void Game::Update(float aDeltaTime)
 	if (e.type == sf::Event::Resized)
 	{
 		myDebugTool->Load(myGameWindow);
-		myFlyingState.WindowResize();
+		
 	}
 
 	if (myShouldShowDebugInfo)
@@ -53,55 +50,20 @@ void Game::Update(float aDeltaTime)
 		myDebugTool->Update(aDeltaTime);
 	}
 
-	switch (myGameState)
-	{
-	case GameState::Flying:
-		if (!myFlyingState.GetIsLoaded())
-		{
-			myFlyingState.Load(&myGameWindow);
-			break;
-		}
-		myFlyingState.Update(aDeltaTime, myGameState);
-		break;
-	case GameState::Menu:
-		if (!myMenuState.GetIsLoaded())
-		{
-			myMenuState.Load(&myGameWindow);
-			break;
-		}
-		myMenuState.Update(aDeltaTime, myGameState);
-	default:
-		break;
-	}
-
+	StateManager::GetInstance().Update(aDeltaTime);
 }
 
 void Game::Render()
 {
 	myGameWindow.clear(myClearColor);
-
-	switch (myGameState)
-	{
-	case GameState::Flying:
-		if (myFlyingState.GetIsLoaded())
-		{
-			myFlyingState.Render();
-		}
-		break;
-	case GameState::Menu:
-		if (myMenuState.GetIsLoaded())
-		{
-			myMenuState.Render();
-		}
-	default:
-		break;
-	}
+	
+	StateManager::GetInstance().Render();
 
 	myDebugCamera.UseView(myGameWindow);
 	if (myShouldShowDebugInfo)
 	{
 		myDebugTool->Render(myGameWindow);
 	}
-
+	
 	myGameWindow.display();
 }

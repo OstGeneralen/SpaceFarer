@@ -15,6 +15,7 @@ void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f
 		mySprite.setOrigin(middlePoint.x, middlePoint.y);
 	}
 
+	myVelocity = { 0,0 };
 	myTransform.setPosition(aStartPosition);
 	mySprite.setPosition(aStartPosition);
 	myMass = aMass;
@@ -61,6 +62,19 @@ const sf::Transformable & Actor::GetTransformable() const
 void Actor::SetVelocity(const sf::Vector2f & aVelocity)
 {
 	myVelocity = aVelocity;
+}
+
+bool Actor::CheckIfColliding(const Actor & aOther) const
+{
+	float distance = abs(MT::Length(this->GetPosition() - aOther.GetPosition()));
+
+	if (distance < this->GetRadius() + aOther.GetRadius())
+	{
+		return true;
+	}
+
+	return false;
+
 }
 
 const sf::Vector2f & Actor::GetVelocity() const

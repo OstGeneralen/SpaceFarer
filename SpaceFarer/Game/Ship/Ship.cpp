@@ -41,7 +41,7 @@ void Ship::SetUp(std::vector<Actor*>* aActorListPtr)
 }
 
 void Ship::Update(float aDeltaTime)
-{
+ {
 	if (myCurrentFuel < 0)
 	{
 		myCurrentFuel = 0;
