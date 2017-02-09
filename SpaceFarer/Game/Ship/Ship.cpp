@@ -1,6 +1,8 @@
 #include "Ship.h"
 #include "..\..\Engine\MathTools.h"
 #include "SFML\Window\Event.hpp"
+#include "..\Weapons\StandardWeapon.h"
+#include <iostream>
 
 Ship::Ship(ShipFittings aFittings)
 {
@@ -12,15 +14,30 @@ Ship::Ship(ShipFittings aFittings)
 	myFittings.myValue = aFittings.myValue;
 	myFittings.myName = aFittings.myName;
 	myFittings.myInertiaFactor = aFittings.myInertiaFactor;
+	myFittings.myWeaponType = aFittings.myWeaponType;
 
 	myCurrentFuel = myFittings.myFuelTank;
 }
 
-void Ship::SetUp()
+void Ship::SetUp(std::vector<Actor*>* aActorListPtr)
 {
 	NotifyObservers(EVENT_PLAYER_NEW_BALANCE, 0);
 	NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, 0, 0);
+
+	switch (myFittings.myWeaponType)
+	{
+	case WeaponTypes::Standard:
+		myWeapon = new StandardWeapon();
+		myWeapon->Init(aActorListPtr, this, { 75, 0 }, 0.15f);
+		break;
+	default:
+		std::cout << "Tried to assign non-existing weapon type, defaulting to StandardWeapon." << std::endl << std::endl;
+		myWeapon = new StandardWeapon();
+		myWeapon->Init(aActorListPtr, this, { 0, 0 }, 0.25f);
+		break;
+	}
+	
 }
 
 void Ship::Update(float aDeltaTime)
@@ -42,6 +59,7 @@ void Ship::Update(float aDeltaTime)
 	}
 
 	Actor::Update(aDeltaTime);
+	myWeapon->Update(aDeltaTime);
 
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, myVelocity.x, myVelocity.y);
 }
@@ -98,6 +116,11 @@ void Ship::DoMovement(float aDeltaTime)
 
 	myDirection.x = cosf(MT::ToRadians(myTransform.getRotation()));
 	myDirection.y = sinf(MT::ToRadians(myTransform.getRotation()));
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	{
+		myWeapon->Shoot();
+	}
 }
 
 void Ship::UpdateInertia(float aDeltaTime)

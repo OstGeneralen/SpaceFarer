@@ -20,7 +20,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	myPlayer.GiveShip(&myTempShip);
 
-	myPlayer.GetShip().SetUp();
+	myPlayer.GetShip().SetUp(&myActors);
 
 	myGui.SetPositions(*myGameWindow);
 
@@ -54,7 +54,6 @@ void FlyingState::Update(float aDeltaTime, GameState& aGameState)
 				if (j != i)
 				{
 					HandleCollision(*myActors[i], *myActors[j]);
-
 				}
 			}
 			myActors[i]->Update(aDeltaTime);

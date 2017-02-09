@@ -20,6 +20,7 @@ public:
 	const sf::Vector2f&			GetSize() const;
 	const sf::Vector2f&			GetVelocity() const;
 	const sf::Transform&		GetTransform() const;
+	const sf::Transformable&	GetTransformable() const;
 	const float					GetRadius() const;
 	const float					GetMass() const;
 	const float					GetRestitution() const;

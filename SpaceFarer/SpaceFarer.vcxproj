@@ -40,7 +40,10 @@
     <ClCompile Include="Game\States\MenuState.cpp" />
     <ClCompile Include="Game\States\State.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Game\Weapons\Projectile.cpp" />
+    <ClCompile Include="Game\Weapons\StandardWeapon.cpp" />
     <ClCompile Include="TextureBank.cpp" />
+    <ClCompile Include="Game\Weapons\Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\DebugTools\VersionStamp.h" />
@@ -67,7 +70,10 @@
     <ClInclude Include="Game\States\FlyingState.h" />
     <ClInclude Include="Game\States\MenuState.h" />
     <ClInclude Include="Game\States\State.h" />
+    <ClInclude Include="Game\Weapons\Projectile.h" />
+    <ClInclude Include="Game\Weapons\StandardWeapon.h" />
     <ClInclude Include="TextureBank.h" />
+    <ClInclude Include="Game\Weapons\Weapon.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{798C067D-B261-43DC-A304-5436E09176EB}</ProjectGuid>

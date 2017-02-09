@@ -53,6 +53,11 @@ const sf::Transform & Actor::GetTransform() const
 	return myTransform.getTransform();
 }
 
+const sf::Transformable & Actor::GetTransformable() const
+{
+	return myTransform;
+}
+
 void Actor::SetVelocity(const sf::Vector2f & aVelocity)
 {
 	myVelocity = aVelocity;

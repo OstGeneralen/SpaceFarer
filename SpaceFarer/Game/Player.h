@@ -2,6 +2,7 @@
 #include "..\Engine\Actor.h"
 #include "Observer\Subject.h"
 #include "Ship\Ship.h"
+#include "Weapons\StandardWeapon.h"
 
 class Player : public Entity, public Subject
 {

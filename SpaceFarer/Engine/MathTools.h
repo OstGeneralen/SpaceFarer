@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML\System\Vector2.hpp>
+#include <assert.h>
 #define MT_PI 3.141592f
 
 namespace MathTools
@@ -60,10 +61,10 @@ namespace MathTools
 
 	static void Normalize(sf::Vector2f& aVectorToNormalize)
 	{
-		sf::Vector2f tmpVector;
-		tmpVector.x = aVectorToNormalize.x / Length(aVectorToNormalize);
-		tmpVector.y = aVectorToNormalize.y / Length(aVectorToNormalize);
-		aVectorToNormalize = tmpVector;
+		float length = Length(aVectorToNormalize);
+		assert(length != 0 && "Tried to normalize a null vector");
+		aVectorToNormalize.x /= length;
+		aVectorToNormalize.y /= length;
 	}
 
 	template <typename T>
