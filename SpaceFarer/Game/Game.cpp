@@ -19,7 +19,7 @@ Game::Game(bool& aShouldRun)
 
 void Game::Init()
 {
-	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer");
+	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer V: " + std::to_string(MAJOR) + "." + std::to_string(MINOR) + "." + std::to_string(PATCH));
 
 	StateManager::GetInstance().ChangeState(GameState::Menu, myGameWindow);
 
