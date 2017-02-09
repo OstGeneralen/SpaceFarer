@@ -5,6 +5,7 @@
 void Gui::Load()
 {
 	myBarActor.Init(GET_TEXTURE("guiBar"), true);
+	myRadar.Init(GET_TEXTURE("radarBase"));
 }
 
 void Gui::SetPositions(const sf::RenderWindow & aRenderWindow)
@@ -22,6 +23,9 @@ void Gui::SetPositions(const sf::RenderWindow & aRenderWindow)
 
 	myShipText.SetOriginToMiddle(true, true);
 	myShipText.SetPosition(myBarActor.GetTransform().transformPoint(0, 0));
+
+	myRadar.SetPosition( myBarActor.GetTransform().transformPoint(0, 0 - (myBarActor.GetSize().y / 2) - (myRadar.GetSpriteDimensions().y/2)));
+
 }
 
 void Gui::Render(sf::RenderWindow & aRenderWindow)
@@ -31,6 +35,7 @@ void Gui::Render(sf::RenderWindow & aRenderWindow)
 	myVelocityText.Render(aRenderWindow);
 	myFuelText.Render(aRenderWindow);
 	myShipText.Render(aRenderWindow);
+	myRadar.Render(aRenderWindow);
 }
 
 void Gui::Notify(GameEvent aEvent, int aValue)
@@ -55,6 +60,14 @@ void Gui::Notify(GameEvent aEvent, float aX, float aY)
 	if (aEvent == EVENT_PLAYER_NEW_VELOCITY)
 	{
 		myVelocityText.SetString("Directional Vectors\nX: " + std::to_string(static_cast<int>(aX)) + "\nY: " + std::to_string(static_cast<int>(aY)));
+	}
+	else if (aEvent == EVENT_PLAYER_NEW_POSITION)
+	{
+		myRadar.UpdatePlayerPosition({ aX, aY });
+	}
+	else if (aEvent == EVENT_PLAYER_NEW_WAYPOINT)
+	{
+		myRadar.SetPlayerTarget({ aX, aY });
 	}
 }
 

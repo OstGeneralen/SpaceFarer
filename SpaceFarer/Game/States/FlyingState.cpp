@@ -30,6 +30,8 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	myPlayer.GetShip().SetUp(&myActors);
 
+	myPlayer.SetTarget(mySpaceStation.GetPosition());
+
 	myGui.SetPositions(*myGameWindow);
 
 	myGameCamera.SetTarget(&myPlayer.GetShip());

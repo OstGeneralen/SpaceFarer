@@ -37,6 +37,8 @@ TextureBank::TextureBank()
 	AddTexture("shot", "Trash/shot.png");
 	AddTexture("star", "Trash/Star.png");
 	AddTexture("spaceStation", "spaceStation.png");
+	AddTexture("radarBase", "radarBase.png");
+	AddTexture("radarPointer", "radarPointer.png");
 }
 
 void TextureBank::AddTexture(const std::string & aName, const std::string & aFilePath)

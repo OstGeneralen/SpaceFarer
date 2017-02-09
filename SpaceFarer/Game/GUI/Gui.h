@@ -1,5 +1,6 @@
 #pragma once
 #include "..\Observer\Observer.h"
+#include "Radar.h"
 #include "SFML\Graphics\Texture.hpp"
 #include "..\..\Engine\Actor.h"
 #include <string>
@@ -25,6 +26,7 @@ private:
 	GuiText			myBalanceText;
 	GuiText			myVelocityText;
 	GuiText			myShipText;
+	Radar			myRadar;
 	Actor			myBarActor;
 
 };

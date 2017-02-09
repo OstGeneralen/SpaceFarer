@@ -121,6 +121,8 @@ void Ship::DoMovement(float aDeltaTime)
 	{
 		myWeapon->Shoot();
 	}
+
+	NotifyObservers(EVENT_PLAYER_NEW_POSITION, GetPosition().x, GetPosition().y);
 }
 
 void Ship::UpdateInertia(float aDeltaTime)
