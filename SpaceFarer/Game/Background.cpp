@@ -41,7 +41,7 @@ void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 	mySmallStarTexture = GET_TEXTURE("smallStar");
 	UpdateStars();
 	myLastRenderPosition = aRenderWindow.getView().getCenter();
-	myUpdateRadius = 500;
+	myUpdateRadius = 1000;
 }
 
 void Background::Render(sf::RenderWindow & aRenderWindow)
@@ -100,7 +100,13 @@ void Background::Render(sf::RenderWindow & aRenderWindow)
 		}
 		renderingSprite.setOrigin(0.5f, 0.5f);
 		renderingSprite.setScale(myScenery[i].myScale);
-		renderingSprite.setPosition(myScenery[i].myPosition);
+
+		sf::Vector2f posInCameraSpace = sf::Vector2f(myScenery[i].myPosition.x, myScenery[i].myPosition.y) + sf::Vector2f(cameraX, cameraY);
+		posInCameraSpace.x /= -myScenery[i].myPosition.z;
+		posInCameraSpace.y /= -myScenery[i].myPosition.z;
+
+		posInCameraSpace += sf::Vector2f(cameraX, cameraY);
+		renderingSprite.setPosition(posInCameraSpace);
 		renderingSprite.setRotation(myScenery[i].myRotation);
 		aRenderWindow.draw(renderingSprite);
 	}
@@ -112,10 +118,11 @@ void Background::UpdateStars()
 	{
 		SceneryData tmpScenery;
 		float angle = static_cast<float>(rand());
-		tmpScenery.myPosition.x = myLastRenderPosition.x + MT::Randf() * 5 * myUpdateRadius * cos(angle);
-		tmpScenery.myPosition.y = myLastRenderPosition.y + MT::Randf() * 5 * myUpdateRadius * sin(angle);
+		tmpScenery.myPosition.x = -myLastRenderPosition.x + MT::Randf() * -5 * myUpdateRadius * cos(angle);
+		tmpScenery.myPosition.y = -myLastRenderPosition.y + MT::Randf() * -5 * myUpdateRadius * sin(angle);
+		tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
 		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
-		tmpScenery.myScale = (0.25f + 0.75f * MT::Randf()) * sf::Vector2f(1, 1);
+		tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
 		tmpScenery.myType = SceneryType::SmallStar;
 		myScenery.push_back(tmpScenery);
 	}

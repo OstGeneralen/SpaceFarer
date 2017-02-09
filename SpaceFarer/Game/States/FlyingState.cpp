@@ -14,7 +14,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	WeaponFactory::GetInstance().Init(&myActors);
 	myGameCamera = Camera(*aRenderWindow);
 	myGuiCamera = Camera(*aRenderWindow);
-
+	//myGameCamera.Zoom(4.f);
 	myGui.Load();
 
 	mySpaceStation.Init(GET_TEXTURE("spaceStation"), true, { 800,900 }, 100000);
