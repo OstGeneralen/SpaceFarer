@@ -11,6 +11,7 @@
 #include "..\GUI\Gui.h"
 #include "..\Ship\Ship.h"
 #include "..\Station\SpaceStation.h"
+#include "..\Debris.h"
 
 class FlyingState : public State
 {
@@ -22,8 +23,7 @@ public:
 	void Render() override;
 	void WindowResize() override;
 private:
-	void					HandleCollision(Actor& aActor1, Actor& aActor2);
-
+	Debris					myDebris;
 	SpaceStation			mySpaceStation;
 
 	Background				myBackground;

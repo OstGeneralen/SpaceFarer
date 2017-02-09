@@ -67,6 +67,12 @@ namespace MathTools
 		aVectorToNormalize.y /= length;
 	}
 
+	static bool Chance(int aProbabilityPercentage)
+	{
+		int value = rand() % 100 + 1;
+		return aProbabilityPercentage < value;
+	}
+
 	template <typename T>
 	static T Min(T aNr1, T aNr2)
 	{

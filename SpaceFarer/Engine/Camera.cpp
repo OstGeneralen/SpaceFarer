@@ -60,7 +60,7 @@ void Camera::UseView(sf::RenderWindow & aWindow)
 	aWindow.setView(myView);
 }
 
-bool Camera::CanSee(const sf::FloatRect& aHitBox)
+bool Camera::CanSee(const sf::FloatRect& aHitBox) const
 {
 	sf::FloatRect myViewInWorldSpace(myTarget->GetPosition() - myView.getSize() * 0.5f - sf::Vector2f(100, 100), myView.getSize() + sf::Vector2f(200, 200));
 	return myViewInWorldSpace.intersects(aHitBox);

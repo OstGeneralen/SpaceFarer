@@ -21,7 +21,7 @@ public:
 	const sf::Vector2f& GetTargetPosition() const;
 	void Update(float aDeltaTime);
 	void UseView(sf::RenderWindow& aWindow);
-	bool CanSee(const sf::FloatRect& aHitBox);
+	bool CanSee(const sf::FloatRect& aHitBox) const;
 	void Zoom(const float aFactor);
 	const sf::Transform& GetTransform() const;
 private:

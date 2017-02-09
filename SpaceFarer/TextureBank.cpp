@@ -33,7 +33,10 @@ TextureBank::TextureBank()
 	AddTexture("smallStar", "smallStar.png");
 	AddTexture("alienGreen", "Trash/alien.png");
 	AddTexture("alienBlue", "Trash/alienBlue.png");
-	AddTexture("asteroid", "Trash/asteroid.png");
+	AddTexture("asteroidSmall", "Trash/asteroidSmall.png");
+	AddTexture("asteroidStandard", "Trash/asteroidStandard.png");
+	AddTexture("asteroidMedium", "Trash/asteroidMedium.png");
+	AddTexture("asteroidLarge", "Trash/asteroidLarge.png");
 	AddTexture("shot", "Trash/shot.png");
 	AddTexture("star", "Trash/Star.png");
 	AddTexture("spaceStation", "spaceStation.png");

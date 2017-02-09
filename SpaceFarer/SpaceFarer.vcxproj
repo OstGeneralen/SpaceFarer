@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Debris.cpp" />
     <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
     <ClCompile Include="Engine\DebugTools\VersionStamp.cpp" />
     <ClCompile Include="Engine\Drawable.cpp" />
@@ -54,6 +55,7 @@
     <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Debris.h" />
     <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
     <ClInclude Include="Engine\DebugTools\VersionStamp.h" />
     <ClInclude Include="Engine\Drawable.h" />
