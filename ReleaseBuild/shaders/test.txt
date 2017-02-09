@@ -1,4 +1,21 @@
-void main(void)
-{
-	gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+uniform sampler2D texture;
+uniform vec2 position;
+uniform float time;
+void main()
+{	
+	gl_FragColor = texture2D(texture, gl_TexCoord[0].xy);
+
+   	float radius = abs(sin(time));
+   	float borderWidth = 0.1;
+    
+    
+    	vec4 color;
+
+   	if(length(position - gl_TexCoord[0].xy) - radius < radius && length(position-gl_TexCoord[0].xy) - radius > radius - borderWidth)
+  	{
+   	    color = texture2D(texture, vec2(gl_TexCoord[0].x * 1.01, gl_TexCoord[0].y * 1.01));
+		gl_FragColor = color;
+   	}
+
+    
 }
