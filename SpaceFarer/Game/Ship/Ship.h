@@ -5,6 +5,7 @@
 #include "SFML\Graphics\Text.hpp"
 #include "SFML\System\Vector2.hpp"
 #include <vector>
+#include "..\Weapons\WeaponFactory.h"
 
 struct ShipFittings
 {

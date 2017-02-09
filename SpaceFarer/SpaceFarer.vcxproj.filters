@@ -51,6 +51,8 @@
     <ClCompile Include="Game\GUI\RadarPointer.cpp" />
     <ClCompile Include="Engine\Drawable.cpp" />
     <ClCompile Include="Game\GUI\Radar.cpp" />
+    <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
+    <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -95,5 +97,7 @@
     <ClInclude Include="Game\GUI\Radar.h" />
     <ClInclude Include="Game\GUI\RadarPointer.h" />
     <ClInclude Include="Engine\Drawable.h" />
+    <ClInclude Include="Game\Weapons\WeaponFactory.h" />
+    <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
   </ItemGroup>
 </Project>

@@ -252,3 +252,8 @@ paket-files/
 .idea/
 *.sln.iml
 *.vcxproj
+*.iobj
+ReleaseBuild/SpaceFarer.ipdb
+ReleaseBuild/SpaceFarer.ipdb
+*.iobj
+ReleaseBuild/SpaceFarer.ipdb

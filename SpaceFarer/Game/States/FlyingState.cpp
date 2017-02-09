@@ -1,6 +1,7 @@
 #include "FlyingState.h"
 #include "..\..\Engine\MathTools.h"
 #include "..\Ship\ShipFactory.h"
+#include "..\Weapons\WeaponFactory.h"
 #include "..\..\TextureBank.h"
 #include "StateManger.h"
 
@@ -10,6 +11,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	State::Load(aRenderWindow);
 
+	WeaponFactory::GetInstance().Init(&myActors);
 	myGameCamera = Camera(*aRenderWindow);
 	myGuiCamera = Camera(*aRenderWindow);
 
@@ -18,7 +20,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	mySpaceStation.Init(GET_TEXTURE("spaceStation"), true, { 800,900 }, 100000);
 
  	myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
-	myTempShip.Init(GET_TEXTURE("player"), true);
+	myTempShip.Init(GET_TEXTURE("player"), true, { 0,0 }, 50.f, 0.25f);
 
 	myPlayer.GiveShip(&myTempShip);
 
@@ -40,13 +42,28 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	myActors.reserve(500);
 	myActors.push_back(&myPlayer.GetShip());
 	myActors.push_back(&myTempActor);
-
+	
 	for (int i = 0; i < 100; ++i)
 	{
 		Asteroid* tmpAsteroid = new Asteroid();
 		tmpAsteroid->Init(GET_TEXTURE("asteroid"), true, (0.25f + MT::Randf()) * 2500.f * sf::Vector2f(sinf(static_cast<float>(rand())), cosf(static_cast<float>(rand()))), 25.f, 0.5f);
 		myActors.push_back(tmpAsteroid);
 	}
+	
+	/* RECTANGLE FUNHOUSE
+	for (int y = 0; y < 9; y++)
+	{
+		for (int x = 0; x < 16; x++)
+		{
+			if (y == 0 || y == 8 || x == 0 || x == 15)
+			{
+				Asteroid* tmpAsteroid = new Asteroid();
+				tmpAsteroid->Init(GET_TEXTURE("asteroid"), true, sf::Vector2f(-800 + x * 128, -450 + y * 128), 1000000.f, 1.f);
+				myActors.push_back(tmpAsteroid);
+			}
+		}
+	}
+	*/
 
 	mySpaceStation.SetExitPoint(ExitPoint::Left);
 

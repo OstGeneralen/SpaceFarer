@@ -14,7 +14,7 @@ void ShipTypes::CreateBlueprints()
 	current.myAcceleration = 500;
 	current.myTurnSpeed = 200;
 	current.myValue = 1000000;
-	current.myWeaponType = WeaponTypes::Standard;
+	current.myWeaponType = WeaponTypes::BurstFire;
 	current.myName = "Debug Ship";
 }
 
