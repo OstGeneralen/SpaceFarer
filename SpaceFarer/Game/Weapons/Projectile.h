@@ -1,7 +1,6 @@
 #pragma once
 #include "..\..\Engine\Actor.h"
-class Projectile :
-	public Actor
+class Projectile : public Actor
 {
 public:
 	Projectile();

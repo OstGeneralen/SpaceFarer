@@ -4,12 +4,6 @@
 #include "SFML\System\Vector2.hpp"
 #include "..\..\Engine\Actor.h"
 
-enum class WeaponTypes
-{
-	Standard
-};
-
-
 class Weapon
 {
 public:

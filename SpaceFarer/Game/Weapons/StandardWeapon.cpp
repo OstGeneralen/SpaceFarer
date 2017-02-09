@@ -2,6 +2,7 @@
 #include "Projectile.h"
 #include "..\..\TextureBank.h"
 #include "..\..\Engine\MathTools.h"
+#include <iostream>
 
 StandardWeapon::StandardWeapon()
 {
@@ -17,7 +18,7 @@ void StandardWeapon::SpecificUpdate(const float aDeltaTime)
 	if (myShouldShoot)
 	{
 		Projectile* projectile = new Projectile();
-		projectile->Init(GET_TEXTURE("shot"), true, myActor->GetTransform() * myOffset, 1, 0.7f);
+		projectile->Init(GET_TEXTURE("shot"), true, myActor->GetTransform() * myOffset, 1, .8f);
 		float rotation = MT::ToRadians(myActor->GetTransformable().getRotation());
 		sf::Vector2f direction(cos(rotation), sin(rotation));
  		MT::Normalize(direction);

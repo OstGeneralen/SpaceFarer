@@ -48,6 +48,8 @@
     <ClCompile Include="Game\Station\SpaceStation.cpp" />
     <ClCompile Include="Game\States\StateManger.cpp" />
     <ClCompile Include="Game\States\SpaceStationState.cpp" />
+    <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
+    <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -89,5 +91,7 @@
     <ClInclude Include="Game\Station\SpaceStation.h" />
     <ClInclude Include="Game\States\StateManger.h" />
     <ClInclude Include="Game\States\SpaceStationState.h" />
+    <ClInclude Include="Game\Weapons\WeaponFactory.h" />
+    <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
   </ItemGroup>
 </Project>

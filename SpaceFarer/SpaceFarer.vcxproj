@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
     <ClCompile Include="Engine\DebugTools\VersionStamp.cpp" />
     <ClCompile Include="Game\Asteroid.cpp" />
     <ClCompile Include="Engine\Actor.cpp" />
@@ -47,8 +48,10 @@
     <ClCompile Include="Game\Weapons\StandardWeapon.cpp" />
     <ClCompile Include="TextureBank.cpp" />
     <ClCompile Include="Game\Weapons\Weapon.cpp" />
+    <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
     <ClInclude Include="Engine\DebugTools\VersionStamp.h" />
     <ClInclude Include="Game\Asteroid.h" />
     <ClInclude Include="Engine\Actor.h" />
@@ -80,6 +83,7 @@
     <ClInclude Include="Game\Station\SpaceStation.h" />
     <ClInclude Include="TextureBank.h" />
     <ClInclude Include="Game\Weapons\Weapon.h" />
+    <ClInclude Include="Game\Weapons\WeaponFactory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{798C067D-B261-43DC-A304-5436E09176EB}</ProjectGuid>
