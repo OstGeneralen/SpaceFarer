@@ -37,6 +37,7 @@ void Actor::Render(sf::RenderWindow& aRenderWindow)
 void Actor::SetPosition(const sf::Vector2f & aPosition)
 {
 	myTransform.setPosition(aPosition);
+	mySprite.setPosition(aPosition);
 }
 
 const sf::Vector2f & Actor::GetPosition() const

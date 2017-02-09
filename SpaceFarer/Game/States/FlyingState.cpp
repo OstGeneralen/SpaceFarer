@@ -41,8 +41,9 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	myActors.reserve(500);
 	myActors.push_back(&myPlayer.GetShip());
-	myActors.push_back(&myTempActor);
+	//myActors.push_back(&myTempActor);
 	
+	/*
 	for (int i = 0; i < 100; ++i)
 	{
 		Asteroid* tmpAsteroid = new Asteroid();
