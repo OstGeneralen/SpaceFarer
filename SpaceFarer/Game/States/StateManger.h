@@ -26,6 +26,7 @@ class StateManager
 public:
 	static StateManager& GetInstance();
 	void ChangeState(GameState aTo, sf::RenderWindow& aRenderWindow);
+	void ChangeStateWithPosition(GameState aTo, sf::RenderWindow& aRenderWindow, const sf::Vector2f& aPosition = { 0,0 });
 	void WindowResize();
 	void Update(float aDeltaTime);
 	void Render();

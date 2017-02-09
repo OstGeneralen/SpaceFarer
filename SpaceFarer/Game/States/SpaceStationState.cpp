@@ -14,7 +14,7 @@ void SpaceStationState::Update(float aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
 	{
-		StateManager::GetInstance().ChangeState(GameState::Flying, *myGameWindow);
+		StateManager::GetInstance().ChangeStateWithPosition(GameState::Flying, *myGameWindow, myLoadedPosition);
 	}
 }
 

@@ -46,10 +46,18 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 		myActors.push_back(tmpAsteroid);
 	}
 
+	mySpaceStation.SetExitPoint(ExitPoint::Left);
+
 	myActors.push_back(&mySpaceStation);
 
 	myBackground.CreateBackground(*myGameWindow);
 
+}
+
+void FlyingState::LoadWithPosition(const sf::Vector2f & aPosition)
+{
+	myPlayer.GetShip().SetPosition(aPosition);
+	myGameCamera.SetCenter(&myPlayer.GetShip());
 }
 
 void FlyingState::Unload()
@@ -79,7 +87,7 @@ void FlyingState::Update(float aDeltaTime)
 
 	if (myPlayer.GetShip().CheckIfColliding(mySpaceStation))
 	{
-		StateManager::GetInstance().ChangeState(GameState::SpaceStation, *myGameWindow);
+		StateManager::GetInstance().ChangeStateWithPosition(GameState::SpaceStation, *myGameWindow, mySpaceStation.GetExitPoint());
 	}
 
 	for (int i = myActors.size() - 1; i >= 0; --i)
