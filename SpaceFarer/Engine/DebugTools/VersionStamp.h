@@ -13,7 +13,7 @@
 
 #define MAJOR 0
 #define MINOR 0
-#define PATCH 1
+#define PATCH 2
 
 #include "DebugDecorator.h"
 

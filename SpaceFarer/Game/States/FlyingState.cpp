@@ -91,7 +91,7 @@ void FlyingState::Update(float aDeltaTime)
 
 	for (int i = myActors.size() - 1; i >= 0; --i)
 	{
-		if (MT::Length(myGameCamera.GetTargetPosition() - myActors[i]->GetPosition()) > 4000 && myActors[i] != &myPlayer.GetShip() && myActors[i] != &myTempActor)
+		if (MT::Length(myGameCamera.GetTargetPosition() - myActors[i]->GetPosition()) > 4000 && myActors[i] != &myPlayer.GetShip() && myActors[i] != &myTempActor && myActors[i] != &mySpaceStation)
 		{
 			delete myActors[i];
 			myActors[i] = nullptr;
