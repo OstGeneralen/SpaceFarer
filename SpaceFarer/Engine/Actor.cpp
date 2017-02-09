@@ -77,6 +77,11 @@ bool Actor::CheckIfColliding(const Actor & aOther) const
 
 }
 
+sf::FloatRect Actor::GetViewHitBox()
+{
+	return mySprite.getGlobalBounds();
+}
+
 const sf::Vector2f & Actor::GetVelocity() const
 {
 	return myVelocity;

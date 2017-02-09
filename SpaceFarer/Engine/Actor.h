@@ -29,6 +29,7 @@ public:
 	void						SetVelocity(const sf::Vector2f& aVelocity);
 
 	virtual bool				CheckIfColliding(const Actor& aOther) const;
+	sf::FloatRect				GetViewHitBox();
 
 	void						ChangeVelocity(const sf::Vector2f& aVelocity);
 protected:

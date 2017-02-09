@@ -60,10 +60,10 @@ void Camera::UseView(sf::RenderWindow & aWindow)
 	aWindow.setView(myView);
 }
 
-bool Camera::CanSee(const sf::Vector2f & aPosition)
+bool Camera::CanSee(const sf::FloatRect& aHitBox)
 {
-	sf::FloatRect myViewInWorldSpace(myTarget->GetPosition() - myView.getSize() * 0.5f, myView.getSize());
-	return myViewInWorldSpace.contains(aPosition);
+	sf::FloatRect myViewInWorldSpace(myTarget->GetPosition() - myView.getSize() * 0.5f - sf::Vector2f(100, 100), myView.getSize() + sf::Vector2f(200, 200));
+	return myViewInWorldSpace.intersects(aHitBox);
 }
 
 void Camera::Zoom(const float aFactor)

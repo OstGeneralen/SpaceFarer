@@ -90,7 +90,7 @@ void FlyingState::Update(float aDeltaTime)
 
 	for (unsigned i = 0; i < myActors.size(); i++)
 	{
-		if (myGameCamera.CanSee(myActors[i]->GetPosition()))
+		if (myGameCamera.CanSee(myActors[i]->GetViewHitBox()))
 		{
 			for (unsigned j = 0; j < myActors.size(); j++)
 			{
@@ -129,7 +129,7 @@ void FlyingState::Render()
 
 	for (unsigned i = 0; i < myActors.size(); i++)
 	{
-		if (myGameCamera.CanSee(myActors[i]->GetPosition()))
+		if (myGameCamera.CanSee(myActors[i]->GetViewHitBox()))
 		{
 			myActors[i]->Render(*myGameWindow);
 		}
