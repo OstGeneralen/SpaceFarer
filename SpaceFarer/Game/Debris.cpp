@@ -24,7 +24,10 @@ void Debris::Update(float aDeltaTime, const Camera& aCamera, const sf::RenderWin
 
 	if (MT::Length(myOldPlayerPosition - myPlayerPosition) > myDistanceBetweenSpawn)
 	{
-		SpawnAsteroid(aCamera,aRenderWindow);
+		if (MT::Chance(25))
+		{
+			SpawnAsteroid(aCamera, aRenderWindow);
+		}
 	}
 }
 
@@ -113,14 +116,16 @@ void Debris::SpawnAsteroid(const Camera& aCamera, const sf::RenderWindow& aRende
 	myOldPlayerPosition = myPlayerPosition;
 
 
-		float x = sinf(rand());
-		float y = sinf(rand());
+		float x = sinf(static_cast<float>(rand()));
+		float y = sinf(static_cast<float>(rand()));
 
-		x *= static_cast<float>(aRenderWindow.getSize().x);
-		y *= static_cast<float>(aRenderWindow.getSize().y);
+		//The * 2 at the end of theese are to avoid asteroids spawning on-screen.
+		//If possible this should be solved in a more elegant way
+		x *= static_cast<float>(aRenderWindow.getSize().x) * 2;
+		y *= static_cast<float>(aRenderWindow.getSize().y) * 2;
 
 		Asteroid* spawned = new Asteroid();
-		spawned->Init(GET_TEXTURE("asteroidStandard"), true, { aCamera.GetTargetPosition().x + x,aCamera.GetTargetPosition().y + y });
+		spawned->Init(static_cast<AsteroidSize>(rand() % static_cast<int>(AsteroidSize::count)), { aCamera.GetTargetPosition().x + x,aCamera.GetTargetPosition().y + y });
 
 		myDebris.push_back(spawned);
 	
