@@ -42,6 +42,19 @@ void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 	mySmallStarTexture = GET_TEXTURE("smallStar");
 	myLastRenderPosition = aRenderWindow.getView().getCenter();
 	myUpdateRadius = 1000;
+
+	for (unsigned i = 0; i < 100; i++)
+	{
+		SceneryData tmpScenery;
+		float angle = rand();
+		tmpScenery.myPosition.x = -myLastRenderPosition.x + 4000.f * sinf(rand());
+		tmpScenery.myPosition.y = -myLastRenderPosition.y + 4000.f * cosf(rand());
+		tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
+		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
+		tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
+		tmpScenery.myType = static_cast<SceneryType>(rand() % static_cast<int>(SceneryType::Size));
+		myScenery.push_back(tmpScenery);
+	}
 }
 
 void Background::Render(sf::RenderWindow & aRenderWindow, Camera& aGameCamera)
