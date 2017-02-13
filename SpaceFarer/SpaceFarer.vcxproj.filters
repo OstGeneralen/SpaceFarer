@@ -101,5 +101,6 @@
     <ClInclude Include="Game\Weapons\WeaponFactory.h" />
     <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
     <ClInclude Include="Game\Debris.h" />
+    <ClInclude Include="Engine\json.hpp" />
   </ItemGroup>
 </Project>

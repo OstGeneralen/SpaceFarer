@@ -1,5 +1,7 @@
 #include "TextureBank.h"
 #include <iostream>
+#include <fstream>
+#include "Engine\json.hpp"
 
 
 TextureBank& TextureBank::GetInstance()
@@ -25,23 +27,6 @@ sf::Texture * TextureBank::GetTexture(const std::string & aName)
 TextureBank::TextureBank()
 {
 	myErrorTexture.loadFromFile("sprites/Trash/error.png");
-
-	AddTexture("player", "player.png");
-	AddTexture("cursor", "cursor.png");
-	AddTexture("frame", "frame.png");
-	AddTexture("guiBar", "GuiBar.png");
-	AddTexture("smallStar", "smallStar.png");
-	AddTexture("alienGreen", "Trash/alien.png");
-	AddTexture("alienBlue", "Trash/alienBlue.png");
-	AddTexture("asteroidSmall", "Trash/asteroidSmall.png");
-	AddTexture("asteroidStandard", "Trash/asteroidStandard.png");
-	AddTexture("asteroidMedium", "Trash/asteroidMedium.png");
-	AddTexture("asteroidLarge", "Trash/asteroidLarge.png");
-	AddTexture("shot", "Trash/shot.png");
-	AddTexture("star", "Trash/Star.png");
-	AddTexture("spaceStation", "spaceStation.png");
-	AddTexture("radarBase", "radarBase.png");
-	AddTexture("radarPointer", "radarPointer.png");
 }
 
 void TextureBank::AddTexture(const std::string & aName, const std::string & aFilePath)
@@ -56,5 +41,23 @@ void TextureBank::AddTexture(const std::string & aName, const std::string & aFil
 	else
 	{
 		myTextures.push_back(tempTD);
+	}
+}
+
+void TextureBank::LoadTextures(const std::string & aFilePath)
+{
+	std::ifstream inStream(aFilePath);
+
+	jsonWrapper::json jsonElement;
+
+	jsonElement << inStream;
+	
+	for (auto it = jsonElement.begin(); it != jsonElement.end(); ++it)
+	{
+		std::string name = *it;
+		int cutOff = name.find_first_of('-');
+		std::string path = name.substr(cutOff + 1);
+		name = name.substr(0, cutOff);
+		AddTexture(name, path);
 	}
 }

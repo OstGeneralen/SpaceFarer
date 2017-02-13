@@ -3,6 +3,7 @@
 #include "SFML\Graphics.hpp"
 #include "..\Engine\DebugTools.h"
 #include "..\Engine\Camera.h"
+#include "..\Engine\json.hpp"
 
 class Game
 {
@@ -12,7 +13,7 @@ public:
 	void					Update(float aDeltaTime);
 	void					Render();
 private:
-	
+	jsonWrapper::json		myMasterJson;
 	Camera					myDebugCamera;
 	bool&					myShouldRun;
 	Debug::DebugWidget*		myDebugTool;

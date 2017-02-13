@@ -2,6 +2,8 @@
 #include "..\Engine\DebugTools\FPSCounter.h"
 #include "..\Engine\DebugTools\VersionStamp.h"
 #include "States\StateManger.h"
+#include "..\TextureBank.h"
+#include <fstream>
 
 #define RANDOM_SEED 25062009
 
@@ -25,6 +27,11 @@ void Game::Init()
 
 	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
 	myDebugTool->Load(myGameWindow);
+
+	std::ifstream inStream("json/master.json");
+	myMasterJson << inStream;
+
+	TextureBank::GetInstance().LoadTextures(myMasterJson["texturesPath"]);
 
 }
 

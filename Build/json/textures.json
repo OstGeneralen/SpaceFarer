@@ -1,0 +1,17 @@
+{
+	"1": "player-player.png",
+	"2": "frame-frame.png",
+	"3": "guiBar-GuiBar.png",
+	"4": "smallStar-smallStar.png",
+	"5": "alienGreen-Trash/alien.png",
+	"6": "alienBlue-Trash/alienBlue.png",
+	"7": "asteroidSmall-Trash/asteroidSmall.png",
+	"8": "asteroidStandard-Trash/asteroidStandard.png",
+	"9": "asteroidMedium-Trash/asteroidMedium.png",
+	"10": "asteroidLarge-Trash/asteroidLarge.png",
+	"11": "shot-Trash/shot.png",
+	"12": "star-Trash/Star.png",
+	"13": "spaceStation-spaceStation.png",
+	"14": "radarBase-radarBase.png",
+	"15": "radarPointer-radarPointer.png"
+}

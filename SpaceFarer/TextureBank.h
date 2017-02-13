@@ -14,6 +14,8 @@ class TextureBank
 {
 public:
 	static	TextureBank&		GetInstance();
+	
+	void						LoadTextures(const std::string& aFilePath);
 
 	sf::Texture*				GetTexture(const std::string& aName);
 	
