@@ -70,7 +70,7 @@ namespace MathTools
 	static bool Chance(int aProbabilityPercentage)
 	{
 		int value = rand() % 100 + 1;
-		return aProbabilityPercentage < value;
+		return value < aProbabilityPercentage;
 	}
 
 	template <typename T>

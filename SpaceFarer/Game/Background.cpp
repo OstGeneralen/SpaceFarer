@@ -39,7 +39,6 @@ void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 		}
 	}
 	*/
-	mySmallStarTexture = GET_TEXTURE("smallStar");
 	myLastRenderPosition = aRenderWindow.getView().getCenter();
 	myUpdateRadius = 1000;
 
@@ -104,10 +103,10 @@ void Background::Render(sf::RenderWindow & aRenderWindow, Camera& aGameCamera)
 		switch (myScenery[i].myType)
 		{
 		case SceneryType::SmallStar:
-			renderingSprite.setTexture(*mySmallStarTexture);
+			renderingSprite.setTexture(*GET_TEXTURE("smallStar"), true);
 			break;
 		case SceneryType::Planet:
-			renderingSprite.setTexture(*GET_TEXTURE("smallStar"));
+			renderingSprite.setTexture(*GET_TEXTURE("shot"), true);
 			break;
 		default:
 			assert(false && "Non-existing type :D");
@@ -161,7 +160,14 @@ void Background::UpdateStars(const Camera& aGameCamera)
 		tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
 		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
 		tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
-		tmpScenery.myType = static_cast<SceneryType>(rand() % static_cast<int>(SceneryType::Size));
+		if (MT::Chance(15))
+		{
+			tmpScenery.myType = SceneryType::Planet;
+		}
+		else
+		{
+			tmpScenery.myType = SceneryType::SmallStar;
+		}
 		myScenery.push_back(tmpScenery);
 	}
 }

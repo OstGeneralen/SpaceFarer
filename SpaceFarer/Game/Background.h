@@ -40,7 +40,6 @@ private:
 	sf::Sprite					myLayerThreeSprite;
 	std::vector<sf::Vector2f>	myRenderPositions;
 
-	sf::Texture*				mySmallStarTexture;
 	sf::Vector2f				myLastRenderPosition;
 	std::vector<SceneryData>	myScenery;
 	float						myUpdateRadius;
