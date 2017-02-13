@@ -5,6 +5,8 @@
 #include "SFML\System\Vector3.hpp"
 #include <vector>
 
+class Camera;
+
 namespace sf
 {
 	class RenderWindow;
@@ -12,7 +14,9 @@ namespace sf
 
 enum class SceneryType
 {
-	SmallStar
+	SmallStar = 0,
+	Planet = 1,
+	Size = 2
 };
 
 struct SceneryData
@@ -29,7 +33,7 @@ public:
 	Background();
 	//void						Update(float aDeltaTime);
 	void						CreateBackground(const sf::RenderWindow& aRenderWindow);
-	void						Render(sf::RenderWindow& aRenderWindow);
+	void						Render(sf::RenderWindow& aRenderWindow, Camera& aGameCamera);
 private:
 	sf::Sprite					myLayerOneSprite;
 	sf::Sprite					myLayerTwoSprite;
@@ -41,5 +45,5 @@ private:
 	std::vector<SceneryData>	myScenery;
 	float						myUpdateRadius;
 
-	void						UpdateStars();
+	void						UpdateStars(const Camera& aGameCamera);
 };

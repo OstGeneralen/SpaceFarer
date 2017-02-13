@@ -34,7 +34,7 @@ void Camera::SetCenter(Entity* aTarget)
 
 const sf::Vector2f & Camera::GetCenter() const
 {
-	return myTargetCenter;
+	return myView.getCenter();
 }
 
 const sf::Vector2f & Camera::GetTargetPosition() const
@@ -62,8 +62,14 @@ void Camera::UseView(sf::RenderWindow & aWindow)
 
 bool Camera::CanSee(const sf::FloatRect& aHitBox) const
 {
-	sf::FloatRect myViewInWorldSpace(myTarget->GetPosition() - myView.getSize() * 0.5f - sf::Vector2f(100, 100), myView.getSize() + sf::Vector2f(200, 200));
+	sf::FloatRect myViewInWorldSpace(myView.getCenter() - myView.getSize() * 0.5f, myView.getSize());
 	return myViewInWorldSpace.intersects(aHitBox);
+}
+
+bool Camera::CanSee(const sf::Vector2f & aPoint) const
+{
+	sf::FloatRect myViewInWorldSpace(myView.getCenter() - myView.getSize() * 0.5f, myView.getSize());
+	return myViewInWorldSpace.contains(aPoint);
 }
 
 void Camera::Zoom(const float aFactor)
@@ -74,5 +80,10 @@ void Camera::Zoom(const float aFactor)
 const sf::Transform & Camera::GetTransform() const
 {
 	return myView.getTransform();
+}
+
+const sf::Vector2f & Camera::GetDimensions() const
+{
+	return myView.getSize();
 }
 

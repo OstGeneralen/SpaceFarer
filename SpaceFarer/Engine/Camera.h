@@ -22,8 +22,10 @@ public:
 	void Update(float aDeltaTime);
 	void UseView(sf::RenderWindow& aWindow);
 	bool CanSee(const sf::FloatRect& aHitBox) const;
+	bool CanSee(const sf::Vector2f& aPoint) const;
 	void Zoom(const float aFactor);
 	const sf::Transform& GetTransform() const;
+	const sf::Vector2f& GetDimensions() const;
 private:
 	Entity* myTarget = nullptr;
 	sf::Vector2f myTargetCenter;

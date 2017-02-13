@@ -84,6 +84,11 @@ namespace MathTools
 	{
 		return aNr1 > aNr2 ? aNr1 : aNr2;
 	}
+
+	static int PositiveOrNegative()
+	{
+		return pow(-1, rand());
+	}
 }
 
 namespace MT = MathTools;

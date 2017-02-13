@@ -83,7 +83,7 @@ void FlyingState::Render()
 	myGameCamera.UseView(*myGameWindow);
 
 	//Todo: Game Rendering
-	myBackground.Render(*myGameWindow);
+	myBackground.Render(*myGameWindow, myGameCamera);
 	myDebris.Render(myGameCamera, *myGameWindow);
 
 	myPlayer.Render(*myGameWindow);
