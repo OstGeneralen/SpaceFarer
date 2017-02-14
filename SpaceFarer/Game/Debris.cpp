@@ -13,7 +13,7 @@ void Debris::Update(float aDeltaTime, const Camera& aCamera, const sf::RenderWin
 			myDebris[index]->Update(aDeltaTime);
 		}
 
-		if (MT::Length(aCamera.GetTargetPosition() - myDebris[index]->GetPosition()) > 3000.f)
+		if (MT::Length(aCamera.GetTargetPosition() - myDebris[index]->GetPosition()) > aRenderWindow.getSize().x * 5.f)
 		{
 			delete myDebris[index];
 			myDebris[index] = nullptr;
@@ -24,7 +24,7 @@ void Debris::Update(float aDeltaTime, const Camera& aCamera, const sf::RenderWin
 
 	if (MT::Length(myOldPlayerPosition - myPlayerPosition) > myDistanceBetweenSpawn)
 	{
-		if (MT::Chance(25))
+		if (MT::Chance(15))
 		{
 			SpawnAsteroid(aCamera, aRenderWindow);
 		}
@@ -115,18 +115,39 @@ void Debris::SpawnAsteroid(const Camera& aCamera, const sf::RenderWindow& aRende
 {
 	myOldPlayerPosition = myPlayerPosition;
 
+		
+	float x = 0;
+	float y = 0;
 
-		float x = sinf(static_cast<float>(rand()));
-		float y = sinf(static_cast<float>(rand()));
+	while (x == 0 && y == 0)
+	{
+		x = sinf(static_cast<float>(rand()));
+		y = sinf(static_cast<float>(rand()));
+	}
+	
+	sf::Vector2f position(aCamera.GetCenter().x, aCamera.GetCenter().y);
+	position.x += x * static_cast<float>(aRenderWindow.getSize().x);
+	position.y += y * static_cast<float>(aRenderWindow.getSize().y);
 
-		//The * 2 at the end of theese are to avoid asteroids spawning on-screen.
-		//If possible this should be solved in a more elegant way
-		x *= static_cast<float>(aRenderWindow.getSize().x) * 2;
-		y *= static_cast<float>(aRenderWindow.getSize().y) * 2;
+	AsteroidSize spawnSize = static_cast<AsteroidSize>(rand() % static_cast<int>(AsteroidSize::count));
 
-		Asteroid* spawned = new Asteroid();
-		spawned->Init(static_cast<AsteroidSize>(rand() % static_cast<int>(AsteroidSize::count)), { aCamera.GetTargetPosition().x + x,aCamera.GetTargetPosition().y + y });
+	while (aCamera.CanSee(position))
+	{
+		if (spawnSize == AsteroidSize::large)
+		{
+			position.x *= 5.f;
+			position.y *= 5.f;
+		}
+		else
+		{
+			position.x *= 1.5f;
+			position.y *= 1.5f;
+		}
+	}
 
-		myDebris.push_back(spawned);
+	Asteroid* spawned = new Asteroid();
+	spawned->Init(spawnSize, position);
+
+	myDebris.push_back(spawned);
 	
 }

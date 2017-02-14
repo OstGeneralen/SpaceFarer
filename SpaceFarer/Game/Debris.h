@@ -23,6 +23,6 @@ private:
 	std::vector<Asteroid*> myDebris;
 	sf::Vector2f myOldPlayerPosition;
 	sf::Vector2f myPlayerPosition;
-	const float myDistanceBetweenSpawn = 2000;
+	const float myDistanceBetweenSpawn = 200;
 	int mySpawnChance = 30;
 };
