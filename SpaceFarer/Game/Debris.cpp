@@ -24,7 +24,9 @@ void Debris::Update(float aDeltaTime, const Camera& aCamera, const sf::RenderWin
 
 	if (MT::Length(myOldPlayerPosition - myPlayerPosition) > myDistanceBetweenSpawn)
 	{
-		if (MT::Chance(15))
+		myOldPlayerPosition = myPlayerPosition;
+		
+		if (MT::Chance(50))
 		{
 			SpawnAsteroid(aCamera, aRenderWindow);
 		}
@@ -113,9 +115,7 @@ void Debris::DoCollisionLogic(Actor & aActorOne, Actor & aActorTwo)
 
 void Debris::SpawnAsteroid(const Camera& aCamera, const sf::RenderWindow& aRenderWindow)
 {
-	myOldPlayerPosition = myPlayerPosition;
-
-		
+	
 	float x = 0;
 	float y = 0;
 
@@ -126,27 +126,18 @@ void Debris::SpawnAsteroid(const Camera& aCamera, const sf::RenderWindow& aRende
 	}
 	
 	sf::Vector2f position(aCamera.GetCenter().x, aCamera.GetCenter().y);
-	position.x += x * static_cast<float>(aRenderWindow.getSize().x);
-	position.y += y * static_cast<float>(aRenderWindow.getSize().y);
+	position.x += x * static_cast<float>(aCamera.GetDimensions().x);
+	position.y += y * static_cast<float>(aCamera.GetDimensions().y);
 
 	AsteroidSize spawnSize = static_cast<AsteroidSize>(rand() % static_cast<int>(AsteroidSize::count));
-
-	while (aCamera.CanSee(position))
-	{
-		if (spawnSize == AsteroidSize::large)
-		{
-			position.x *= 5.f;
-			position.y *= 5.f;
-		}
-		else
-		{
-			position.x *= 1.5f;
-			position.y *= 1.5f;
-		}
-	}
-
+	
 	Asteroid* spawned = new Asteroid();
 	spawned->Init(spawnSize, position);
+
+	while (aCamera.CanSee(spawned->GetViewHitBox()))
+	{
+		spawned->SetPosition(spawned->GetPosition() * 1.5f);
+	}
 
 	myDebris.push_back(spawned);
 	
