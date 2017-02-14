@@ -16,6 +16,16 @@ void Drawable::Render(sf::RenderWindow & aRenderWindow)
 	aRenderWindow.draw(mySprite);
 }
 
+void Drawable::SetOpacity(unsigned int aOpacity)
+{
+	mySprite.setColor(sf::Color(255, 255, 255, aOpacity));
+}
+
+unsigned int Drawable::GetOpacity()
+{
+	return mySprite.getColor().a;
+}
+
 void Drawable::SetRotation(float aRadian)
 {
 	myTransform.setRotation(MT::ToDegrees(aRadian));

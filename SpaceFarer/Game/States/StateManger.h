@@ -5,6 +5,7 @@
 
 enum class GameState
 {
+	Splash,
 	Menu,
 	Flying,
 	SpaceStation,

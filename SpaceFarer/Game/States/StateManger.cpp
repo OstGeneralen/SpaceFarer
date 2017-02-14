@@ -3,6 +3,7 @@
 #include "FlyingState.h"
 #include "MenuState.h"
 #include "SpaceStationState.h"
+#include "SplashState.h"
 
 StateManager & StateManager::GetInstance()
 {
@@ -63,6 +64,7 @@ StateManager::StateManager()
 {
 	myCurrentState = -1;
 
+	AddState(GameState::Splash, new SplashState);
 	AddState(GameState::Menu, new MenuState);
 	AddState(GameState::Flying, new FlyingState);
 	AddState(GameState::SpaceStation, new SpaceStationState);

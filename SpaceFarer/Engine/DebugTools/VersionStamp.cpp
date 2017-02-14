@@ -13,7 +13,7 @@ namespace Debug
 	void VersionStamp::Load(const sf::RenderWindow & aRenderWindow)
 	{
 		DebugDecorator::Load(aRenderWindow);
-		myDebugText.setPosition(10, aRenderWindow.getSize().y);
+		myDebugText.setPosition(10, aRenderWindow.getSize().y - myDebugText.getGlobalBounds().height);
 	}
 
 	void VersionStamp::Render(sf::RenderWindow& aRenderWindow)
