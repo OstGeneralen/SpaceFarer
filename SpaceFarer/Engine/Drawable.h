@@ -15,6 +15,9 @@ public:
 	Drawable() = default;
 	virtual void			Init(sf::Texture* aTexture);
 	virtual void			Render(sf::RenderWindow& aRenderWindow);
+
+	virtual void			SetOpacity(unsigned int aOpacity);
+	virtual unsigned int	GetOpacity();
 	
 	virtual void			SetRotation(float aRadian);
 	float					GetRotation() const;

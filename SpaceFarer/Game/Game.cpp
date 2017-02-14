@@ -21,17 +21,20 @@ Game::Game(bool& aShouldRun)
 
 void Game::Init()
 {
-	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer V: " + std::to_string(MAJOR) + "." + std::to_string(MINOR) + "." + std::to_string(PATCH));
-
-	StateManager::GetInstance().ChangeState(GameState::Menu, myGameWindow);
+	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer V: " + std::to_string(MAJOR) + "." + std::to_string(MINOR) + "." + std::to_string(PATCH));//, sf::Style::Fullscreen);
 
 	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
 	myDebugTool->Load(myGameWindow);
 
 	std::ifstream inStream("json/master.json");
 	myMasterJson << inStream;
-
 	TextureBank::GetInstance().LoadTextures(myMasterJson["texturesPath"]);
+	
+#ifdef _DEBUG
+	StateManager::GetInstance().ChangeState(GameState::Menu, myGameWindow);
+#else
+	StateManager::GetInstance().ChangeState(GameState::Splash, myGameWindow);
+#endif
 
 }
 

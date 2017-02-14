@@ -54,6 +54,8 @@
     <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
     <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
+    <ClCompile Include="Game\SplashElement.cpp" />
+    <ClCompile Include="Game\States\SplashState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -102,5 +104,7 @@
     <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
     <ClInclude Include="Game\Debris.h" />
     <ClInclude Include="Engine\json.hpp" />
+    <ClInclude Include="Game\SplashElement.h" />
+    <ClInclude Include="Game\States\SplashState.h" />
   </ItemGroup>
 </Project>
