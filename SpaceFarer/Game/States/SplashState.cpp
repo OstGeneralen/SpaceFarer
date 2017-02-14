@@ -7,11 +7,17 @@ void SplashState::Load(sf::RenderWindow * aGameWindow)
 
 	myCurrentSplash = 0;
 
-	mySplashElements.push_back(SplashElement());
-	mySplashElements.back().Init("SFOLogo");
+	float timeToShow = 3.f;
+	float fadeTime = 3.f;
 
 	mySplashElements.push_back(SplashElement());
-	mySplashElements.back().Init("SFMLLogo");
+	mySplashElements.back().Init("SFOLogo", timeToShow, fadeTime);
+
+	mySplashElements.push_back(SplashElement());
+	mySplashElements.back().Init("SFMLLogo", timeToShow, fadeTime);
+
+	mySplashElements.push_back(SplashElement());
+	mySplashElements.back().Init("GameLogo", timeToShow, fadeTime);
 }
 
 void SplashState::Update(float aDeltaTime)

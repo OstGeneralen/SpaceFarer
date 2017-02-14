@@ -16,8 +16,7 @@ public:
 	void Render(sf::RenderWindow& aGameWindow);
 	bool IsFadedOut();
 private:
-	float myShowTimer;
-	float myFadeTimer;
+	float myTimer;
 	float myTimeBetweenFades;
 	float myTimeToShow;
 	bool myIsFadingIn;

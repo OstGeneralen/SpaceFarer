@@ -15,6 +15,8 @@
 #define MINOR 0
 #define PATCH 3
 
+#define VERSION_STRING std::to_string(MAJOR) + "." + std::to_string(MINOR) + "." + std::to_string(PATCH)
+
 #include "DebugDecorator.h"
 
 namespace Debug

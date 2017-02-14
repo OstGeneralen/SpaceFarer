@@ -40,6 +40,7 @@ void TextureBank::AddTexture(const std::string & aName, const std::string & aFil
 	}
 	else
 	{
+		tempTD.myTexture.setSmooth(true);
 		myTextures.push_back(tempTD);
 	}
 }
