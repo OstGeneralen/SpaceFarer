@@ -14,7 +14,6 @@ class Actor : public Entity
 {
 public:
 	virtual void				Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0}, const float aMass = 10.f, const float aRestitution = 1.f);
-	//virtual void				Init(sf::Texture* aTexture, bool aOriginIsMiddle = false, const sf::Vector2f& aStartPosition = { 0,0 });
 	virtual void				Update(float aDeltaTime);
 	void						Render(sf::RenderWindow& aRenderWindow);
 	const sf::Vector2f&			GetPosition() const override;
@@ -30,7 +29,6 @@ public:
 	void						SetVelocity(const sf::Vector2f& aVelocity);
 
 	virtual bool				CheckIfColliding(const Actor& aOther) const;
-	virtual bool				CheckIfColliding(const sf::Vector2f& aPoint) const;
 	sf::FloatRect				GetViewHitBox();
 
 	void						ChangeVelocity(const sf::Vector2f& aVelocity);

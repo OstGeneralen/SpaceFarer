@@ -19,9 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Colliders\CircleCollider.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
-    <ClCompile Include="Game\GUI\Button.cpp" />
     <ClCompile Include="Game\GUI\Cursor.cpp" />
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
@@ -60,12 +58,8 @@
     <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Colliders\AABBCollider.h" />
-    <ClInclude Include="Engine\Colliders\CircleCollider.h" />
-    <ClInclude Include="Engine\Colliders\Collider.h" />
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\Debris.h" />
-    <ClInclude Include="Game\GUI\Button.h" />
     <ClInclude Include="Game\GUI\Cursor.h" />
     <ClInclude Include="Game\SplashElement.h" />
     <ClInclude Include="Game\States\SplashState.h" />

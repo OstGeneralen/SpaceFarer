@@ -22,11 +22,6 @@ void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f
 	myRestitution = aRestitution;
 }
 
-/*void Actor::Init(sf::Texture * aTexture, bool aOriginIsMiddle, const sf::Vector2f & aStartPosition)
-{
-	Init(aTexture, aOriginIsMiddle, aStartPosition, 0, 0);
-}*/
-
 void Actor::Update(float aDeltaTime)
 {
 	myTransform.move(myVelocity * aDeltaTime);
@@ -83,11 +78,6 @@ bool Actor::CheckIfColliding(const Actor & aOther) const
 
 	return false;
 
-}
-
-bool Actor::CheckIfColliding(const sf::Vector2f & aPoint) const
-{
-	return false;
 }
 
 sf::FloatRect Actor::GetViewHitBox()
