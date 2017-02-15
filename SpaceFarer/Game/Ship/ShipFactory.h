@@ -5,10 +5,10 @@
 class ShipFactory
 {
 public:
-	static ShipFactory& GetInstance();
-	Ship BuildShip(ShipModel aType);
+	static ShipFactory&		GetInstance();
+	Ship					BuildShip(ShipModel aType);
 private:
 	ShipFactory();
-	ShipTypes myShipTypes;
-	bool myIsCreated = false;
+	ShipTypes				myShipTypes;
+	bool					myIsCreated = false;
 };

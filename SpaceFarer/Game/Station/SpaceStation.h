@@ -13,9 +13,9 @@ enum class ExitPoint
 class SpaceStation : public Actor
 {
 public:
-	void SetExitPoint(ExitPoint aExitPoint);
-	const sf::Vector2f& GetExitPoint() const;
+	void			SetExitPoint(ExitPoint aExitPoint);
+	const			sf::Vector2f& GetExitPoint() const;
 private:
-	sf::Vector2f myExitPoint;
+	sf::Vector2f	myExitPoint;
 
 };
