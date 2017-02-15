@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\Bullets\BulletManager.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
@@ -50,13 +51,14 @@
     <ClCompile Include="Game\States\StateManger.cpp" />
     <ClCompile Include="Game\Station\SpaceStation.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Game\Weapons\Projectile.cpp" />
+    <ClCompile Include="Game\Bullets\Projectile.cpp" />
     <ClCompile Include="Game\Weapons\StandardWeapon.cpp" />
     <ClCompile Include="TextureBank.cpp" />
     <ClCompile Include="Game\Weapons\Weapon.cpp" />
     <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\Bullets\BulletManager.h" />
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\Debris.h" />
     <ClInclude Include="Game\SplashElement.h" />
@@ -90,7 +92,7 @@
     <ClInclude Include="Game\States\MenuState.h" />
     <ClInclude Include="Game\States\SpaceStationState.h" />
     <ClInclude Include="Game\States\State.h" />
-    <ClInclude Include="Game\Weapons\Projectile.h" />
+    <ClInclude Include="Game\Bullets\Projectile.h" />
     <ClInclude Include="Game\Weapons\StandardWeapon.h" />
     <ClInclude Include="Game\States\StateManger.h" />
     <ClInclude Include="Game\Station\SpaceStation.h" />

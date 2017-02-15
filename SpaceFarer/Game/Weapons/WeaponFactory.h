@@ -11,10 +11,9 @@ class WeaponFactory
 {
 public:
 	static WeaponFactory&	GetInstance();
-	void					Init(std::vector<Actor*>* aActorListPtr);
+	void					Init();
 	Weapon*					CreateWeapon(WeaponTypes aType, Actor* aOwner, const sf::Vector2f& aOffset = { 75, 0 });
 private:
 	WeaponFactory();
 	bool myIsCreated = false;
-	std::vector<Actor*>* myActorListPtr;
 };

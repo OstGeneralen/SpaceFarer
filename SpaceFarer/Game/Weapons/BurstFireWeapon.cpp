@@ -1,5 +1,5 @@
 #include "BurstFireWeapon.h"
-#include "Projectile.h"
+#include "..\Bullets\Projectile.h"
 #include "..\..\TextureBank.h"
 #include "..\..\Engine\MathTools.h"
 
@@ -32,7 +32,7 @@ void BurstFireWeapon::SpecificUpdate(const float aDeltaTime)
 			MT::Normalize(direction);
 
 			projectile->SetVelocity(myActor->GetVelocity() + 1500.f * direction);
-			myActorListPtr->push_back(projectile);
+			BulletManager::GetInstance().AddBullet(projectile);
 
 			++myShotCount;
 		}

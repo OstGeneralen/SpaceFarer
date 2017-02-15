@@ -19,7 +19,7 @@ Ship::Ship(ShipFittings aFittings)
 	myCurrentFuel = myFittings.myFuelTank;
 }
 
-void Ship::SetUp(std::vector<Actor*>* aActorListPtr)
+void Ship::SetUp()
 {
 	NotifyObservers(EVENT_PLAYER_NEW_BALANCE, 0);
 	NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
