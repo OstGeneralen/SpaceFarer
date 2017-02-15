@@ -1,9 +1,11 @@
 #pragma once
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
+#include "GUI\Cursor.h"
 #include "..\Engine\DebugTools.h"
 #include "..\Engine\Camera.h"
 #include "..\Engine\json.hpp"
+
 
 class Game
 {
@@ -14,6 +16,7 @@ public:
 	void					Render();
 private:
 	jsonWrapper::json		myMasterJson;
+	Cursor					myCursor;
 	Camera					myDebugCamera;
 	bool&					myShouldRun;
 	Debug::DebugWidget*		myDebugTool;

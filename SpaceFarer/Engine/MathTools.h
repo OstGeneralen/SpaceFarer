@@ -87,7 +87,7 @@ namespace MathTools
 
 	static int PositiveOrNegative()
 	{
-		return pow(-1, rand());
+		return static_cast<int>(pow(-1, rand()));
 	}
 }
 

@@ -12,8 +12,8 @@ Camera::Camera()
 
 Camera::Camera(const sf::RenderWindow & aRenderWindow)
 {
-	float aW = aRenderWindow.getSize().x;
-	float aH = aRenderWindow.getSize().y;
+	float aW = static_cast<float>(aRenderWindow.getSize().x);
+	float aH = static_cast<float>(aRenderWindow.getSize().y);
 	Resize(aW, aH);
 }
 

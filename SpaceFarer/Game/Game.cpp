@@ -27,6 +27,8 @@ void Game::Init()
 	myGameWindow.create(sf::VideoMode::getDesktopMode(), "SpaceFarer V: " + VERSION_STRING, sf::Style::Fullscreen);
 #endif
 
+	myGameWindow.setMouseCursorVisible(false);
+
 	myDebugTool = new D::FPSCounter(new D::VersionStamp(new D::Tools()));
 	myDebugTool->Load(myGameWindow);
 
@@ -39,6 +41,8 @@ void Game::Init()
 #else
 	StateManager::GetInstance().ChangeState(GameState::Splash, myGameWindow);
 #endif
+
+	myCursor.Init(GET_TEXTURE("Cursor"));
 
 }
 
@@ -73,7 +77,9 @@ void Game::Render()
 	
 	StateManager::GetInstance().Render();
 
+
 	myDebugCamera.UseView(myGameWindow);
+	myCursor.Render(myGameWindow);
 	if (myShouldShowDebugInfo)
 	{
 		myDebugTool->Render(myGameWindow);

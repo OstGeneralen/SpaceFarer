@@ -56,6 +56,7 @@
     <ClCompile Include="Game\Debris.cpp" />
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
+    <ClCompile Include="Game\GUI\Cursor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -106,5 +107,6 @@
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\SplashElement.h" />
     <ClInclude Include="Game\States\SplashState.h" />
+    <ClInclude Include="Game\GUI\Cursor.h" />
   </ItemGroup>
 </Project>

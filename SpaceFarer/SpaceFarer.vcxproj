@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Debris.cpp" />
+    <ClCompile Include="Game\GUI\Cursor.cpp" />
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
     <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
@@ -59,6 +60,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\Debris.h" />
+    <ClInclude Include="Game\GUI\Cursor.h" />
     <ClInclude Include="Game\SplashElement.h" />
     <ClInclude Include="Game\States\SplashState.h" />
     <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
