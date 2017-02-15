@@ -5,13 +5,15 @@
 #include "..\..\TextureBank.h"
 #include "StateManger.h"
 
+#include "..\Bullets\BulletManager.h"
+
 
 void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 {
 
 	State::Load(aRenderWindow);
 
-	WeaponFactory::GetInstance().Init(&myActors);
+	WeaponFactory::GetInstance().Init();
 	myGameCamera = Camera(*aRenderWindow);
 	myGuiCamera = Camera(*aRenderWindow);
 	//myGameCamera.Zoom(4.f);
@@ -31,7 +33,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	myPlayer.GiveShip(&myTempShip);
 
-	myPlayer.GetShip().SetUp(&myActors);
+	myPlayer.GetShip().SetUp();
 
 	myPlayer.SetTarget(mySpaceStation.GetPosition());
 
@@ -39,8 +41,6 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	myGameCamera.SetTarget(&myPlayer.GetShip());
 	myGameCamera.SetCenter(&myPlayer.GetShip());
-
-	myActors.reserve(500);
 
 	mySpaceStation.SetExitPoint(ExitPoint::Left);
 
@@ -57,7 +57,6 @@ void FlyingState::LoadWithPosition(const sf::Vector2f & aPosition)
 
 void FlyingState::Unload()
 {
-	myActors.clear();
 }
 
 void FlyingState::Update(float aDeltaTime)
@@ -68,6 +67,7 @@ void FlyingState::Update(float aDeltaTime)
 	mySpaceStation.Update(aDeltaTime);
 
 	myDebris.Update(aDeltaTime, myGameCamera, *myGameWindow);
+	BulletManager::GetInstance().Update(aDeltaTime, myGameCamera);
 
 	myDebris.HandleCollision(myGameCamera);
 	myDebris.HandleCollision(myGameCamera, &myPlayer.GetShip());
@@ -92,6 +92,8 @@ void FlyingState::Render()
 	{
 		mySpaceStation.Render(*myGameWindow);
 	}
+
+	BulletManager::GetInstance().Render(*myGameWindow);
 
 	//GUI Rendering
 	myGuiCamera.UseView(*myGameWindow);

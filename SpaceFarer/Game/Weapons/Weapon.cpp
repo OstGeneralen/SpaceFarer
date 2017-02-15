@@ -18,9 +18,8 @@ void Weapon::Shoot()
 	}
 }
 
-void Weapon::Init(std::vector<Actor*>* aActorListPtr, Actor * aActor, const sf::Vector2f& aOffset, const float aDelay)
+void Weapon::Init(Actor * aActor, const sf::Vector2f& aOffset, const float aDelay)
 {
-	myActorListPtr = aActorListPtr;
 	myActor = aActor;
 	myOffset = aOffset;
 	myDelay = aDelay;

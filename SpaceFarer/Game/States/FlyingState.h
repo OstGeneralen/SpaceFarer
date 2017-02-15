@@ -29,7 +29,6 @@ private:
 	Background				myBackground;
 	Player					myPlayer;
 	Actor					myTempActor;
-	std::vector<Actor*>		myActors;
 	Gui						myGui;
 
 	Camera					myGameCamera;

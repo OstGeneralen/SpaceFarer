@@ -28,9 +28,9 @@ class Ship : public Actor, public Subject
 public:
 	Ship() = default;
 	Ship(ShipFittings aFittings);	
+	void				SetUp();
 	void				Update(float aDeltaTime) override;
 	void				Render(sf::RenderWindow& aGameWindow) override;
-	void				SetUp(std::vector<Actor*>* aActorListPtr);
 	const sf::String&	GetName() const;
 	void				TakeDamage(float aDamage);
 protected:
