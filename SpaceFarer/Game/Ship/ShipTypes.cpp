@@ -15,6 +15,8 @@ void ShipTypes::CreateBlueprints()
 	current.myTurnSpeed = 200;
 	current.myValue = 1000000;
 	current.myWeaponType = WeaponTypes::BurstFire;
+	current.myMaxHealth = 100;
+	current.myCurrentHealth = current.myMaxHealth;
 	current.myName = "Debug Ship";
 }
 
