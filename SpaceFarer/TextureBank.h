@@ -15,15 +15,15 @@ class TextureBank
 public:
 	static	TextureBank&		GetInstance();
 	
-	void						LoadTextures(const std::string& aFilePath);
+	void				LoadTextures(const std::string& aFilePath);
 
-	sf::Texture*				GetTexture(const std::string& aName);
+	sf::Texture*			GetTexture(const std::string& aName);
 	
 private:
 	TextureBank();
-	void						AddTexture(const std::string& aName, const std::string& aFilePath);
+	void				AddTexture(const std::string& aName, const std::string& aFilePath);
 
 	std::vector<TextureData>	myTextures;
-	sf::Texture					myErrorTexture;
+	sf::Texture			myErrorTexture;
 };
 

@@ -263,3 +263,5 @@ ReleaseBuild/SpaceFarer.ipdb
 ReleaseBuild/SpaceFarer.ipdb
 ReleaseBuild/SpaceFarer.iobj
 *.ipdb
+ReleaseBuild/SpaceFarer.ipdb
+*.iobj

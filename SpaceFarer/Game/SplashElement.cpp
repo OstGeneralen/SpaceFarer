@@ -16,8 +16,7 @@ void SplashElement::Init(const sf::String & aImage, float aTimeToShow, float aFa
 	myImage.SetOpacity(0);
 	myIsFadingIn = true;
 	myTimeToShow = aTimeToShow;
-	myShowTimer = 0;
-	myFadeTimer = 0;
+	myTimer = 0;
 	myTimeBetweenFades = aFadeTime / 255.f;
 }
 
@@ -27,28 +26,28 @@ void SplashElement::Update(float aDeltaTime)
 	{
 		if (myImage.GetOpacity() < 255)
 		{
-			myFadeTimer += aDeltaTime;
+			myTimer += aDeltaTime;
 
-			if (myFadeTimer >= myTimeBetweenFades)
+			if (myTimer >= myTimeBetweenFades)
 			{
-				myFadeTimer = 0;
+				myTimer = 0;
 				myImage.SetOpacity(myImage.GetOpacity() + 1);
 			}
 			return;
 		}
 
-		myFadeTimer = 0;
+		myTimer = 0;
 		myIsFadingIn = false;
 	}
 	else if (myIsFadingOut)
 	{
 		if (myImage.GetOpacity() > 0)
 		{
-			myFadeTimer += aDeltaTime;
+			myTimer += aDeltaTime;
 
-			if (myFadeTimer >= myTimeBetweenFades)
+			if (myTimer >= myTimeBetweenFades)
 			{
-				myFadeTimer = 0;
+				myTimer = 0;
 				myImage.SetOpacity(myImage.GetOpacity() - 1);
 			}
 			return;
@@ -58,9 +57,10 @@ void SplashElement::Update(float aDeltaTime)
 	}
 	else
 	{
-		myShowTimer += aDeltaTime;
-		if (myShowTimer >= myTimeToShow)
+		myTimer += aDeltaTime;
+		if (myTimer >= myTimeToShow)
 		{
+			myTimer = 0;
 			myIsFadingOut = true;
 		}
 	}

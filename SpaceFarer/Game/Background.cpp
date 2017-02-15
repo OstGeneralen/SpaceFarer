@@ -45,9 +45,9 @@ void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 	for (unsigned i = 0; i < 100; i++)
 	{
 		SceneryData tmpScenery;
-		float angle = rand();
-		tmpScenery.myPosition.x = -myLastRenderPosition.x + 4000.f * sinf(rand());
-		tmpScenery.myPosition.y = -myLastRenderPosition.y + 4000.f * cosf(rand());
+		float angle = static_cast<float>(rand());
+		tmpScenery.myPosition.x = -myLastRenderPosition.x + 4000.f * sinf(static_cast<float>(rand()));
+		tmpScenery.myPosition.y = -myLastRenderPosition.y + 4000.f * cosf(static_cast<float>(rand()));
 		tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
 		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
 		tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
@@ -93,7 +93,7 @@ void Background::Render(sf::RenderWindow & aRenderWindow, Camera& aGameCamera)
 
 	if (MT::Length(sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY)) - myLastRenderPosition) > myUpdateRadius / 2)
 	{
-		myLastRenderPosition = sf::Vector2f(cameraX, cameraY);
+		myLastRenderPosition = sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
 		UpdateStars(aGameCamera);
 	}
 
@@ -115,11 +115,11 @@ void Background::Render(sf::RenderWindow & aRenderWindow, Camera& aGameCamera)
 		renderingSprite.setOrigin(0.5f, 0.5f);
 		renderingSprite.setScale(myScenery[i].myScale);
 
-		sf::Vector2f posInCameraSpace = sf::Vector2f(myScenery[i].myPosition.x, myScenery[i].myPosition.y) + sf::Vector2f(cameraX, cameraY);
+		sf::Vector2f posInCameraSpace = sf::Vector2f(myScenery[i].myPosition.x, myScenery[i].myPosition.y) + sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
 		posInCameraSpace.x /= -myScenery[i].myPosition.z;
 		posInCameraSpace.y /= -myScenery[i].myPosition.z;
 
-		posInCameraSpace += sf::Vector2f(cameraX, cameraY);
+		posInCameraSpace += sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
 		renderingSprite.setPosition(posInCameraSpace);
 		renderingSprite.setRotation(myScenery[i].myRotation);
 		if (aGameCamera.CanSee(posInCameraSpace))
@@ -154,7 +154,7 @@ void Background::UpdateStars(const Camera& aGameCamera)
 		SceneryData tmpScenery;
 		float distanceX = aGameCamera.GetDimensions().x + 1000;
 		float distanceY = aGameCamera.GetDimensions().y + 1000;
-		float angle = rand();
+		float angle = static_cast<float>(rand());
 		tmpScenery.myPosition.x = -myLastRenderPosition.x + cos(angle) * distanceX + cos(angle) * MT::Randf() * distanceX;
 		tmpScenery.myPosition.y = -myLastRenderPosition.y + -sin(angle) * distanceY + -sin(angle) * MT::Randf() * distanceY;
 		tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();

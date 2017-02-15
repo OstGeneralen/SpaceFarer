@@ -47,6 +47,8 @@ const sf::Vector2f & Actor::GetPosition() const
 
 const sf::Vector2f & Actor::GetSize() const
 {
+	//Will generate warning "returning address of local variable"
+	//Until further notice this warning can be left
 	return{ mySprite.getLocalBounds().width, mySprite.getLocalBounds().height };
 }
 

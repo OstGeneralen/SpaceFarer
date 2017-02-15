@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Game\Bullets\BulletManager.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
+    <ClCompile Include="Game\GUI\Cursor.cpp" />
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
     <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="Game\Bullets\BulletManager.h" />
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\Debris.h" />
+    <ClInclude Include="Game\GUI\Cursor.h" />
     <ClInclude Include="Game\SplashElement.h" />
     <ClInclude Include="Game\States\SplashState.h" />
     <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
@@ -205,7 +207,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <OutputFile>$(OutDir)..\ReleaseBuild\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>..\SFML\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-graphics.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-main.lib;sfml-system.lib;sfml-window.lib;sfml-graphics.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

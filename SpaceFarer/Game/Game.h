@@ -1,9 +1,11 @@
 #pragma once
 #include "SFML\Window.hpp"
 #include "SFML\Graphics.hpp"
+#include "GUI\Cursor.h"
 #include "..\Engine\DebugTools.h"
 #include "..\Engine\Camera.h"
 #include "..\Engine\json.hpp"
+
 
 class Game
 {
@@ -14,10 +16,11 @@ public:
 	void					Render();
 private:
 	jsonWrapper::json		myMasterJson;
-	Camera					myDebugCamera;
 	bool&					myShouldRun;
-	Debug::DebugWidget*		myDebugTool;
 	bool					myShouldShowDebugInfo;
-	const sf::Color			myClearColor = sf::Color(0, 0, 0, 255);
+	Cursor					myCursor;
+	Debug::DebugWidget*		myDebugTool;
+	Camera					myDebugCamera;
 	sf::RenderWindow		myGameWindow;
+	const sf::Color			myClearColor = sf::Color(0, 0, 0, 255);
 };

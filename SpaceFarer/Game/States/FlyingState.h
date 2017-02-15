@@ -16,12 +16,12 @@
 class FlyingState : public State
 {
 public:
-	void Load(sf::RenderWindow* aRenderWindow) override;
-	void LoadWithPosition(const sf::Vector2f& aPosition) override;
-	void Unload() override;
-	void Update(float aDeltaTime) override;
-	void Render() override;
-	void WindowResize() override;
+	void					Load(sf::RenderWindow* aRenderWindow) override;
+	void					LoadWithPosition(const sf::Vector2f& aPosition) override;
+	void					Unload() override;
+	void					Update(float aDeltaTime) override;
+	void					Render() override;
+	void					WindowResize() override;
 private:
 	Debris					myDebris;
 	SpaceStation			mySpaceStation;
