@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\System\Vector2.hpp>
 #include <assert.h>
+#include <cmath>
 #define MT_PI 3.141592f
 
 namespace MathTools

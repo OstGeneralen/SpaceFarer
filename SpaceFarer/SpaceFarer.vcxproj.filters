@@ -57,6 +57,8 @@
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
     <ClCompile Include="Game\GUI\Cursor.cpp" />
+    <ClCompile Include="Game\GUI\Button.cpp" />
+    <ClCompile Include="Engine\Colliders\CircleCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -108,5 +110,9 @@
     <ClInclude Include="Game\SplashElement.h" />
     <ClInclude Include="Game\States\SplashState.h" />
     <ClInclude Include="Game\GUI\Cursor.h" />
+    <ClInclude Include="Game\GUI\Button.h" />
+    <ClInclude Include="Engine\Colliders\Collider.h" />
+    <ClInclude Include="Engine\Colliders\CircleCollider.h" />
+    <ClInclude Include="Engine\Colliders\AABBCollider.h" />
   </ItemGroup>
 </Project>
