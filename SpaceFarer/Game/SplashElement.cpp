@@ -2,7 +2,6 @@
 #include "SFML\Graphics\Text.hpp"
 #include "SFML\Graphics\RenderWindow.hpp"
 #include "..\TextureBank.h"
-#include "SFML\Window\Event.hpp"
 
 SplashElement::SplashElement()
 {
@@ -23,12 +22,6 @@ void SplashElement::Init(const sf::String & aImage, float aTimeToShow, float aFa
 
 void SplashElement::Update(float aDeltaTime)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
-	{
-		myIsFadingOut = true;
-		myIsFadingIn = false;
-	}
-
 	if (myIsFadingIn)
 	{
 		if (myImage.GetOpacity() < 255)
@@ -77,6 +70,12 @@ void SplashElement::Render(sf::RenderWindow & aGameWindow)
 {
 	myImage.SetPosition({ static_cast<float>(aGameWindow.getSize().x) / 2.f, static_cast<float>(aGameWindow.getSize().y) / 2.f });
 	myImage.Render(aGameWindow);
+}
+
+void SplashElement::Skip()
+{
+	myIsFadingOut = true;
+	myIsFadingIn = false;
 }
 
 bool SplashElement::IsFadedOut()

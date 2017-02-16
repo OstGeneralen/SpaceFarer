@@ -1,5 +1,6 @@
 #include "SplashState.h"
 #include "StateManger.h"
+#include "SFML\Window\Event.hpp"
 
 void SplashState::Load(sf::RenderWindow * aGameWindow)
 {
@@ -30,6 +31,11 @@ void SplashState::Update(float aDeltaTime)
 			StateManager::GetInstance().ChangeState(GameState::Menu, *myGameWindow);
 			return;
 		}
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	{
+      	mySplashElements[myCurrentSplash].Skip();
 	}
 
 	mySplashElements[myCurrentSplash].Update(aDeltaTime);
