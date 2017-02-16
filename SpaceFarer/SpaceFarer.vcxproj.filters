@@ -113,4 +113,7 @@
     <ClInclude Include="Game\GUI\Cursor.h" />
     <ClInclude Include="Game\GUI\HealthBar.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="sf::RenderWindow" Collapsed="true">
+    <Position X="27.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIBAAAAAAAAAQASAAAAAEAAgAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\Kasper\Desktop\SpaceFarerGit\SFML\include\SFML\Graphics\RenderWindow.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::String" Collapsed="true">
+    <Position X="25.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQYgoCAIBAAAAAQAAoBQQwAAEAlAgACAAgAAgAQAA=</HashCode>
+      <FileName>c:\Users\Kasper\Desktop\SpaceFarerGit\SFML\include\SFML\System\String.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="sf::Texture" Collapsed="true">
+    <Position X="27.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAEQAAYMACgAhCACAMAgAAABBAACAAAAJwBAJEAIg=</HashCode>
+      <FileName>c:\Users\Kasper\Desktop\SpaceFarerGit\SFML\include\SFML\Graphics\Texture.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Actor" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAEAKAAEQCAAABAAAAQgEBIAlAAABACAAhAAAA=</HashCode>
+      <FileName>Engine\Actor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entity" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAACAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Entity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game" Collapsed="true">
+    <Position X="29" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAQAAEAAACBAAAAAAgACgAAAAAABACAAAAAAI=</HashCode>
+      <FileName>Game\Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="10.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACAAAAAAAAAACAAAAAAAAAAAACABAAAQAAAAI=</HashCode>
+      <FileName>Game\Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BulletManager" Collapsed="true">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAQAAAABAAAAAAAAJAAAAAAAAA=</HashCode>
+      <FileName>Game\Bullets\BulletManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="iteration_proxy&lt;IteratorType&gt;" Collapsed="true">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAACAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="json_reverse_iterator&lt;Base&gt;" Collapsed="true">
+    <Position X="23.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAQAEEAQAAAAEAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="parser" Collapsed="true">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAEgAAAAAgCAAEAAAAAAAAAAAAIAEAIAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Debris" Collapsed="true">
+    <Position X="15" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAgACAgAAAAAAAAAAACAAAAEAABQABAAAAAAAQA=</HashCode>
+      <FileName>Game\Debris.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cursor" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Game\GUI\Cursor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthBar" Collapsed="true">
+    <Position X="15" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAACQgAAAAA=</HashCode>
+      <FileName>Game\GUI\HealthBar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SplashElement" Collapsed="true">
+    <Position X="22" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAQABAABAAAAAAAABAAAAAAAAJACAARBAAA=</HashCode>
+      <FileName>Game\SplashElement.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SplashState" Collapsed="true">
+    <Position X="22" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAACAAAAAAAAAQAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Game\States\SplashState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurstFireWeapon" Collapsed="true">
+    <Position X="11.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAEAAABAAAAAAAAAAIAAAAAAAACAAAQAAAAAAAAIA=</HashCode>
+      <FileName>Game\Weapons\BurstFireWeapon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Drawable" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAAAAAAACCAAAAIAAAAAAAAgAAJAggAgBACAAAAAAA=</HashCode>
+      <FileName>Engine\Drawable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Asteroid" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAACAAAAAAA=</HashCode>
+      <FileName>Game\Asteroid.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Camera" Collapsed="true">
+    <Position X="27.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQCQAAAAAAQAEAAEABAAAIAJAAAEAAAAAAAAAEAAII=</HashCode>
+      <FileName>Engine\Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Background" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAIABAAAAAIAQAAAgAAAAAAAACABggAAAEAAA=</HashCode>
+      <FileName>Game\Background.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuiText" Collapsed="true">
+    <Position X="30.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAgAACAAACCAAEIAAAgAQIECAgAAABgAAAAAAAA=</HashCode>
+      <FileName>Game\GUI\GuiText.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Radar" Collapsed="true">
+    <Position X="17.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAgAAAAAAAAAAAAAAAAAAACAgAAABACAAAAAAA=</HashCode>
+      <FileName>Game\GUI\Radar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RadarPointer" Collapsed="true">
+    <Position X="19.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAIAAAACAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Game\GUI\RadarPointer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gui" Collapsed="true">
+    <Position X="17.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAEAAAAAAAAAQAAAiBAABAIBAAAkAA=</HashCode>
+      <FileName>Game\GUI\Gui.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Observer" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\Observer\Observer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Subject" Collapsed="true">
+    <Position X="0.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAABAAAAAEAAAAAAgAAA=</HashCode>
+      <FileName>Game\Observer\Subject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ship" Collapsed="true">
+    <Position X="5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAACAgAIIAAAIAABACAAAAAQBAAgAAABAg=</HashCode>
+      <FileName>Game\Ship\Ship.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShipFactory" Collapsed="true">
+    <Position X="29" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAYBAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Game\Ship\ShipFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShipTypes" Collapsed="true">
+    <Position X="30.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAIAAAAAEAAA=</HashCode>
+      <FileName>Game\Ship\ShipTypes.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlyingState" Collapsed="true">
+    <Position X="24.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgACKAAgAEAAEAAgAAgAAAAAAAAACABJAAAgAAAA=</HashCode>
+      <FileName>Game\States\FlyingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuState" Collapsed="true">
+    <Position X="26.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgACAAAAAACAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Game\States\MenuState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceStationState" Collapsed="true">
+    <Position X="28.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Game\States\SpaceStationState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="State" Collapsed="true">
+    <Position X="25.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgACAAAAAAAAAAAAAAkAgAAAAAAAAABIAAAAAAAA=</HashCode>
+      <FileName>Game\States\State.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Projectile" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Game\Bullets\Projectile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StandardWeapon" Collapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Game\Weapons\StandardWeapon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateManager" Collapsed="true">
+    <Position X="23.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAAAAABAAAAgAAAgAQBAAAAAAAAFAAAAAACAA=</HashCode>
+      <FileName>Game\States\StateManger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpaceStation" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Game\Station\SpaceStation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextureBank" Collapsed="true">
+    <Position X="29" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAACAACAAAAAQAAAAIAABAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>TextureBank.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weapon" Collapsed="true">
+    <Position X="10.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAUAABAABAACBAAAAIEAAAAAgABAAAgAAAACAAAAAAA=</HashCode>
+      <FileName>Game\Weapons\Weapon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponFactory" Collapsed="true">
+    <Position X="30.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAEAAAAAABAAAAAAACAACAAAAAAA=</HashCode>
+      <FileName>Game\Weapons\WeaponFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="jsonWrapper::basic_json&lt;ObjectType&lt;U, V, ...Args&gt;, ArrayType&lt;U, ...Args&gt;, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType&lt;U&gt;, JSONSerializer&lt;T, SFINAE&gt;&gt;" Collapsed="true">
+    <Position X="23.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>jAAAMAAAACCAQECGAAhEQAAAgCEBBAAAAEBgAEAIAIA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Debug::VersionStamp" Collapsed="true">
+    <Position X="16.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Engine\DebugTools\VersionStamp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Debug::Tools" Collapsed="true">
+    <Position X="18.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAA=</HashCode>
+      <FileName>Engine\DebugTools.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Debug::DebugDecorator" Collapsed="true">
+    <Position X="15.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Engine\DebugTools\DebugDecorator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Debug::DebugWidget" Collapsed="true">
+    <Position X="16.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAIAAAAAEAAAEAAAAAAAAAABAAAAAAIAA=</HashCode>
+      <FileName>Engine\DebugTools\DebugWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Debug::FPSCounter" Collapsed="true">
+    <Position X="14.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAQAAAAAAAAAAAAEAAAAAAAAAAAAABCAAAAAAAA=</HashCode>
+      <FileName>Engine\DebugTools\FPSCounter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="internal_iterator" Collapsed="true">
+    <Position X="29" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAQAAAAIAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SceneryData" Collapsed="true">
+    <Position X="29" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Game\Background.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ShipFittings" Collapsed="true">
+    <Position X="30.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAEAAAAAAAEAAAIAIAAABBAAEAAAIAAAAACAEA=</HashCode>
+      <FileName>Game\Ship\Ship.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="StateData" Collapsed="true">
+    <Position X="22" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\States\StateManger.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TextureData" Collapsed="true">
+    <Position X="25.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>TextureBank.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::conjunction&lt;...&gt;" Collapsed="true">
+    <Position X="23.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::conjunction&lt;B1&gt;" Collapsed="true">
+    <Position X="25.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::conjunction&lt;B1, Bn...&gt;" Collapsed="true">
+    <Position X="27.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::negation&lt;B&gt;" Collapsed="true">
+    <Position X="25.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::priority_tag&lt;N&gt;" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::priority_tag&lt;0&gt;" Collapsed="true">
+    <Position X="27.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::external_constructor&lt;value_t::boolean&gt;" Collapsed="true">
+    <Position X="29" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_compatible_object_type_impl&lt;B, RealType, CompatibleObjectType&gt;" Collapsed="true">
+    <Position X="30.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_compatible_object_type_impl&lt;true, RealType, CompatibleObjectType&gt;" Collapsed="true">
+    <Position X="22" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_compatible_object_type&lt;BasicJsonType, CompatibleObjectType&gt;" Collapsed="true">
+    <Position X="29" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_basic_json_nested_type&lt;BasicJsonType, T&gt;" Collapsed="true">
+    <Position X="30.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_compatible_array_type&lt;BasicJsonType, CompatibleArrayType&gt;" Collapsed="true">
+    <Position X="22" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_compatible_integer_type_impl&lt;, , &gt;" Collapsed="true">
+    <Position X="27.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_compatible_integer_type_impl&lt;true, RealIntegerType, CompatibleNumberIntegerType&gt;" Collapsed="true">
+    <Position X="25.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::is_compatible_integer_type&lt;RealIntegerType, CompatibleNumberIntegerType&gt;" Collapsed="true">
+    <Position X="23.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::has_from_json&lt;BasicJsonType, T&gt;" Collapsed="true">
+    <Position X="22" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::has_non_default_from_json&lt;BasicJsonType, T&gt;" Collapsed="true">
+    <Position X="23.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::has_to_json&lt;BasicJsonType, T&gt;" Collapsed="true">
+    <Position X="25.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::to_json_fn" Collapsed="true">
+    <Position X="27.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::from_json_fn" Collapsed="true">
+    <Position X="30.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::detail::static_const&lt;T&gt;" Collapsed="true">
+    <Position X="23.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="jsonWrapper::adl_serializer&lt;, &gt;" Collapsed="true">
+    <Position X="22" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="std::hash&lt;jsonWrapper::json&gt;" Collapsed="true">
+    <Position X="27.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MathTools::MTVector2" Collapsed="true">
+    <Position X="23.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Engine\MathTools.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="AsteroidSize" Collapsed="true">
+    <Position X="22" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAABCAAgAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\Asteroid.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SceneryType" Collapsed="true">
+    <Position X="29" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAACAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Game\Background.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GameEvent" Collapsed="true">
+    <Position X="25.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAEAAAAABAAAAAAAAAAADBAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Game\Observer\GameEvents.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ShipModel" Collapsed="true">
+    <Position X="30.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAQAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\Ship\ShipTypes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GameState" Collapsed="true">
+    <Position X="27.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAQAAACAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\States\StateManger.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ExitPoint" Collapsed="true">
+    <Position X="23.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Game\Station\SpaceStation.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WeaponTypes" Collapsed="true">
+    <Position X="23.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game\Weapons\WeaponFactory.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="jsonWrapper::detail::value_t" Collapsed="true">
+    <Position X="22" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAJAAAAACBAAAAAAAgAQAAAAAAAAgAAAAAAAABAAAI=</HashCode>
+      <FileName>Engine\json.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -104,6 +104,9 @@
     <ClInclude Include="Game\Weapons\Weapon.h" />
     <ClInclude Include="Game\Weapons\WeaponFactory.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{798C067D-B261-43DC-A304-5436E09176EB}</ProjectGuid>
     <RootNamespace>SpaceFarer</RootNamespace>
