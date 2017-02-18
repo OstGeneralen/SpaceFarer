@@ -56,6 +56,10 @@ void Ship::Update(float aDeltaTime)
 	{
 		TakeDamage(1);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Add))
+	{
+		TakeDamage(-1);
+	}
 
 	Actor::Update(aDeltaTime);
 	myWeapon->Update(aDeltaTime);
@@ -79,6 +83,7 @@ const sf::String & Ship::GetName() const
 void Ship::TakeDamage(float aDamage)
 {
 	myFittings.myCurrentHealth -= aDamage;
+	myFittings.myCurrentHealth = MT::Clamp(myFittings.myCurrentHealth, 0.f, myFittings.myMaxHealth);
 	myHealthBar.SetHealth(myFittings.myCurrentHealth, myFittings.myMaxHealth);
 }
 
