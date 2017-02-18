@@ -12,7 +12,7 @@ public:
 	Weapon();
 	~Weapon();
 
-	virtual void Init(Actor* aActor, const sf::Vector2f& aOffset, const float aDelay);
+	virtual void Init(Actor* aActor, const sf::Vector2f& aOffset, const float aDelay, const bool aOwnedByPlayer = false);
 	virtual void Shoot();
 	void Update(const float aDeltaTime);
 
@@ -26,4 +26,5 @@ protected:
 	float					myTimer;
 	sf::Vector2f			myOffset;
 	float					myDelay;
+	bool					myIsOwnedByPlayer;
 };

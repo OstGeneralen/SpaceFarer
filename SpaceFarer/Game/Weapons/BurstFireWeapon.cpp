@@ -32,7 +32,14 @@ void BurstFireWeapon::SpecificUpdate(const float aDeltaTime)
 			MT::Normalize(direction);
 
 			projectile->SetVelocity(myActor->GetVelocity() + 1500.f * direction);
-			BulletManager::GetInstance().AddBullet(projectile);
+			if (myIsOwnedByPlayer)
+			{
+				BulletManager::GetInstance().AddPlayerBullet(projectile);
+			}
+			else
+			{
+				BulletManager::GetInstance().AddEnemyBullet(projectile);
+			}
 
 			++myShotCount;
 		}

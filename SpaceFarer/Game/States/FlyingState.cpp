@@ -6,17 +6,20 @@
 #include "StateManger.h"
 
 #include "..\Bullets\BulletManager.h"
+#include "..\CollisionManager.h"
 
 
 void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 {
 
 	State::Load(aRenderWindow);
+	myDebris.Init();
+	BulletManager::GetInstance().Init();
+	CollisionManager::GetInstance().SetPlayer(&myPlayer);
 
 	WeaponFactory::GetInstance().Init();
 	myGameCamera = Camera(*aRenderWindow);
 	myGuiCamera = Camera(*aRenderWindow);
-	//myGameCamera.Zoom(4.f);
 	myGui.Load();
 
 	mySpaceStation.Init(GET_TEXTURE("spaceStation"), true, { 800,900 }, 100000);
@@ -33,7 +36,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 	myPlayer.GiveShip(&myTempShip);
 
-	myPlayer.GetShip().SetUp();
+	myPlayer.GetShip().SetUp(true);
 
 	myPlayer.SetTarget(mySpaceStation.GetPosition());
 
@@ -68,9 +71,7 @@ void FlyingState::Update(float aDeltaTime)
 
 	myDebris.Update(aDeltaTime, myGameCamera, *myGameWindow);
 	BulletManager::GetInstance().Update(aDeltaTime, myGameCamera);
-
-	myDebris.HandleCollision(myGameCamera);
-	myDebris.HandleCollision(myGameCamera, &myPlayer.GetShip());
+	CollisionManager::GetInstance().Update(myGameCamera);
 
 	if (myPlayer.GetShip().CheckIfColliding(mySpaceStation))
 	{

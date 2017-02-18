@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Game\CollisionManager.cpp" />
     <ClCompile Include="Game\Bullets\BulletManager.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
     <ClCompile Include="Game\GUI\Cursor.cpp" />
@@ -59,6 +60,7 @@
     <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\CollisionManager.h" />
     <ClInclude Include="Game\Bullets\BulletManager.h" />
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\Debris.h" />
