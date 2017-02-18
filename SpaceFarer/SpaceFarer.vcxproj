@@ -23,6 +23,7 @@
     <ClCompile Include="Game\Bullets\BulletManager.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
     <ClCompile Include="Game\GUI\Cursor.cpp" />
+    <ClCompile Include="Game\GUI\HealthBar.cpp" />
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
     <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\Debris.h" />
     <ClInclude Include="Game\GUI\Cursor.h" />
+    <ClInclude Include="Game\GUI\HealthBar.h" />
     <ClInclude Include="Game\SplashElement.h" />
     <ClInclude Include="Game\States\SplashState.h" />
     <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
@@ -103,6 +105,9 @@
     <ClInclude Include="TextureBank.h" />
     <ClInclude Include="Game\Weapons\Weapon.h" />
     <ClInclude Include="Game\Weapons\WeaponFactory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{798C067D-B261-43DC-A304-5436E09176EB}</ProjectGuid>

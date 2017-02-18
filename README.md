@@ -3,6 +3,9 @@
 
 **For a detailed changelog we refer to the projects [Wiki](https://github.com/SpaceFarerOrg/SpaceFarer/wiki)**
 
+##Image of the day/week
+![image](https://cloud.githubusercontent.com/assets/2298607/23000235/ea144ffa-f3df-11e6-9c00-6d4bd376cf39.png)
+
 ##Currently featuring
 - Zero-G navigation of ship
 - Space soccer with asteroids

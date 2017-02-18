@@ -6,6 +6,7 @@
 #include "SFML\System\Vector2.hpp"
 #include <vector>
 #include "..\Weapons\WeaponFactory.h"
+#include "..\GUI\HealthBar.h"
 
 struct ShipFittings
 {
@@ -14,6 +15,8 @@ struct ShipFittings
 	float			myFuelUsage = 0;
 	float			myAcceleration = 0;
 	float			myTurnSpeed = 0;
+	float			myMaxHealth = 0;
+	float			myCurrentHealth = 0;
 	int				myValue = 0;
 	float			myInertiaFactor = 0;
 	sf::String		myName = "";
@@ -27,7 +30,9 @@ public:
 	Ship(ShipFittings aFittings);	
 	void				SetUp(const bool aOwnedByPlayer = false);
 	void				Update(float aDeltaTime) override;
+	void				Render(sf::RenderWindow& aGameWindow) override;
 	const sf::String&	GetName() const;
+	void				TakeDamage(float aDamage);
 protected:
 	void				DoMovement(float aDeltaTime);
 	void				UpdateInertia(float aDeltaTime);
@@ -37,5 +42,6 @@ protected:
 	sf::Vector2f		mySideDirection;
 	bool				myInertiaEnabled;
 	Weapon*				myWeapon;
+	HealthBar			myHealthBar;
 
 };

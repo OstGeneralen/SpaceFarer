@@ -26,6 +26,10 @@ void Asteroid::Init(AsteroidSize aSize, const sf::Vector2f & aPosition)
 	default:
 		break;
 	}
+
+	myVelocity.x = cosf(static_cast<float>(rand()));
+	myVelocity.y = sinf(static_cast<float>(rand()));
+	myVelocity *= static_cast<float>(rand() % 50);
 }
 
 

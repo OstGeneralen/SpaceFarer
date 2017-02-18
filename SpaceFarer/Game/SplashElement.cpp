@@ -72,6 +72,12 @@ void SplashElement::Render(sf::RenderWindow & aGameWindow)
 	myImage.Render(aGameWindow);
 }
 
+void SplashElement::Skip()
+{
+	myIsFadingOut = true;
+	myIsFadingIn = false;
+}
+
 bool SplashElement::IsFadedOut()
 {
 	return myIsFadedOut;

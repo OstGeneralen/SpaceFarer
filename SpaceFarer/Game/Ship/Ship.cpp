@@ -3,9 +3,12 @@
 #include "SFML\Window\Event.hpp"
 #include "..\Weapons\StandardWeapon.h"
 #include "..\Weapons\WeaponFactory.h"
+#include "..\..\TextureBank.h"
+#include "SFML\Graphics\RenderWindow.hpp"
 
 Ship::Ship(ShipFittings aFittings)
 {
+	/*
 	myFittings.myHasInertia = aFittings.myHasInertia;
 	myFittings.myFuelTank = aFittings.myFuelTank;
 	myFittings.myFuelUsage = aFittings.myFuelUsage;
@@ -15,6 +18,9 @@ Ship::Ship(ShipFittings aFittings)
 	myFittings.myName = aFittings.myName;
 	myFittings.myInertiaFactor = aFittings.myInertiaFactor;
 	myFittings.myWeaponType = aFittings.myWeaponType;
+	*/
+
+	myFittings = aFittings;
 
 	myCurrentFuel = myFittings.myFuelTank;
 }
@@ -25,6 +31,7 @@ void Ship::SetUp(const bool aOwnedByPlayer)
 	NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, 0, 0);
 	myWeapon = WeaponFactory::GetInstance().CreateWeapon(myFittings.myWeaponType, this, {75, 0}, aOwnedByPlayer);
+	myHealthBar.Init(GET_TEXTURE("HealthBar"));
 }
 
 void Ship::Update(float aDeltaTime)
@@ -45,15 +52,34 @@ void Ship::Update(float aDeltaTime)
 
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Subtract))
+	{
+		TakeDamage(1);
+	}
+
 	Actor::Update(aDeltaTime);
 	myWeapon->Update(aDeltaTime);
 
+	myHealthBar.SetPosition({ GetPosition().x, GetPosition().y - mySprite.getLocalBounds().height });
+
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, myVelocity.x, myVelocity.y);
+}
+
+void Ship::Render(sf::RenderWindow & aGameWindow)
+{
+	Actor::Render(aGameWindow);
+	myHealthBar.Render(aGameWindow);
 }
 
 const sf::String & Ship::GetName() const
 {
 	return myFittings.myName;
+}
+
+void Ship::TakeDamage(float aDamage)
+{
+	myFittings.myCurrentHealth -= aDamage;
+	myHealthBar.SetHealth(myFittings.myCurrentHealth, myFittings.myMaxHealth);
 }
 
 void Ship::DoMovement(float aDeltaTime)
