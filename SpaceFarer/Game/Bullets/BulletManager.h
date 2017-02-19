@@ -14,12 +14,17 @@ class BulletManager
 public:
 	static	BulletManager&		GetInstance();
 
-	void						AddBullet(Projectile* aProjectilePointer);
+	void						Init();
+	void						AddPlayerBullet(Projectile* aProjectilePointer);
+	void						AddEnemyBullet(Projectile* aProjectilePointer);
+	void						RemovePlayerBullet(const int aIndex);
+	void						RemoveEnemyBullet(const int aIndex);
 	void						Update(const float aDT, Camera& aGameCamera);
 	void						Render(sf::RenderWindow& aRenderWindow);
 
 private:
 	BulletManager();
 
-	std::vector<Projectile*>	myProjectiles;
+	std::vector<Actor*>	myPlayerProjectiles;
+	std::vector<Actor*>	myEnemyProjectiles;
 };

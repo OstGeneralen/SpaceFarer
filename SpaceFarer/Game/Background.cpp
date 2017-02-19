@@ -41,7 +41,7 @@ void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 	*/
 	myLastRenderPosition = aRenderWindow.getView().getCenter();
 	myUpdateRadius = 1000;
-
+	myScenery.clear();
 	for (unsigned i = 0; i < 100; i++)
 	{
 		SceneryData tmpScenery;

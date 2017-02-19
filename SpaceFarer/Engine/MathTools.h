@@ -85,6 +85,12 @@ namespace MathTools
 		return aNr1 > aNr2 ? aNr1 : aNr2;
 	}
 
+	template <typename T>
+	static T Clamp(T aValueToClamp, T aMinValue, T aMaxValue)
+	{
+		return aValueToClamp < aMinValue ? aMinValue : (aValueToClamp > aMaxValue ? aMaxValue : aValueToClamp);
+	}
+
 	static int PositiveOrNegative()
 	{
 		return static_cast<int>(pow(-1, rand()));

@@ -28,7 +28,7 @@ class Ship : public Actor, public Subject
 public:
 	Ship() = default;
 	Ship(ShipFittings aFittings);	
-	void				SetUp();
+	void				SetUp(const bool aOwnedByPlayer = false);
 	void				Update(float aDeltaTime) override;
 	void				Render(sf::RenderWindow& aGameWindow) override;
 	const sf::String&	GetName() const;

@@ -18,11 +18,12 @@ void Weapon::Shoot()
 	}
 }
 
-void Weapon::Init(Actor * aActor, const sf::Vector2f& aOffset, const float aDelay)
+void Weapon::Init(Actor * aActor, const sf::Vector2f& aOffset, const float aDelay, const bool aIsFromPlayer)
 {
 	myActor = aActor;
 	myOffset = aOffset;
 	myDelay = aDelay;
+	myIsOwnedByPlayer = aIsFromPlayer;
 }
 
 void Weapon::Update(const float aDeltaTime)

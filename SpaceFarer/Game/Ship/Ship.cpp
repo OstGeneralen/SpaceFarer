@@ -25,13 +25,13 @@ Ship::Ship(ShipFittings aFittings)
 	myCurrentFuel = myFittings.myFuelTank;
 }
 
-void Ship::SetUp()
+void Ship::SetUp(const bool aOwnedByPlayer)
 {
 	NotifyObservers(EVENT_PLAYER_NEW_BALANCE, 0);
 	NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, 0, 0);
+	myWeapon = WeaponFactory::GetInstance().CreateWeapon(myFittings.myWeaponType, this, {75, 0}, aOwnedByPlayer);
 	myHealthBar.Init(GET_TEXTURE("HealthBar"));
-	myWeapon = WeaponFactory::GetInstance().CreateWeapon(myFittings.myWeaponType, this, {75, 0});
 }
 
 void Ship::Update(float aDeltaTime)
@@ -56,6 +56,10 @@ void Ship::Update(float aDeltaTime)
 	{
 		TakeDamage(1);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Add))
+	{
+		TakeDamage(-1);
+	}
 
 	Actor::Update(aDeltaTime);
 	myWeapon->Update(aDeltaTime);
@@ -79,6 +83,7 @@ const sf::String & Ship::GetName() const
 void Ship::TakeDamage(float aDamage)
 {
 	myFittings.myCurrentHealth -= aDamage;
+	myFittings.myCurrentHealth = MT::Clamp(myFittings.myCurrentHealth, 0.f, myFittings.myMaxHealth);
 	myHealthBar.SetHealth(myFittings.myCurrentHealth, myFittings.myMaxHealth);
 }
 
