@@ -59,6 +59,7 @@
     <ClCompile Include="Game\Bullets\Projectile.cpp" />
     <ClCompile Include="Game\GUI\Cursor.cpp" />
     <ClCompile Include="Game\GUI\HealthBar.cpp" />
+    <ClCompile Include="Engine\Animation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -112,6 +113,7 @@
     <ClInclude Include="Game\Bullets\Projectile.h" />
     <ClInclude Include="Game\GUI\Cursor.h" />
     <ClInclude Include="Game\GUI\HealthBar.h" />
+    <ClInclude Include="Engine\Animation.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
