@@ -19,7 +19,7 @@ void Animation::AddFrame(const sf::IntRect& aRect, float aTime)
 	myFrames.push_back(newFrame);
 }
 
-void Animation::Play(bool aIsRepeating)
+void Animation::Play(const sf::Vector2f& aPosition, bool aIsRepeating)
 {
 	myIsPlaying = true;
 	myIsRepeat = aIsRepeating;
@@ -27,6 +27,8 @@ void Animation::Play(bool aIsRepeating)
 	myTimer = 0;
 
 	myCurrentSprite.setTextureRect(myFrames[0].myRect);
+
+	myCurrentSprite.setPosition(aPosition);
 }
 
 void Animation::Update(float aDeltaTime)

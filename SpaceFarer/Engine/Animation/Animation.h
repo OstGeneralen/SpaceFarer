@@ -20,7 +20,7 @@ public:
 	Animation() = default;
 	Animation(sf::Texture* aTexture);
 	void AddFrame(const sf::IntRect& aRect, float aTime);
-	void Play(bool aIsRepeating = false);
+	void Play(const sf::Vector2f& aPosition, bool aIsRepeating = false);
 	void Update(float aDeltaTime);
 	void Render(sf::RenderWindow& aGameWindow);
 

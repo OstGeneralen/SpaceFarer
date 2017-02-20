@@ -76,8 +76,6 @@ void FlyingState::Update(float aDeltaTime)
 		StateManager::GetInstance().ChangeStateWithPosition(GameState::SpaceStation, *myGameWindow, mySpaceStation.GetExitPoint());
 	}
 
-	myTestAnimation->Update(aDeltaTime);
-
 }
 
 void FlyingState::Render()

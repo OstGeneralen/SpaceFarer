@@ -2,8 +2,8 @@
 #include <string>
 #include "..\json.hpp"
 
-#define GET_ANIMATION(aAnimationName) AnimationFactory::GetInstance().GetAnimation(aAnimationName);
-#define DESTROY_ANIMATION(aAnimation) AnimationFactory::GetInstance().DestroyAnimation(aAnimation);
+#define GET_ANIMATION(aAnimationName) AnimationFactory::GetInstance().GetAnimation(aAnimationName)
+#define DESTROY_ANIMATION(aAnimation) AnimationFactory::GetInstance().DestroyAnimation(aAnimation)
 
 class Animation;
 
