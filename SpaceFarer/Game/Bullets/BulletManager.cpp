@@ -27,6 +27,9 @@ void BulletManager::AddEnemyBullet(Projectile * aProjectilePointer)
 
 void BulletManager::RemovePlayerBullet(const int aIndex)
 {
+	myExplosionAnimations.push_back(GET_ANIMATION("test"));
+	myExplosionAnimations.back()->Play(myPlayerProjectiles[aIndex]->GetPosition());
+
 	delete myPlayerProjectiles[aIndex];
 	myPlayerProjectiles[aIndex] = nullptr;
 	myPlayerProjectiles[aIndex] = myPlayerProjectiles.back();
@@ -35,6 +38,9 @@ void BulletManager::RemovePlayerBullet(const int aIndex)
 
 void BulletManager::RemoveEnemyBullet(const int aIndex)
 {
+	myExplosionAnimations.push_back(GET_ANIMATION("test"));
+	myExplosionAnimations.back()->Play(myPlayerProjectiles[aIndex]->GetPosition());
+
 	delete myEnemyProjectiles[aIndex];
 	myEnemyProjectiles[aIndex] = nullptr;
 	myEnemyProjectiles[aIndex] = myEnemyProjectiles.back();
@@ -68,6 +74,21 @@ void BulletManager::Update(const float aDT, Camera& aGameCamera)
 	{
 		myEnemyProjectiles[i]->Update(aDT);
 	}
+
+	// Updating explosions
+	for (unsigned i = 0; i < myExplosionAnimations.size(); i++)
+	{
+		myExplosionAnimations[i]->Update(aDT);
+	}
+	for (int i = myExplosionAnimations.size() - 1; i >= 0; --i)
+	{
+		if (myExplosionAnimations[i]->IsDone())
+		{
+			DESTROY_ANIMATION(myExplosionAnimations[i]);
+			myExplosionAnimations[i] = myExplosionAnimations.back();
+			myExplosionAnimations.pop_back();
+		}
+	}
 }
 
 void BulletManager::Render(sf::RenderWindow & aRenderWindow)
@@ -79,6 +100,11 @@ void BulletManager::Render(sf::RenderWindow & aRenderWindow)
 	for (unsigned i = 0; i < myEnemyProjectiles.size(); ++i)
 	{
 		myEnemyProjectiles[i]->Render(aRenderWindow);
+	}
+
+	for (unsigned i = 0; i < myExplosionAnimations.size(); i++)
+	{
+		myExplosionAnimations[i]->Render(aRenderWindow);
 	}
 }
 

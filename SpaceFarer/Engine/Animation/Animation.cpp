@@ -52,6 +52,11 @@ void Animation::Render(sf::RenderWindow & aGameWindow)
 	}
 }
 
+const bool Animation::IsDone() const
+{
+	return myIsPlaying == false;
+}
+
 void Animation::ChangeFrame()
 {
 	myTimer = 0;

@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include "Projectile.h"
+#include "..\..\Engine\Animation\Animation.h"
+#include "..\..\Engine\Animation\AnimationFactory.h"
 
 class Camera;
 
@@ -27,4 +29,5 @@ private:
 
 	std::vector<Actor*>	myPlayerProjectiles;
 	std::vector<Actor*>	myEnemyProjectiles;
+	std::vector<Animation*> myExplosionAnimations;
 };

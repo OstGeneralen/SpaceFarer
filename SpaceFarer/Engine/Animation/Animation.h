@@ -23,6 +23,7 @@ public:
 	void Play(const sf::Vector2f& aPosition, bool aIsRepeating = false);
 	void Update(float aDeltaTime);
 	void Render(sf::RenderWindow& aGameWindow);
+	const bool IsDone() const;
 
 private:
 	void ChangeFrame();
