@@ -19,7 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Animation.cpp" />
+    <ClCompile Include="Engine\Animation\Animation.cpp" />
+    <ClCompile Include="Engine\Animation\AnimationFactory.cpp" />
     <ClCompile Include="Game\CollisionManager.cpp" />
     <ClCompile Include="Game\Bullets\BulletManager.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
@@ -62,7 +63,8 @@
     <ClCompile Include="Game\Weapons\WeaponFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Animation.h" />
+    <ClInclude Include="Engine\Animation\Animation.h" />
+    <ClInclude Include="Engine\Animation\AnimationFactory.h" />
     <ClInclude Include="Game\CollisionManager.h" />
     <ClInclude Include="Game\Bullets\BulletManager.h" />
     <ClInclude Include="Engine\json.hpp" />

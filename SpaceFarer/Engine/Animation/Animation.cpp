@@ -3,11 +3,7 @@
 #include "SFML\Graphics\Rect.hpp"
 #include "SFML\Graphics\RenderWindow.hpp"
 
-struct Frame
-{
-	float myTime = 0;
-	sf::IntRect myRect = { 0,0,0,0 };
-};
+
 
 Animation::Animation(sf::Texture * aTexture)
 {
@@ -23,11 +19,14 @@ void Animation::AddFrame(const sf::IntRect& aRect, float aTime)
 	myFrames.push_back(newFrame);
 }
 
-void Animation::Play()
+void Animation::Play(bool aIsRepeating)
 {
 	myIsPlaying = true;
+	myIsRepeat = aIsRepeating;
 	myCurrentFrame = 0;
 	myTimer = 0;
+
+	myCurrentSprite.setTextureRect(myFrames[0].myRect);
 }
 
 void Animation::Update(float aDeltaTime)
@@ -64,10 +63,11 @@ void Animation::ChangeFrame()
 		}
 		else
 		{
-			myIsPlaying = true;
+			myIsPlaying = false;
 		}
 	}
-	else
+	
+	if(myIsPlaying)
 	{
 		myCurrentSprite.setTextureRect(myFrames[myCurrentFrame].myRect);
 	}

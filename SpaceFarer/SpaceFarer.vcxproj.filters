@@ -60,7 +60,8 @@
     <ClCompile Include="Game\GUI\Cursor.cpp" />
     <ClCompile Include="Game\CollisionManager.cpp" />
     <ClCompile Include="Game\GUI\HealthBar.cpp" />
-    <ClCompile Include="Engine\Animation.cpp" />
+    <ClCompile Include="Engine\Animation\Animation.cpp" />
+    <ClCompile Include="Engine\Animation\AnimationFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -115,7 +116,8 @@
     <ClInclude Include="Game\GUI\Cursor.h" />
     <ClInclude Include="Game\CollisionManager.h" />
     <ClInclude Include="Game\GUI\HealthBar.h" />
-    <ClInclude Include="Engine\Animation.h" />
+    <ClInclude Include="Engine\Animation\Animation.h" />
+    <ClInclude Include="Engine\Animation\AnimationFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

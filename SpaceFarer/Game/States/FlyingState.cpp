@@ -8,7 +8,6 @@
 #include "..\Bullets\BulletManager.h"
 #include "..\CollisionManager.h"
 
-
 void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 {
 
@@ -49,7 +48,6 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 
 
 	myBackground.CreateBackground(*myGameWindow);
-
 }
 
 void FlyingState::LoadWithPosition(const sf::Vector2f & aPosition)
@@ -77,6 +75,9 @@ void FlyingState::Update(float aDeltaTime)
 	{
 		StateManager::GetInstance().ChangeStateWithPosition(GameState::SpaceStation, *myGameWindow, mySpaceStation.GetExitPoint());
 	}
+
+	myTestAnimation->Update(aDeltaTime);
+
 }
 
 void FlyingState::Render()
