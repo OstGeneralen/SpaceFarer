@@ -9,7 +9,7 @@
 ##Currently featuring
 - Zero-G navigation of ship
 - Space soccer with asteroids
-- An alien with a hat (which also can be used as a soccer ball)
+- ~~An alien with a hat (which also can be used as a soccer ball)~~ We scratched this for reasons unknown (or very known)
 
 ##Planned (more like dreamt up and possibly added in a later iteration) Features
 - Space Shipping, deliver goods from A to B
