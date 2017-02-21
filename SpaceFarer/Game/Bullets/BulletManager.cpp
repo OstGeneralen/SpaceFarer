@@ -27,7 +27,7 @@ void BulletManager::AddEnemyBullet(Projectile * aProjectilePointer)
 
 void BulletManager::RemovePlayerBullet(const int aIndex)
 {
-	myExplosionAnimations.push_back(GET_ANIMATION("test"));
+	myExplosionAnimations.push_back(GET_ANIMATION("smallExplosion"));
 	myExplosionAnimations.back()->Play(myPlayerProjectiles[aIndex]->GetPosition());
 
 	delete myPlayerProjectiles[aIndex];
@@ -38,7 +38,7 @@ void BulletManager::RemovePlayerBullet(const int aIndex)
 
 void BulletManager::RemoveEnemyBullet(const int aIndex)
 {
-	myExplosionAnimations.push_back(GET_ANIMATION("test"));
+	myExplosionAnimations.push_back(GET_ANIMATION("smallExplosion"));
 	myExplosionAnimations.back()->Play(myPlayerProjectiles[aIndex]->GetPosition());
 
 	delete myEnemyProjectiles[aIndex];

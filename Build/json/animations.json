@@ -10,12 +10,12 @@
       "3": [ 64, 0 ]
     }
   },
-  "test2":
+  "smallExplosion":
    {
-    "texture": "TestAnim2",
+    "texture": "SmallExplosion",
     "width": 32,
     "height": 32,
-    "time": 0.2,
+    "time": 0.02,
     "frames": 
     {
       "1": [ 0, 0 ],
