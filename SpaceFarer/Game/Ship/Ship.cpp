@@ -5,6 +5,7 @@
 #include "..\Weapons\WeaponFactory.h"
 #include "..\..\TextureBank.h"
 #include "SFML\Graphics\RenderWindow.hpp"
+#include "..\States\StateManger.h"
 
 Ship::Ship(ShipFittings aFittings)
 {
@@ -85,6 +86,12 @@ void Ship::TakeDamage(float aDamage)
 	myFittings.myCurrentHealth -= aDamage;
 	myFittings.myCurrentHealth = MT::Clamp(myFittings.myCurrentHealth, 0.f, myFittings.myMaxHealth);
 	myHealthBar.SetHealth(myFittings.myCurrentHealth, myFittings.myMaxHealth);
+
+}
+
+bool Ship::GetIsDead() const
+{
+	return myFittings.myCurrentHealth <= 0;
 }
 
 void Ship::DoMovement(float aDeltaTime)

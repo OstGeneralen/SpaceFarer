@@ -33,6 +33,7 @@ public:
 	void				Render(sf::RenderWindow& aGameWindow) override;
 	const sf::String&	GetName() const;
 	void				TakeDamage(float aDamage);
+	bool				GetIsDead() const;
 protected:
 	void				DoMovement(float aDeltaTime);
 	void				UpdateInertia(float aDeltaTime);

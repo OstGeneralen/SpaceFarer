@@ -1,6 +1,7 @@
 #include "CollisionManager.h"
 #include "..\Engine\MathTools.h"
 #include "..\Engine\Camera.h"
+#include <assert.h>
 
 
 CollisionManager & CollisionManager::GetInstance()
@@ -90,5 +91,13 @@ void CollisionManager::HandleCollision(Actor* aActorOne, Actor* aActorTwo)
 		sf::Vector2f impulse = j * normal;
 		aActorOne->ChangeVelocity(-1.f / (aActorOne->GetMass()) * impulse);
 		aActorTwo->ChangeVelocity(1.f / (aActorTwo->GetMass()) * impulse);
+
+		if (aActorTwo == &myPlayerPtr->GetShip())
+		{
+			float damageToTake = 0;
+			damageToTake -= velocityScalar * 0.01f;
+			damageToTake += abs(aActorOne->GetMass() - aActorTwo->GetMass()) * 0.25f;
+			myPlayerPtr->GetShip().TakeDamage(damageToTake);
+		}
 	}
 }

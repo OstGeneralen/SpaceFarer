@@ -76,6 +76,11 @@ void FlyingState::Update(float aDeltaTime)
 		StateManager::GetInstance().ChangeStateWithPosition(GameState::SpaceStation, *myGameWindow, mySpaceStation.GetExitPoint());
 	}
 
+	if (myPlayer.GetShip().GetIsDead())
+	{
+		StateManager::GetInstance().ChangeState(GameState::Menu, *myGameWindow);
+	}
+
 }
 
 void FlyingState::Render()
