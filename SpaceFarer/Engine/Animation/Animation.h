@@ -19,20 +19,22 @@ class Animation
 public:  
 	Animation() = default;
 	Animation(sf::Texture* aTexture);
-	void AddFrame(const sf::IntRect& aRect, float aTime);
-	void Play(const sf::Vector2f& aPosition, bool aIsRepeating = false);
-	void Update(float aDeltaTime);
-	void Render(sf::RenderWindow& aGameWindow);
-	const bool IsDone() const;
+	void					AddFrame(const sf::IntRect& aRect, float aTime);
+	void					Play(const sf::Vector2f& aPosition, bool aIsRepeating = false);
+	void					Update(float aDeltaTime);
+	void					Render(sf::RenderWindow& aGameWindow);
+	const bool				IsDone() const;
 
 private:
-	void ChangeFrame();
-	bool myIsPlaying;
-	bool myIsRepeat;
-	sf::Texture* myTexture = nullptr;
-	sf::Sprite myCurrentSprite;
-	std::vector<Frame> myFrames;
-	unsigned int myCurrentFrame;
-	float myTimer;
+	void					ChangeFrame();
 
+	bool					myIsPlaying;
+	bool					myIsRepeat;
+
+	float					myTimer;
+	unsigned int			myCurrentFrame;
+
+	sf::Texture*			myTexture = nullptr;
+	sf::Sprite				myCurrentSprite;
+	std::vector<Frame>		myFrames;
 };
