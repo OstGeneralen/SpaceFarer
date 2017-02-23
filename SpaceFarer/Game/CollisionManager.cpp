@@ -95,8 +95,7 @@ void CollisionManager::HandleCollision(Actor* aActorOne, Actor* aActorTwo)
 		if (aActorTwo == &myPlayerPtr->GetShip())
 		{
 			float damageToTake = 0;
-			damageToTake -= velocityScalar * 0.01f;
-			damageToTake += abs(aActorOne->GetMass() - aActorTwo->GetMass()) * 0.25f;
+			damageToTake -= velocityScalar * 0.025f;
 			myPlayerPtr->GetShip().TakeDamage(damageToTake);
 		}
 	}

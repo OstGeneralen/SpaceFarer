@@ -13,7 +13,7 @@
 
 #define MAJOR 0
 #define MINOR 0
-#define PATCH 3
+#define PATCH 4
 
 #define VERSION_STRING std::to_string(MAJOR) + "." + std::to_string(MINOR) + "." + std::to_string(PATCH)
 

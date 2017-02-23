@@ -62,6 +62,8 @@
     <ClCompile Include="Game\GUI\HealthBar.cpp" />
     <ClCompile Include="Engine\Animation\Animation.cpp" />
     <ClCompile Include="Engine\Animation\AnimationFactory.cpp" />
+    <ClCompile Include="Engine\Colliders\CircleCollider.cpp" />
+    <ClCompile Include="Engine\Colliders\AABBCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -118,6 +120,9 @@
     <ClInclude Include="Game\GUI\HealthBar.h" />
     <ClInclude Include="Engine\Animation\Animation.h" />
     <ClInclude Include="Engine\Animation\AnimationFactory.h" />
+    <ClInclude Include="Engine\Colliders\Collider.h" />
+    <ClInclude Include="Engine\Colliders\CircleCollider.h" />
+    <ClInclude Include="Engine\Colliders\AABBCollider.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

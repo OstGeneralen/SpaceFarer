@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="Engine\Animation\Animation.cpp" />
     <ClCompile Include="Engine\Animation\AnimationFactory.cpp" />
+    <ClCompile Include="Engine\Colliders\AABBCollider.cpp" />
+    <ClCompile Include="Engine\Colliders\CircleCollider.cpp" />
     <ClCompile Include="Game\CollisionManager.cpp" />
     <ClCompile Include="Game\Bullets\BulletManager.cpp" />
     <ClCompile Include="Game\Debris.cpp" />
@@ -65,6 +67,9 @@
   <ItemGroup>
     <ClInclude Include="Engine\Animation\Animation.h" />
     <ClInclude Include="Engine\Animation\AnimationFactory.h" />
+    <ClInclude Include="Engine\Colliders\AABBCollider.h" />
+    <ClInclude Include="Engine\Colliders\CircleCollider.h" />
+    <ClInclude Include="Engine\Colliders\Collider.h" />
     <ClInclude Include="Game\CollisionManager.h" />
     <ClInclude Include="Game\Bullets\BulletManager.h" />
     <ClInclude Include="Engine\json.hpp" />
