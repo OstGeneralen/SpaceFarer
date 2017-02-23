@@ -6,11 +6,15 @@ ShipFactory & ShipFactory::GetInstance()
 
 	if (!instace->myIsCreated)
 	{
-		instace->myShipTypes.CreateBlueprints();
 		instace->myIsCreated = true;
 	}
 
 	return *instace;
+}
+
+void ShipFactory::Init(const std::string & aJsonPath)
+{
+	myShipTypes.CreateBlueprints(aJsonPath);
 }
 
 Ship ShipFactory::BuildShip(ShipModel aType)

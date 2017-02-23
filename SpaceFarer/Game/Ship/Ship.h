@@ -19,7 +19,7 @@ struct ShipFittings
 	float			myCurrentHealth = 0;
 	int				myValue = 0;
 	float			myInertiaFactor = 0;
-	sf::String		myName = "";
+	std::string		myName = "";
 	WeaponTypes		myWeaponType;
 };
 
@@ -31,7 +31,7 @@ public:
 	void				SetUp(const bool aOwnedByPlayer = false);
 	void				Update(float aDeltaTime) override;
 	void				Render(sf::RenderWindow& aGameWindow) override;
-	const sf::String&	GetName() const;
+	const std::string&	GetName() const;
 	void				TakeDamage(float aDamage);
 	bool				GetIsDead() const;
 protected:

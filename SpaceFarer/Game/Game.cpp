@@ -4,6 +4,7 @@
 #include "States\StateManger.h"
 #include "..\TextureBank.h"
 #include "..\Engine\Animation\AnimationFactory.h"
+#include "..\Game\Ship\ShipFactory.h"
 #include <fstream>
 
 #define RANDOM_SEED 25062009
@@ -37,6 +38,7 @@ void Game::Init()
 	myMasterJson << inStream;
 	TextureBank::GetInstance().LoadTextures(myMasterJson["texturesPath"]);
 	AnimationFactory::GetInstance().Init(myMasterJson["animationsPath"]);
+	ShipFactory::GetInstance().Init(myMasterJson["shipsPath"]);
 	
 #ifdef _DEBUG
 	StateManager::GetInstance().ChangeState(GameState::Menu, myGameWindow);

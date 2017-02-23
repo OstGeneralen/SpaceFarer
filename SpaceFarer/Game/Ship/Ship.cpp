@@ -76,7 +76,7 @@ void Ship::Render(sf::RenderWindow & aGameWindow)
 	myHealthBar.Render(aGameWindow);
 }
 
-const sf::String & Ship::GetName() const
+const std::string& Ship::GetName() const
 {
 	return myFittings.myName;
 }
