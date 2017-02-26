@@ -1,6 +1,7 @@
 #include "Actor.h"
 #include <SFML\Graphics\RenderWindow.hpp>
 #include "MathTools.h"
+#include <assert.h>
 
 void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f& aStartPosition, const float aMass, const float aRestitution)
 {
@@ -37,6 +38,15 @@ void Actor::Render(sf::RenderWindow& aRenderWindow)
 	mySprite.setPosition(myTransform.getPosition());
 	mySprite.setRotation(myTransform.getRotation());
 	aRenderWindow.draw(mySprite);
+	
+#ifdef _DEBUG
+	if (myCollider != nullptr)
+	{
+		myCollider->Render(aRenderWindow);
+	}
+#endif 
+
+
 }
 
 void Actor::SetPosition(const sf::Vector2f & aPosition)
@@ -79,6 +89,8 @@ void Actor::SetVelocity(const sf::Vector2f & aVelocity)
 
 bool Actor::CheckIfColliding(const Actor & aActor)
 {
+	assert(&aActor != this && "Checking collision against self");
+
 	if (myCollider != nullptr)
 	{
 		CircleCollider* testCircleCollider = dynamic_cast<CircleCollider*>(&aActor.GetCollider());

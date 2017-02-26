@@ -1,4 +1,5 @@
 {
-  "texturesPath": "json/textures.json" , 
-    "animationsPath": "json/animations.json"
+  "texturesPath": "json/textures.json" ,
+  "animationsPath": "json/animations.json",
+  "shipsPath":  "json/ships.json"
 }

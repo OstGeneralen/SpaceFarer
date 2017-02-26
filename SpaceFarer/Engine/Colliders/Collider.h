@@ -4,6 +4,11 @@
 class CircleCollider;
 class AABBCollider;
 
+namespace sf
+{
+	class RenderWindow;
+}
+
 struct Circle
 {
 	sf::Vector2f myPosition;
@@ -28,5 +33,6 @@ public:
 	virtual bool			IsCollidingWith(const CircleCollider& aOther) const = 0;
 	virtual bool			IsCollidingWith(const AABBCollider& aOther) const = 0;
 	virtual bool			IsCollidingWith(const sf::Vector2f& aPoint) const = 0;
+	virtual void			Render(sf::RenderWindow& aGameWindow) = 0;
 protected:
 };

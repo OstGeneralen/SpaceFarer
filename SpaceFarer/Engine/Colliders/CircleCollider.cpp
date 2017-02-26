@@ -2,6 +2,8 @@
 #include "AABBCollider.h"
 #include "SFML\System\Vector2.hpp"
 #include "..\MathTools.h"
+#include "SFML\Graphics\RenderWindow.hpp"
+#include "SFML\Graphics\CircleShape.hpp"
 
 CircleCollider::CircleCollider(const Circle & aCircle)
 {
@@ -66,4 +68,15 @@ bool CircleCollider::IsCollidingWith(const sf::Vector2f & aPoint) const
 	}
 
 	return false;
+}
+
+void CircleCollider::Render(sf::RenderWindow & aGameWindow)
+{
+	sf::CircleShape renderShape = sf::CircleShape(myCircle.myRadius);
+	renderShape.setOutlineColor(sf::Color(255, 0, 0, 255));
+	renderShape.setOrigin({ renderShape.getLocalBounds().width / 2, renderShape.getLocalBounds().height / 2 });
+	renderShape.setPosition(myCircle.myPosition);
+	renderShape.setOutlineThickness(2.f);
+	renderShape.setFillColor(sf::Color::Transparent);
+	aGameWindow.draw(renderShape);
 }

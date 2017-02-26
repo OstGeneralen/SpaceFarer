@@ -1,6 +1,8 @@
 #include "AABBCollider.h"
 #include "CircleCollider.h"
 #include "..\MathTools.h"
+#include "SFML\Graphics\RenderWindow.hpp"
+#include "SFML\Graphics\RectangleShape.hpp"
 
 AABBCollider::AABBCollider(const AABB & aAABB)
 {
@@ -111,4 +113,14 @@ bool AABBCollider::IsCollidingWith(const sf::Vector2f & aPoint) const
 	}
 
 	return false;
+}
+
+void AABBCollider::Render(sf::RenderWindow & aGameWindow)
+{
+	sf::RectangleShape renderShape = sf::RectangleShape({ myAABB.myWidth, myAABB.myHeight });
+	renderShape.setFillColor(sf::Color::Transparent);
+	renderShape.setOutlineColor(sf::Color(255, 0, 0, 255));
+	renderShape.setOutlineThickness(2.f);
+	renderShape.setPosition(myAABB.myTopLeftPoint);
+	aGameWindow.draw(renderShape);
 }
