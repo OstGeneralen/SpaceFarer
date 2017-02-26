@@ -13,7 +13,7 @@ class ShipTypes
 {
 public:
 	ShipTypes();
-	void															CreateBlueprints();
+	void															CreateBlueprints(const std::string& aJsonPath);
 	ShipFittings													Build(ShipModel aShipModel);
 private:
 	std::array<ShipFittings, static_cast<int>(ShipModel::Count)>	myShipModels;

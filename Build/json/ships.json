@@ -1,0 +1,27 @@
+{
+  "WeaponTypes": { "Standard": 0, "BurstFire": 1 },
+  "0": {
+    "name": "Debug",
+    "maxHealth": 100,
+    "weaponType": 1,
+    "value": 1000000,
+    "turnSpeed": 200,
+    "acceleration": 500,
+    "fuelUsage": 0,
+    "fuelTankCapacity": 1000,
+    "inertiaFactor": 10,
+    "hasInertia": true
+  },
+  "1": {
+    "name": "Standard",
+    "maxHealth": 100,
+    "weaponType": 0,
+    "value": 500,
+    "turnSpeed": 150,
+    "acceleration": 125,
+    "fuelUsage": 50,
+    "fuelTankCapacity": 500,
+    "inertiaFactor": 25,
+    "hasInertia": true
+  }
+}
