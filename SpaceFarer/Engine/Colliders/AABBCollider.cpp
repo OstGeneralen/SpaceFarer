@@ -1,4 +1,5 @@
 #include "AABBCollider.h"
+#include "..\MathTools.h"
 
 AABBCollider::AABBCollider(const AABB & aAABB)
 {
@@ -17,32 +18,76 @@ void AABBCollider::SetPosition(const sf::Vector2f & aPosition)
 	myAABB.myPosition = aPosition;
 }
 
-sf::Vector2f AABBCollider::GetPosition() const
+const AABB & AABBCollider::GetAABB() const
 {
-	return myAABB.myPosition;
+	return myAABB;
 }
 
-float AABBCollider::GetWidth() const
+bool AABBCollider::IsCollidingWith(const AABB& aOther)
 {
-	return myAABB.myWidth;
+	if (aOther.myPosition.x > myAABB.myPosition.x + myAABB.myWidth)
+	{
+		//Is too far right
+		return false;
+	}
+	if (aOther.myPosition.x + aOther.myWidth < myAABB.myPosition.x)
+	{
+		//Is too far left
+		return false;
+	}
+	if (aOther.myPosition.y > myAABB.myPosition.y + myAABB.myHeight)
+	{
+		//Is to low
+		return false;
+	}
+	if (aOther.myPosition.y + aOther.myHeight < myAABB.myPosition.y)
+	{
+		//Is too high (don't do meth kids)
+		return false;
+	}
+
+	return true;
 }
 
-float AABBCollider::GetHeight() const
+bool AABBCollider::IsCollidingWith(const Circle & aOther)
 {
-	return myAABB.myHeight;
-}
+	sf::Vector2f nearestPoint;
 
-bool AABBCollider::IsCollidingWith(const AABBCollider & aOther)
-{
-	return false;
-}
+	nearestPoint.x = MT::Clamp<float>(nearestPoint.x, myAABB.myPosition.x, myAABB.myPosition.x + myAABB.myWidth);
+	nearestPoint.y = MT::Clamp<float>(nearestPoint.y, myAABB.myPosition.y, myAABB.myPosition.y + myAABB.myHeight);
 
-bool AABBCollider::IsCollidingWith(const CircleCollider & aOther)
-{
+	float distance = MT::Length(nearestPoint - aOther.myPosition);
+
+	if (distance <= aOther.myRadius)
+	{
+		return true;
+	}
+
 	return false;
 }
 
 bool AABBCollider::IsCollidingWith(const sf::Vector2f & aPoint)
 {
+	if (aPoint.x > myAABB.myPosition.x + myAABB.myWidth)
+	{
+		//Is too far right
+		return false;
+	}
+	if (aPoint.x < myAABB.myPosition.x)
+	{
+		//Is too far left
+		return false;
+	}
+	if (aPoint.y > myAABB.myPosition.y + myAABB.myHeight)
+	{
+		//Is to low
+		return false;
+	}
+	if (aPoint.y < myAABB.myPosition.y)
+	{
+		//Is too high (don't do meth kids)
+		return false;
+	}
+
 	return false;
 }

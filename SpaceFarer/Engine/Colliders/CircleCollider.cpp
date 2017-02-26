@@ -18,16 +18,16 @@ void CircleCollider::SetPosition(const sf::Vector2f & aPositon)
 	myCircle.myPosition = aPositon;
 }
 
-sf::Vector2f CircleCollider::GetPosition() const
+const Circle & CircleCollider::GetCircle() const
 {
-	return myCircle.myPosition;
+	return myCircle;
 }
 
-bool CircleCollider::IsCollidingWith(const CircleCollider& aOther)
+bool CircleCollider::IsCollidingWith(const Circle& aOther)
 {
-	float distance = MT::Length(myCircle.myPosition - aOther.GetPosition);
+	float distance = MT::Length(myCircle.myPosition - aOther.myPosition);
 
-	if (distance < (myCircle.myRadius + aOther.GetRadius()))
+	if (distance < (myCircle.myRadius + aOther.myRadius))
 	{
 		return true;
 	}
@@ -35,8 +35,20 @@ bool CircleCollider::IsCollidingWith(const CircleCollider& aOther)
 	return false;
 }
 
-bool CircleCollider::IsCollidingWith(const AABBCollider & aOther)
+bool CircleCollider::IsCollidingWith(const AABB& aOther)
 {
+	sf::Vector2f nearestPoint;
+
+	nearestPoint.x = MT::Clamp<float>(nearestPoint.x, aOther.myPosition.x, aOther.myPosition.x + aOther.myWidth);
+	nearestPoint.y = MT::Clamp<float>(nearestPoint.y, aOther.myPosition.y, aOther.myPosition.y + aOther.myHeight);
+
+	float distance = MT::Length(nearestPoint - myCircle.myPosition);
+
+	if (distance <= myCircle.myRadius)
+	{
+		return true;
+	}
+
 	return false;
 }
 
@@ -48,9 +60,4 @@ bool CircleCollider::IsCollidingWith(const sf::Vector2f & aPoint)
 	}
 
 	return false;
-}
-
-float CircleCollider::GetRadius() const
-{
-	return myCircle.myRadius;
 }
