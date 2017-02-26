@@ -70,6 +70,7 @@
     <ClInclude Include="Engine\Colliders\AABBCollider.h" />
     <ClInclude Include="Engine\Colliders\CircleCollider.h" />
     <ClInclude Include="Engine\Colliders\Collider.h" />
+    <ClInclude Include="Engine\Colliders\Colliders.h" />
     <ClInclude Include="Game\CollisionManager.h" />
     <ClInclude Include="Game\Bullets\BulletManager.h" />
     <ClInclude Include="Engine\json.hpp" />

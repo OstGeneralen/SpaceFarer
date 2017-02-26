@@ -123,6 +123,7 @@
     <ClInclude Include="Engine\Colliders\Collider.h" />
     <ClInclude Include="Engine\Colliders\CircleCollider.h" />
     <ClInclude Include="Engine\Colliders\AABBCollider.h" />
+    <ClInclude Include="Engine\Colliders\Colliders.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

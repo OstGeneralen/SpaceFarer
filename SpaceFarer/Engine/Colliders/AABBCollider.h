@@ -8,11 +8,14 @@ public:
 	AABBCollider(const sf::Vector2f& aPosition, float aWidth, float aHeight);
 	
 	void			SetPosition(const sf::Vector2f& aPosition) override;
-	const AABB&		GetAABB() const;
+	sf::Vector2f	GetPosition() const override;
+	sf::Vector2f	GetTopLeftPoint() const;
+	float			GetWidth() const;
+	float			GetHeight() const;
 
-	bool			IsCollidingWith(const AABB& aOther) override;
-	bool			IsCollidingWith(const Circle& aOther) override;
-	bool			IsCollidingWith(const sf::Vector2f& aPoint) override;
+	bool			IsCollidingWith(const AABBCollider& aOther) const override;
+	bool			IsCollidingWith(const CircleCollider& aOther) const override;
+	bool			IsCollidingWith(const sf::Vector2f& aPoint) const override;
 private:
 	AABB			myAABB;
 };

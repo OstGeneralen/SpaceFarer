@@ -3,6 +3,7 @@
 #include <SFML\Graphics\Texture.hpp>
 #include <SFML\Graphics\Rect.hpp>
 #include <SFML\System\Vector2.hpp>
+#include "Colliders\Colliders.h"
 #include "Entity.h"
 
 namespace sf
@@ -25,15 +26,20 @@ public:
 	const float					GetMass() const;
 	const float					GetRestitution() const;
 
+	void						GiveCollider(Collider* aCollider);
+	Collider&					GetCollider() const;
+
 	void						SetPosition(const sf::Vector2f& aPosition) override;
 	void						SetVelocity(const sf::Vector2f& aVelocity);
-
-	virtual bool				CheckIfColliding(const Actor& aOther) const;
+	
+	bool						CheckIfColliding(const Actor& aActor);
+	
 	sf::FloatRect				GetViewHitBox();
 
 	void						ChangeVelocity(const sf::Vector2f& aVelocity);
 protected:
 	sf::Texture*				myTexture = nullptr;
+	Collider*					myCollider = nullptr;
 	sf::Sprite					mySprite;
 	sf::Transformable			myTransform;
 	sf::Vector2f				myVelocity;

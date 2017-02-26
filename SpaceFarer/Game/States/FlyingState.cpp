@@ -36,6 +36,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	myPlayer.GiveShip(&myTempShip);
 
 	myPlayer.GetShip().SetUp(true);
+	myPlayer.GetShip().GiveCollider(new CircleCollider(myPlayer.GetShip().GetPosition(), myPlayer.GetShip().GetSize().x / 2));
 
 	myPlayer.SetTarget(mySpaceStation.GetPosition());
 
@@ -45,6 +46,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	myGameCamera.SetCenter(&myPlayer.GetShip());
 
 	mySpaceStation.SetExitPoint(ExitPoint::Left);
+	mySpaceStation.GiveCollider(new CircleCollider(mySpaceStation.GetPosition(), mySpaceStation.GetSize().x / 2));
 
 
 	myBackground.CreateBackground(*myGameWindow);

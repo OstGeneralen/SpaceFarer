@@ -25,6 +25,11 @@ void Actor::Init(sf::Texture* aTexture, bool aOriginIsMiddle, const sf::Vector2f
 void Actor::Update(float aDeltaTime)
 {
 	myTransform.move(myVelocity * aDeltaTime);
+	
+	if (myCollider != nullptr)
+	{
+		myCollider->SetPosition(GetPosition());
+	}
 }
 
 void Actor::Render(sf::RenderWindow& aRenderWindow)
@@ -38,6 +43,11 @@ void Actor::SetPosition(const sf::Vector2f & aPosition)
 {
 	myTransform.setPosition(aPosition);
 	mySprite.setPosition(aPosition);
+
+	if (myCollider != nullptr)
+	{
+		myCollider->SetPosition(aPosition);
+	}
 }
 
 const sf::Vector2f & Actor::GetPosition() const
@@ -67,17 +77,25 @@ void Actor::SetVelocity(const sf::Vector2f & aVelocity)
 	myVelocity = aVelocity;
 }
 
-bool Actor::CheckIfColliding(const Actor & aOther) const
+bool Actor::CheckIfColliding(const Actor & aActor)
 {
-	float distance = abs(MT::Length(this->GetPosition() - aOther.GetPosition()));
-
-	if (distance < this->GetRadius() + aOther.GetRadius())
+	if (myCollider != nullptr)
 	{
-		return true;
+		CircleCollider* testCircleCollider = dynamic_cast<CircleCollider*>(&aActor.GetCollider());
+
+		if (testCircleCollider != nullptr)
+		{
+			return myCollider->IsCollidingWith(*testCircleCollider);
+		}
+
+		AABBCollider* testAABBCollider = dynamic_cast<AABBCollider*>(&aActor.GetCollider());
+
+		if (testAABBCollider != nullptr)
+		{
+			return myCollider->IsCollidingWith(*testAABBCollider);
+		}
 	}
-
 	return false;
-
 }
 
 sf::FloatRect Actor::GetViewHitBox()
@@ -108,4 +126,21 @@ const float Actor::GetMass() const
 const float Actor::GetRestitution() const
 {
 	return myRestitution;
+}
+
+void Actor::GiveCollider(Collider * aCollider)
+{
+	if (myCollider != nullptr)
+	{
+		delete myCollider;
+		myCollider = nullptr;
+	}
+
+	myCollider = aCollider;
+	aCollider = nullptr;
+}
+
+Collider& Actor::GetCollider() const
+{
+	return *myCollider;
 }

@@ -1,4 +1,5 @@
 #include "CircleCollider.h"
+#include "AABBCollider.h"
 #include "SFML\System\Vector2.hpp"
 #include "..\MathTools.h"
 
@@ -18,16 +19,21 @@ void CircleCollider::SetPosition(const sf::Vector2f & aPositon)
 	myCircle.myPosition = aPositon;
 }
 
-const Circle & CircleCollider::GetCircle() const
+sf::Vector2f CircleCollider::GetPosition() const
 {
-	return myCircle;
+	return myCircle.myPosition;
 }
 
-bool CircleCollider::IsCollidingWith(const Circle& aOther)
+float CircleCollider::GetRadius() const
 {
-	float distance = MT::Length(myCircle.myPosition - aOther.myPosition);
+	return myCircle.myRadius;
+}
 
-	if (distance < (myCircle.myRadius + aOther.myRadius))
+bool CircleCollider::IsCollidingWith(const CircleCollider& aOther) const
+{
+	float distance = MT::Length(myCircle.myPosition - aOther.GetPosition());
+
+	if (distance < (myCircle.myRadius + aOther.GetRadius()))
 	{
 		return true;
 	}
@@ -35,12 +41,12 @@ bool CircleCollider::IsCollidingWith(const Circle& aOther)
 	return false;
 }
 
-bool CircleCollider::IsCollidingWith(const AABB& aOther)
+bool CircleCollider::IsCollidingWith(const AABBCollider& aOther) const
 {
 	sf::Vector2f nearestPoint;
 
-	nearestPoint.x = MT::Clamp<float>(nearestPoint.x, aOther.myPosition.x, aOther.myPosition.x + aOther.myWidth);
-	nearestPoint.y = MT::Clamp<float>(nearestPoint.y, aOther.myPosition.y, aOther.myPosition.y + aOther.myHeight);
+	nearestPoint.x = MT::Clamp<float>(nearestPoint.x, aOther.GetTopLeftPoint().x, aOther.GetTopLeftPoint().x + aOther.GetWidth());
+	nearestPoint.y = MT::Clamp<float>(nearestPoint.y, aOther.GetTopLeftPoint().y, aOther.GetTopLeftPoint().y + aOther.GetHeight());
 
 	float distance = MT::Length(nearestPoint - myCircle.myPosition);
 
@@ -52,7 +58,7 @@ bool CircleCollider::IsCollidingWith(const AABB& aOther)
 	return false;
 }
 
-bool CircleCollider::IsCollidingWith(const sf::Vector2f & aPoint)
+bool CircleCollider::IsCollidingWith(const sf::Vector2f & aPoint) const
 {
 	if (MT::Length(myCircle.myPosition - aPoint) < myCircle.myRadius)
 	{

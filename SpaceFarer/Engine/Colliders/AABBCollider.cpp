@@ -1,4 +1,5 @@
 #include "AABBCollider.h"
+#include "CircleCollider.h"
 #include "..\MathTools.h"
 
 AABBCollider::AABBCollider(const AABB & aAABB)
@@ -11,36 +12,56 @@ AABBCollider::AABBCollider(const sf::Vector2f & aPosition, float aWidth, float a
 	myAABB.myPosition = aPosition;
 	myAABB.myWidth = aWidth;
 	myAABB.myHeight = aHeight;
+	myAABB.myTopLeftPoint.x = aPosition.x - aWidth / 2.f;
+	myAABB.myTopLeftPoint.y = aPosition.y - aHeight / 2.f;
 }
 
 void AABBCollider::SetPosition(const sf::Vector2f & aPosition)
 {
 	myAABB.myPosition = aPosition;
+	myAABB.myTopLeftPoint.x = aPosition.x - myAABB.myWidth / 2.f;
+	myAABB.myTopLeftPoint.y = aPosition.y - myAABB.myHeight / 2.f;
 }
 
-const AABB & AABBCollider::GetAABB() const
+sf::Vector2f AABBCollider::GetPosition() const
 {
-	return myAABB;
+	return myAABB.myPosition;
 }
 
-bool AABBCollider::IsCollidingWith(const AABB& aOther)
+sf::Vector2f AABBCollider::GetTopLeftPoint() const
 {
-	if (aOther.myPosition.x > myAABB.myPosition.x + myAABB.myWidth)
+	return myAABB.myTopLeftPoint;
+}
+
+float AABBCollider::GetWidth() const
+{
+	return myAABB.myWidth;
+}
+
+float AABBCollider::GetHeight() const
+{
+	return myAABB.myHeight;
+}
+
+
+bool AABBCollider::IsCollidingWith(const AABBCollider& aOther) const
+{
+	if (aOther.GetTopLeftPoint().x > myAABB.myTopLeftPoint.x + myAABB.myWidth)
 	{
 		//Is too far right
 		return false;
 	}
-	if (aOther.myPosition.x + aOther.myWidth < myAABB.myPosition.x)
+	if (aOther.GetTopLeftPoint().x + aOther.GetWidth() < myAABB.myTopLeftPoint.x)
 	{
 		//Is too far left
 		return false;
 	}
-	if (aOther.myPosition.y > myAABB.myPosition.y + myAABB.myHeight)
+	if (aOther.GetTopLeftPoint().y > myAABB.myTopLeftPoint.y + myAABB.myHeight)
 	{
 		//Is to low
 		return false;
 	}
-	if (aOther.myPosition.y + aOther.myHeight < myAABB.myPosition.y)
+	if (aOther.GetTopLeftPoint().y + aOther.GetHeight() < myAABB.myTopLeftPoint.y)
 	{
 		//Is too high (don't do meth kids)
 		return false;
@@ -49,16 +70,16 @@ bool AABBCollider::IsCollidingWith(const AABB& aOther)
 	return true;
 }
 
-bool AABBCollider::IsCollidingWith(const Circle & aOther)
+bool AABBCollider::IsCollidingWith(const CircleCollider& aOther) const 
 {
 	sf::Vector2f nearestPoint;
 
-	nearestPoint.x = MT::Clamp<float>(nearestPoint.x, myAABB.myPosition.x, myAABB.myPosition.x + myAABB.myWidth);
-	nearestPoint.y = MT::Clamp<float>(nearestPoint.y, myAABB.myPosition.y, myAABB.myPosition.y + myAABB.myHeight);
+	nearestPoint.x = MT::Clamp<float>(nearestPoint.x, myAABB.myTopLeftPoint.x, myAABB.myTopLeftPoint.x + myAABB.myWidth);
+	nearestPoint.y = MT::Clamp<float>(nearestPoint.y, myAABB.myTopLeftPoint.y, myAABB.myTopLeftPoint.y + myAABB.myHeight);
 
-	float distance = MT::Length(nearestPoint - aOther.myPosition);
+	float distance = MT::Length(nearestPoint - aOther.GetPosition());
 
-	if (distance <= aOther.myRadius)
+	if (distance <= aOther.GetRadius())
 	{
 		return true;
 	}
@@ -66,24 +87,24 @@ bool AABBCollider::IsCollidingWith(const Circle & aOther)
 	return false;
 }
 
-bool AABBCollider::IsCollidingWith(const sf::Vector2f & aPoint)
+bool AABBCollider::IsCollidingWith(const sf::Vector2f & aPoint) const
 {
-	if (aPoint.x > myAABB.myPosition.x + myAABB.myWidth)
+	if (aPoint.x > myAABB.myTopLeftPoint.x + myAABB.myWidth)
 	{
 		//Is too far right
 		return false;
 	}
-	if (aPoint.x < myAABB.myPosition.x)
+	if (aPoint.x < myAABB.myTopLeftPoint.x)
 	{
 		//Is too far left
 		return false;
 	}
-	if (aPoint.y > myAABB.myPosition.y + myAABB.myHeight)
+	if (aPoint.y > myAABB.myTopLeftPoint.y + myAABB.myHeight)
 	{
 		//Is to low
 		return false;
 	}
-	if (aPoint.y < myAABB.myPosition.y)
+	if (aPoint.y < myAABB.myTopLeftPoint.y)
 	{
 		//Is too high (don't do meth kids)
 		return false;

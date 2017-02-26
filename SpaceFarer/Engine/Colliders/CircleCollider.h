@@ -8,11 +8,12 @@ public:
 	CircleCollider(const sf::Vector2f& aPosition, float aRadius);
 	
 	void			SetPosition(const sf::Vector2f& aPositon) override;
-	const Circle&	GetCircle() const;
+	sf::Vector2f	GetPosition() const override;
+	float			GetRadius() const;
 	
-	bool			IsCollidingWith(const Circle& aOther) override;
-	bool			IsCollidingWith(const AABB& aOther) override;
-	bool			IsCollidingWith(const sf::Vector2f& aPoint) override;
+	bool			IsCollidingWith(const CircleCollider& aOther) const override;
+	bool			IsCollidingWith(const AABBCollider& aOther) const override;
+	bool			IsCollidingWith(const sf::Vector2f& aPoint) const override;
 private:
 	Circle			myCircle;
 };

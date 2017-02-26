@@ -85,6 +85,7 @@ void Debris::SpawnAsteroid(const Camera& aCamera, const sf::RenderWindow& aRende
 		spawned->SetPosition(spawned->GetPosition() * 1.5f);
 	}
 
+	spawned->GiveCollider(new CircleCollider({ x,y }, spawned->GetSize().x / 2));
 	myDebris.push_back(spawned);
 	
 }
