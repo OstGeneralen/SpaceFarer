@@ -47,6 +47,8 @@ bool CircleCollider::IsCollidingWith(const AABBCollider& aOther) const
 {
 	sf::Vector2f nearestPoint;
 
+	nearestPoint = myCircle.myPosition;
+
 	nearestPoint.x = MT::Clamp<float>(nearestPoint.x, aOther.GetTopLeftPoint().x, aOther.GetTopLeftPoint().x + aOther.GetWidth());
 	nearestPoint.y = MT::Clamp<float>(nearestPoint.y, aOther.GetTopLeftPoint().y, aOther.GetTopLeftPoint().y + aOther.GetHeight());
 

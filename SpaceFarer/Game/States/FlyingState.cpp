@@ -36,7 +36,7 @@ void FlyingState::Load(sf::RenderWindow * aRenderWindow)
 	myPlayer.GiveShip(&myTempShip);
 
 	myPlayer.GetShip().SetUp(true);
-	myPlayer.GetShip().GiveCollider(new CircleCollider(myPlayer.GetShip().GetPosition(), myPlayer.GetShip().GetSize().x / 2));
+	myPlayer.GetShip().GiveCollider(new AABBCollider(myPlayer.GetShip().GetPosition(), myPlayer.GetShip().GetSize().x, myPlayer.GetShip().GetSize().y));
 
 	myPlayer.SetTarget(mySpaceStation.GetPosition());
 

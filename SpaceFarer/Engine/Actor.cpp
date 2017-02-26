@@ -93,6 +93,13 @@ bool Actor::CheckIfColliding(const Actor & aActor)
 
 	if (myCollider != nullptr)
 	{
+		AABBCollider* testAABBCollider = dynamic_cast<AABBCollider*>(&aActor.GetCollider());
+
+		if (testAABBCollider != nullptr)
+		{
+			return myCollider->IsCollidingWith(*testAABBCollider);
+		}
+
 		CircleCollider* testCircleCollider = dynamic_cast<CircleCollider*>(&aActor.GetCollider());
 
 		if (testCircleCollider != nullptr)
@@ -100,12 +107,6 @@ bool Actor::CheckIfColliding(const Actor & aActor)
 			return myCollider->IsCollidingWith(*testCircleCollider);
 		}
 
-		AABBCollider* testAABBCollider = dynamic_cast<AABBCollider*>(&aActor.GetCollider());
-
-		if (testAABBCollider != nullptr)
-		{
-			return myCollider->IsCollidingWith(*testAABBCollider);
-		}
 	}
 	return false;
 }
