@@ -11,8 +11,8 @@ public:
 	void		Update(float aDeltaTime) override;
 	void		Render() override;
 private:
-	static void		StartGame(sf::RenderWindow& aRenderWindow);
-	Button<sf::RenderWindow> myStartButton;
+	void		StartGame();
+	Button<MenuState> myStartButton;
 	Camera		myCamera;
 
 };

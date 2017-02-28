@@ -10,8 +10,8 @@ void MenuState::Load(sf::RenderWindow * aGameWindow)
 
 	myCamera = Camera(*aGameWindow);
 
-	void(*startFunction)(sf::RenderWindow&) = (MenuState::StartGame);
-	myStartButton.Init(GET_TEXTURE("StartButton"), *myGameWindow, startFunction);
+	void(MenuState::*startFunction)() = &MenuState::StartGame;
+	myStartButton.Init(GET_TEXTURE("StartButton"), this, startFunction);
 
 	myStartButton.SetPosition({ myGameWindow->getSize().x / 2.f, myGameWindow->getSize().y / 2.f });
 
@@ -35,7 +35,7 @@ void MenuState::Render()
 
 }
 
-void MenuState::StartGame(sf::RenderWindow& aRenderWindow)
+void MenuState::StartGame()
 {
-	StateManager::GetInstance().ChangeState(GameState::Flying, aRenderWindow);
+	StateManager::GetInstance().ChangeState(GameState::Flying, *myGameWindow);
 }
