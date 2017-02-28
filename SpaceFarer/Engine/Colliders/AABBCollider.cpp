@@ -114,7 +114,7 @@ bool AABBCollider::IsCollidingWith(const sf::Vector2f & aPoint) const
 		return false;
 	}
 
-	return false;
+	return true;
 }
 
 void AABBCollider::Render(sf::RenderWindow & aGameWindow)

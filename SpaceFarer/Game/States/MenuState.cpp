@@ -1,6 +1,8 @@
 #include "MenuState.h"
 #include "SFML\Window\Event.hpp"
 #include "StateManger.h"
+#include "..\..\TextureBank.h"
+#include "..\GUI\Cursor.h"
 
 void MenuState::Load(sf::RenderWindow * aGameWindow)
 {
@@ -8,23 +10,32 @@ void MenuState::Load(sf::RenderWindow * aGameWindow)
 
 	myCamera = Camera(*aGameWindow);
 
-	myTempText.SetString("Press Space to enter Space");
-	myTempText.SetOriginToMiddle(true, true);
-	myTempText.SetPosition({ static_cast<float>(myGameWindow->getSize().x / 2), static_cast<float>(myGameWindow->getSize().y / 2 )});
+	void(*startFunction)(sf::RenderWindow&) = (MenuState::StartGame);
+	myStartButton.Init(GET_TEXTURE("StartButton"), *myGameWindow, startFunction);
 
+	myStartButton.SetPosition({ myGameWindow->getSize().x / 2.f, myGameWindow->getSize().y / 2.f });
+
+	Cursor::GetInstance().AttatchObserver(&myStartButton);
+}
+
+void MenuState::Unload()
+{
+	Cursor::GetInstance().DetatchObserver(&myStartButton);
+	myStartButton.Destroy();
 }
 
 void MenuState::Update(float aDeltaTime)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
-	{
-		StateManager::GetInstance().ChangeState(GameState::Flying, *myGameWindow);
-	}
 }
 
 void MenuState::Render()
 {
 	myCamera.UseView(*myGameWindow);
-	
-	myTempText.Render(*myGameWindow);
+	myStartButton.Render(*myGameWindow);
+
+}
+
+void MenuState::StartGame(sf::RenderWindow& aRenderWindow)
+{
+	StateManager::GetInstance().ChangeState(GameState::Flying, aRenderWindow);
 }

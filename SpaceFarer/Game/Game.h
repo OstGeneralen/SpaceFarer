@@ -18,7 +18,6 @@ private:
 	jsonWrapper::json		myMasterJson;
 	bool&					myShouldRun;
 	bool					myShouldShowDebugInfo;
-	Cursor					myCursor;
 	Debug::DebugWidget*		myDebugTool;
 	Camera					myDebugCamera;
 	sf::RenderWindow		myGameWindow;

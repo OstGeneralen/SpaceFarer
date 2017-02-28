@@ -1,15 +1,18 @@
 #pragma once
 #include "State.h"
-#include "..\GUI\GuiText.h"
 #include "..\..\Engine\Camera.h"
+#include "..\GUI\Button.h"
+
 class MenuState : public State
 {
 public:
 	void		Load(sf::RenderWindow* aGameWindow) override;
+	void		Unload() override;
 	void		Update(float aDeltaTime) override;
 	void		Render() override;
 private:
-	GuiText		myTempText;
+	static void		StartGame(sf::RenderWindow& aRenderWindow);
+	Button<sf::RenderWindow> myStartButton;
 	Camera		myCamera;
 
 };

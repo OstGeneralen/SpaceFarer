@@ -124,6 +124,7 @@
     <ClInclude Include="Engine\Colliders\CircleCollider.h" />
     <ClInclude Include="Engine\Colliders\AABBCollider.h" />
     <ClInclude Include="Engine\Colliders\Colliders.h" />
+    <ClInclude Include="Game\GUI\Button.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -46,7 +46,7 @@ void Game::Init()
 	StateManager::GetInstance().ChangeState(GameState::Splash, myGameWindow);
 #endif
 
-	myCursor.Init(GET_TEXTURE("Cursor"));
+	Cursor::GetInstance().Init(GET_TEXTURE("Cursor"));
 
 }
 
@@ -83,7 +83,7 @@ void Game::Render()
 
 
 	myDebugCamera.UseView(myGameWindow);
-	myCursor.Render(myGameWindow);
+	Cursor::GetInstance().Render(myGameWindow);
 	if (myShouldShowDebugInfo)
 	{
 		myDebugTool->Render(myGameWindow);
