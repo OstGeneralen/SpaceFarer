@@ -39,11 +39,14 @@ void Game::Init()
 	TextureBank::GetInstance().LoadTextures(myMasterJson["texturesPath"]);
 	AnimationFactory::GetInstance().Init(myMasterJson["animationsPath"]);
 	ShipFactory::GetInstance().Init(myMasterJson["shipsPath"]);
+
+	GameData data;
+	data.myGameWindow = &myGameWindow;
 	
 #ifdef _DEBUG
-	StateManager::GetInstance().ChangeState(GameState::Menu, myGameWindow);
+	StateManager::GetInstance().ChangeState(GameState::Menu, data);
 #else
-	StateManager::GetInstance().ChangeState(GameState::Splash, myGameWindow);
+	StateManager::GetInstance().ChangeState(GameState::Splash, data);
 #endif
 
 	Cursor::GetInstance().Init(GET_TEXTURE("Cursor"));

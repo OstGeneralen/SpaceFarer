@@ -2,9 +2,9 @@
 #include "StateManger.h"
 #include "SFML\Window\Event.hpp"
 
-void SplashState::Load(sf::RenderWindow * aGameWindow)
+void SplashState::Load(GameData aData)
 {
-	State::Load(aGameWindow);
+	State::Load(aData);
 
 	myCurrentSplash = 0;
 
@@ -28,7 +28,7 @@ void SplashState::Update(float aDeltaTime)
 		myCurrentSplash++;
 		if (myCurrentSplash == mySplashElements.size())
 		{
-			StateManager::GetInstance().ChangeState(GameState::Menu, *myGameWindow);
+			StateManager::GetInstance().ChangeState(GameState::Menu, myData);
 			return;
 		}
 	}
@@ -43,7 +43,7 @@ void SplashState::Update(float aDeltaTime)
 
 void SplashState::Render()
 {
-	mySplashElements[myCurrentSplash].Render(*myGameWindow);
+	mySplashElements[myCurrentSplash].Render(*myData.myGameWindow);
 }
 
 

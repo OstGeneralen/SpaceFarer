@@ -1,18 +1,12 @@
 #include "State.h"
 
-void State::Load(sf::RenderWindow * aGameWindow)
+void State::Load(GameData aData)
 {
-	myGameWindow = aGameWindow;
-}
-
-void State::LoadWithPosition(const sf::Vector2f& aPosition)
-{
-	myLoadedPosition = aPosition;
+	myData = aData;
 }
 
 void State::Unload()
 {
-	myGameWindow = nullptr;
 }
 
 void State::WindowResize()

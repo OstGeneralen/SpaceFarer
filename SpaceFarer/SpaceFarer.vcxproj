@@ -75,6 +75,7 @@
     <ClInclude Include="Game\Bullets\BulletManager.h" />
     <ClInclude Include="Engine\json.hpp" />
     <ClInclude Include="Game\Debris.h" />
+    <ClInclude Include="Game\GameData.h" />
     <ClInclude Include="Game\GUI\Button.h" />
     <ClInclude Include="Game\GUI\Cursor.h" />
     <ClInclude Include="Game\GUI\HealthBar.h" />

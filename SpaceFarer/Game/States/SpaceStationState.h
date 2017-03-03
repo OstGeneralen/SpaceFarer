@@ -5,7 +5,7 @@
 class SpaceStationState : public State
 {
 public:
-	void		Load(sf::RenderWindow* aGameWindow) override;
+	void		Load(GameData aData) override;
 	void		Update(float aDeltaTime) override;
 	void		Render() override;
 private:

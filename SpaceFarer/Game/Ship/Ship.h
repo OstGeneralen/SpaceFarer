@@ -29,6 +29,7 @@ public:
 	Ship() = default;
 	Ship(ShipFittings aFittings);	
 	void				SetUp(const bool aOwnedByPlayer = false);
+	void				Stop();
 	void				Update(float aDeltaTime) override;
 	void				Render(sf::RenderWindow& aGameWindow) override;
 	const std::string&	GetName() const;

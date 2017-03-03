@@ -12,7 +12,7 @@ StateManager & StateManager::GetInstance()
 	return instance;
 }
 
-void StateManager::ChangeState(GameState aTo, sf::RenderWindow& aRenderWindow)
+void StateManager::ChangeState(GameState aTo, GameData aData)
 {
 	if (myCurrentState != -1)
 	{
@@ -24,15 +24,9 @@ void StateManager::ChangeState(GameState aTo, sf::RenderWindow& aRenderWindow)
 		if (myStates[index].myStateType == aTo)
 		{
 			myCurrentState = index;
-			myStates[index].myState->Load(&aRenderWindow);
+			myStates[index].myState->Load(aData);
 		}
 	}
-}
-
-void StateManager::ChangeStateWithPosition(GameState aTo, sf::RenderWindow & aRenderWindow, const sf::Vector2f & aPosition)
-{
-	ChangeState(aTo, aRenderWindow);
-	myStates[myCurrentState].myState->LoadWithPosition(aPosition);
 }
 
 void StateManager::WindowResize()

@@ -2,23 +2,23 @@
 #include "SFML\Window\Event.hpp"
 #include "StateManger.h"
 
-void SpaceStationState::Load(sf::RenderWindow * aGameWindow)
+void SpaceStationState::Load(GameData aData)
 {
-	State::Load(aGameWindow);
+	State::Load(aData);
 	myText.SetString("In SpaceStation Press Space To Enter Space Again");
 	myText.SetOriginToMiddle(true, true);
-	myText.SetPosition({ static_cast<float>(myGameWindow->getSize().x / 2), static_cast<float>(myGameWindow->getSize().y / 2 )});
+	myText.SetPosition({ static_cast<float>(myData.myGameWindow->getSize().x / 2), static_cast<float>(myData.myGameWindow->getSize().y / 2 )});
 }
 
 void SpaceStationState::Update(float aDeltaTime)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
 	{
-		StateManager::GetInstance().ChangeStateWithPosition(GameState::Flying, *myGameWindow, myLoadedPosition);
+		StateManager::GetInstance().ChangeState(GameState::Flying, myData);
 	}
 }
 
 void SpaceStationState::Render()
 {
-	myText.Render(*myGameWindow);
+	myText.Render(*myData.myGameWindow);
 }

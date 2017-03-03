@@ -6,7 +6,7 @@
 class MenuState : public State
 {
 public:
-	void		Load(sf::RenderWindow* aGameWindow) override;
+	void		Load(GameData aData) override;
 	void		Unload() override;
 	void		Update(float aDeltaTime) override;
 	void		Render() override;

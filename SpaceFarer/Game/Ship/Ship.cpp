@@ -35,6 +35,12 @@ void Ship::SetUp(const bool aOwnedByPlayer)
 	myHealthBar.Init(GET_TEXTURE("HealthBar"));
 }
 
+void Ship::Stop()
+{
+	myVelocity.x = 0;
+	myVelocity.y = 0;
+}
+
 void Ship::Update(float aDeltaTime)
  {
 	if (myCurrentFuel < 0)

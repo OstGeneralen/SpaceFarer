@@ -2,6 +2,7 @@
 #include "State.h"
 #include <vector>
 #include <assert.h>
+#include "..\GameData.h"
 
 enum class GameState
 {
@@ -26,15 +27,13 @@ class StateManager
 {
 public:
 	static StateManager&	GetInstance();
-	void					ChangeState(GameState aTo, sf::RenderWindow& aRenderWindow);
-	void					ChangeStateWithPosition(GameState aTo, sf::RenderWindow& aRenderWindow, const sf::Vector2f& aPosition = { 0,0 });
+	void					ChangeState(GameState aTo, GameData aData);
 	void					WindowResize();
 	void					Update(float aDeltaTime);
 	void					Render();
 private:
 	StateManager();
 	void					AddState(GameState aStateType, State* aState);
-
 	int						myCurrentState;
 	std::vector<StateData>	myStates;
 };

@@ -4,16 +4,16 @@
 #include "..\..\TextureBank.h"
 #include "..\GUI\Cursor.h"
 
-void MenuState::Load(sf::RenderWindow * aGameWindow)
+void MenuState::Load(GameData aData)
 {
-	State::Load(aGameWindow);
+	State::Load(aData);
 
-	myCamera = Camera(*aGameWindow);
+	myCamera = Camera(*myData.myGameWindow);
 
 	void(MenuState::*startFunction)() = &MenuState::StartGame;
 	myStartButton.Init(GET_TEXTURE("StartButton"), this, startFunction);
 
-	myStartButton.SetPosition({ myGameWindow->getSize().x / 2.f, myGameWindow->getSize().y / 2.f });
+	myStartButton.SetPosition({ myData.myGameWindow->getSize().x / 2.f, myData.myGameWindow->getSize().y / 2.f });
 
 	Cursor::GetInstance().AttatchObserver(&myStartButton);
 }
@@ -30,12 +30,12 @@ void MenuState::Update(float aDeltaTime)
 
 void MenuState::Render()
 {
-	myCamera.UseView(*myGameWindow);
-	myStartButton.Render(*myGameWindow);
+	myCamera.UseView(*myData.myGameWindow);
+	myStartButton.Render(*myData.myGameWindow);
 
 }
 
 void MenuState::StartGame()
 {
-	StateManager::GetInstance().ChangeState(GameState::Flying, *myGameWindow);
+	StateManager::GetInstance().ChangeState(GameState::Flying, myData);
 }
