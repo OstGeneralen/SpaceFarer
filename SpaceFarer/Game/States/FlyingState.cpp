@@ -124,11 +124,10 @@ void FlyingState::LoadPlayer()
 		myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
 		myTempShip.Init(GET_TEXTURE("player"), true, { 0,0 }, 50.f, 0.25f);
 
-		myData.myPlayer->GiveShip(&myTempShip);
 		myData.myPlayer->AttatchObserver(&myGui);
 		myData.myPlayer->AttatchObserver(&myDebris);
-		myData.myPlayer->GetShip().SetUp(true);
 		myData.myPlayer->GiveShip(&myTempShip);
+		myData.myPlayer->GetShip().SetUp(true);
 		myData.myPlayer->GetShip().GiveCollider(new CircleCollider(myData.myPlayer->GetShip().GetPosition(), myData.myPlayer->GetShip().GetSize().x / 2));
 		myData.myPlayer->SetTarget(mySpaceStation.GetPosition());
 	}

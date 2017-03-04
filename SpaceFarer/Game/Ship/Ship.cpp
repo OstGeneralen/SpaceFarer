@@ -100,6 +100,12 @@ bool Ship::GetIsDead() const
 	return myFittings.myCurrentHealth <= 0;
 }
 
+void Ship::Repair()
+{
+	myFittings.myCurrentHealth = myFittings.myMaxHealth;
+	myHealthBar.SetHealth(myFittings.myCurrentHealth, myFittings.myMaxHealth);
+}
+
 void Ship::DoMovement(float aDeltaTime)
 {
 	float usedFuel = 0;

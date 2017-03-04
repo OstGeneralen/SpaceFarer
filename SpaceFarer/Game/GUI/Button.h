@@ -33,6 +33,7 @@ template<class OwnerClass>
 inline void Button<OwnerClass>::Destroy()
 {
 	delete myCollider;
+	myCollider = nullptr;
 }
 
 template <class OwnerClass>
@@ -52,11 +53,14 @@ inline void Button<funcArg>::SetPosition(const sf::Vector2f& aPosition)
 template <class object>
 void Button<object>::Notify(GameEvent aEvent, float aX, float aY)
 {
-	if (aEvent == EVENT_MOUSE_LMB_PRESSED)
+	if (myCollider != nullptr)
 	{
-		if (myCollider->IsCollidingWith({ aX, aY }))
+		if (aEvent == EVENT_MOUSE_LMB_PRESSED)
 		{
-			(myOwnerObject->*myFunctionToCall)();
+			if (myCollider->IsCollidingWith({ aX, aY }))
+			{
+				(myOwnerObject->*myFunctionToCall)();
+			}
 		}
 	}
 }

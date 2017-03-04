@@ -20,6 +20,8 @@
   "19": "Cursor-cursor.png",
   "20": "HealthBar-health.png",
   "21": "StartButton-StartButton.png",
+  "22": "ExitSpaceStationButton-ExitSpaceStation.png",
+  "23": "RepairShipButton-RepairShip.png",
 
   "Anim1": "TestAnim-Animations/Test.png",
   "Anim2": "SmallExplosion-Animations/SmallExplosion.png"

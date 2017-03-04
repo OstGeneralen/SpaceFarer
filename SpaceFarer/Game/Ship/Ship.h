@@ -35,6 +35,7 @@ public:
 	const std::string&	GetName() const;
 	void				TakeDamage(float aDamage);
 	bool				GetIsDead() const;
+	void				Repair();
 protected:
 	void				DoMovement(float aDeltaTime);
 	void				UpdateInertia(float aDeltaTime);
