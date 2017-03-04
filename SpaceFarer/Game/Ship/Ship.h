@@ -19,6 +19,7 @@ struct ShipFittings
 	float			myCurrentHealth = 0;
 	int				myValue = 0;
 	float			myInertiaFactor = 0;
+	float			myMass = 0;
 	std::string		myName = "";
 	WeaponTypes		myWeaponType;
 };
@@ -27,7 +28,8 @@ class Ship : public Actor, public Subject
 {
 public:
 	Ship() = default;
-	Ship(ShipFittings aFittings);	
+	Ship(ShipFittings* aFittings);	
+	void				Init();
 	void				SetUp(const bool aOwnedByPlayer = false);
 	void				Stop();
 	void				Update(float aDeltaTime) override;
@@ -38,7 +40,7 @@ public:
 protected:
 	void				DoMovement(float aDeltaTime);
 	void				UpdateInertia(float aDeltaTime);
-	ShipFittings		myFittings;
+	ShipFittings*		myFittings;
 	float				myCurrentFuel;
 	sf::Vector2f		myDirection;
 	sf::Vector2f		mySideDirection;

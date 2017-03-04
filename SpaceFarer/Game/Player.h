@@ -12,7 +12,7 @@ public:
 	void			Render(sf::RenderWindow& aRenderWindow);
 	void			GiveShip(Ship* aShip);
 	void			SetTarget(const sf::Vector2f& aTargetPosition);
-	Ship&			GetShip() const;
+	Ship*			GetShip() const;
 private:
 	Ship*			myShip = nullptr;
 };

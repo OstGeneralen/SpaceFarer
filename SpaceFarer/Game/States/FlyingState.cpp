@@ -31,15 +31,15 @@ void FlyingState::Load(GameData aData)
 	myTempActor.Init(GET_TEXTURE("alienBlue"), true, { 200, 20 }, 10000, 1);
 
 
-	myGameCamera.SetTarget(&myData.myPlayer->GetShip());
-	myGameCamera.SetCenter(&myData.myPlayer->GetShip());
+	myGameCamera.SetTarget(myData.myPlayer->GetShip());
+	myGameCamera.SetCenter(myData.myPlayer->GetShip());
 
 	mySpaceStation.SetExitPoint(ExitPoint::Left);
 	mySpaceStation.GiveCollider(new CircleCollider(mySpaceStation.GetPosition(), mySpaceStation.GetSize().x / 2));
 	
 	if (myData.myLastVisitedStation != nullptr)
 	{
-		myData.myPlayer->GetShip().SetPosition(myData.myLastVisitedStation->GetExitPoint());
+		myData.myPlayer->GetShip()->SetPosition(myData.myLastVisitedStation->GetExitPoint());
 	}
 
 	CollisionManager::GetInstance().SetPlayer(myData.myPlayer);
@@ -61,6 +61,12 @@ void FlyingState::Update(float aDeltaTime)
 	{
 		myBackground.Disable();
 	}
+
+	if (GameEvent::EVENT_PLAYER_NEW_SHIP)
+	{
+
+	}
+
 	myGameCamera.Update(aDeltaTime);
 
 	myData.myPlayer->Update(aDeltaTime);
@@ -70,13 +76,13 @@ void FlyingState::Update(float aDeltaTime)
 	BulletManager::GetInstance().Update(aDeltaTime, myGameCamera);
 	CollisionManager::GetInstance().Update(myGameCamera);
 
-	if (myData.myPlayer->GetShip().CheckIfColliding(mySpaceStation))
+	if (myData.myPlayer->GetShip()->CheckIfColliding(mySpaceStation))
 	{
 		myData.myLastVisitedStation = &mySpaceStation;
 		StateManager::GetInstance().ChangeState(GameState::SpaceStation, myData);
 	}
 
-	if (myData.myPlayer->GetShip().GetIsDead())
+	if (myData.myPlayer->GetShip()->GetIsDead())
 	{
 		if (myData.myLastVisitedStation == nullptr)
 		{
@@ -123,25 +129,32 @@ void FlyingState::WindowResize()
 	myGui.SetPositions(*myData.myGameWindow);
 }
 
+void FlyingState::Notify(GameEvent aEvent, const sf::String& aString)
+{
+	switch (aEvent)
+	{
+	case GameEvent::EVENT_PLAYER_NEW_SHIP:
+		myGameCamera.SetTarget(myData.myPlayer->GetShip());
+		break;
+	default:
+		break;
+	}
+}
+
 void FlyingState::LoadPlayer()
 {
 	if (myData.myPlayer == nullptr)
 	{
 		myData.myPlayer = new Player();
 
-		myTempShip = ShipFactory::GetInstance().BuildShip(ShipModel::Debug);
-		myTempShip.Init(GET_TEXTURE("player"), true, { 0,0 }, 50.f, 0.25f);
-
-		myData.myPlayer->GiveShip(&myTempShip);
 		myData.myPlayer->AttatchObserver(&myGui);
 		myData.myPlayer->AttatchObserver(&myDebris);
-		myData.myPlayer->GetShip().SetUp(true);
-		myData.myPlayer->GiveShip(&myTempShip);
-		myData.myPlayer->GetShip().GiveCollider(new CircleCollider(myData.myPlayer->GetShip().GetPosition(), myData.myPlayer->GetShip().GetSize().x / 2));
+		myData.myPlayer->AttatchObserver(this);
+		myData.myPlayer->GiveShip(ShipFactory::GetInstance().BuildShip(ShipModel::Debug));
 		myData.myPlayer->SetTarget(mySpaceStation.GetPosition());
 	}
 	else
 	{
-		myData.myPlayer->GetShip().Stop();
+		myData.myPlayer->GetShip()->Stop();
 	}
 }

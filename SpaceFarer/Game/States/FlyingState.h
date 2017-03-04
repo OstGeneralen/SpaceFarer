@@ -12,8 +12,9 @@
 #include "..\Ship\Ship.h"
 #include "..\Station\SpaceStation.h"
 #include "..\Debris.h"
+#include "..\Observer\Observer.h"
 
-class FlyingState : public State
+class FlyingState : public State, public Observer
 {
 public:
 	void					Load(GameData aData) override;
@@ -21,6 +22,7 @@ public:
 	void					Update(float aDeltaTime) override;
 	void					Render() override;
 	void					WindowResize() override;
+	void					Notify(GameEvent aEvent, const sf::String& aString) override;
 private:
 	
 	void					LoadPlayer();

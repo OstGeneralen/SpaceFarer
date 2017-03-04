@@ -31,6 +31,7 @@ public:
 
 	void						SetPosition(const sf::Vector2f& aPosition) override;
 	void						SetVelocity(const sf::Vector2f& aVelocity);
+	void						SetTransformable(const sf::Transformable& aTransformable);
 	
 	bool						CheckIfColliding(const Actor& aActor);
 	

@@ -52,7 +52,7 @@ void CollisionManager::Update(const Camera& aCamera)
 		}
 
 		// Collision with player
-		HandleCollision(myDebrisListPtr->at(i), &myPlayerPtr->GetShip());
+		HandleCollision(myDebrisListPtr->at(i), myPlayerPtr->GetShip());
 
 		// Collision with player bullets
 		for (unsigned j = 0; j < myPlayerBulletListPtr->size(); j++)
@@ -92,11 +92,11 @@ void CollisionManager::HandleCollision(Actor* aActorOne, Actor* aActorTwo)
 		aActorOne->ChangeVelocity(-1.f / (aActorOne->GetMass()) * impulse);
 		aActorTwo->ChangeVelocity(1.f / (aActorTwo->GetMass()) * impulse);
 
-		if (aActorTwo == &myPlayerPtr->GetShip())
+		if (aActorTwo == myPlayerPtr->GetShip())
 		{
 			float damageToTake = 0;
 			damageToTake -= velocityScalar * 0.025f;
-			myPlayerPtr->GetShip().TakeDamage(damageToTake);
+			myPlayerPtr->GetShip()->TakeDamage(damageToTake);
 		}
 	}
 }

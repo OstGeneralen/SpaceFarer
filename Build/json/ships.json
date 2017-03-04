@@ -1,7 +1,7 @@
 {
   "WeaponTypes": { "Standard": 0, "BurstFire": 1 },
   "0": {
-    "name": "Debug",
+    "name": "debug",
     "maxHealth": 100,
     "weaponType": 1,
     "value": 1000000,
@@ -9,11 +9,12 @@
     "acceleration": 500,
     "fuelUsage": 0,
     "fuelTankCapacity": 1000,
+    "mass":  10,
     "inertiaFactor": 10,
     "hasInertia": true
   },
   "1": {
-    "name": "Standard",
+    "name": "standard",
     "maxHealth": 100,
     "weaponType": 0,
     "value": 500,
@@ -21,7 +22,34 @@
     "acceleration": 125,
     "fuelUsage": 50,
     "fuelTankCapacity": 500,
+    "mass":  10,
     "inertiaFactor": 25,
+    "hasInertia": true
+  },
+  "2": {
+    "name": "speeder",
+    "maxHealth": 25,
+    "weaponType": 1,
+    "value": 30000,
+    "turnSpeed": 300,
+    "acceleration": 500,
+    "fuelUsage": 20,
+    "fuelTankCapacity": 250,
+    "mass":  10,
+    "inertiaFactor": 1,
+    "hasInertia": true
+  },
+  "3": {
+    "name": "cargo",
+    "maxHealth": 10000,
+    "weaponType": 0,
+    "value": 50000,
+    "turnSpeed": 25,
+    "acceleration": 50,
+    "fuelUsage": 150,
+    "fuelTankCapacity": 5000,
+    "mass":  10,
+    "inertiaFactor": 50,
     "hasInertia": true
   }
 }

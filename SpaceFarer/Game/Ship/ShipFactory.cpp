@@ -1,4 +1,5 @@
 #include "ShipFactory.h"
+#include "..\..\TextureBank.h"
 
 ShipFactory & ShipFactory::GetInstance()
 {
@@ -17,9 +18,11 @@ void ShipFactory::Init(const std::string & aJsonPath)
 	myShipTypes.CreateBlueprints(aJsonPath);
 }
 
-Ship ShipFactory::BuildShip(ShipModel aType)
+Ship* ShipFactory::BuildShip(ShipModel aType)
 {
-	return Ship(myShipTypes.Build(aType));
+	Ship* newShip = new Ship(myShipTypes.Build(aType));
+	newShip->Init();
+	return newShip;
 }
 
 ShipFactory::ShipFactory()

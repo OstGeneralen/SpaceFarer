@@ -87,6 +87,11 @@ void Actor::SetVelocity(const sf::Vector2f & aVelocity)
 	myVelocity = aVelocity;
 }
 
+void Actor::SetTransformable(const sf::Transformable & aTransformable)
+{
+	myTransform = aTransformable;
+}
+
 bool Actor::CheckIfColliding(const Actor & aActor)
 {
 	assert(&aActor != this && "Checking collision against self");

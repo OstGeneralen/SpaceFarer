@@ -27,6 +27,7 @@ void ShipTypes::CreateBlueprints(const std::string & aJsonPath)
 		current.myAcceleration =	specificShipData["acceleration"];
 		current.myFuelUsage =		specificShipData["fuelUsage"];
 		current.myFuelTank =		specificShipData["fuelTankCapacity"];
+		current.myMass =			specificShipData["mass"];
 		current.myInertiaFactor =	specificShipData["inertiaFactor"];
 		current.myHasInertia =		specificShipData["hasInertia"];
 		current.myWeaponType =		static_cast<WeaponTypes>(specificShipData["weaponType"].get<int>());
@@ -35,7 +36,7 @@ void ShipTypes::CreateBlueprints(const std::string & aJsonPath)
 	}
 }
 
-ShipFittings ShipTypes::Build(ShipModel aShipModel)
+ShipFittings* ShipTypes::Build(ShipModel aShipModel)
 {
-	return myShipModels[static_cast<int>(aShipModel)];
+	return &myShipModels[static_cast<int>(aShipModel)];
 }
