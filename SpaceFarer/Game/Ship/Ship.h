@@ -28,7 +28,7 @@ class Ship : public Actor, public Subject
 {
 public:
 	Ship() = default;
-	Ship(ShipFittings* aFittings);	
+	Ship(ShipFittings aFittings);	
 	void				Init();
 	void				SetUp(const bool aOwnedByPlayer = false);
 	void				Stop();
@@ -37,10 +37,11 @@ public:
 	const std::string&	GetName() const;
 	void				TakeDamage(float aDamage);
 	bool				GetIsDead() const;
+	void				Repair();
 protected:
 	void				DoMovement(float aDeltaTime);
 	void				UpdateInertia(float aDeltaTime);
-	ShipFittings*		myFittings;
+	ShipFittings		myFittings;
 	float				myCurrentFuel;
 	sf::Vector2f		myDirection;
 	sf::Vector2f		mySideDirection;

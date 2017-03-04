@@ -16,6 +16,12 @@ void MenuState::Load(GameData aData)
 	myStartButton.SetPosition({ myData.myGameWindow->getSize().x / 2.f, myData.myGameWindow->getSize().y / 2.f });
 
 	Cursor::GetInstance().AttatchObserver(&myStartButton);
+
+	if (myData.myPlayer != nullptr)
+	{
+		delete myData.myPlayer;
+		myData.myPlayer = nullptr;
+	}
 }
 
 void MenuState::Unload()

@@ -1,24 +1,53 @@
 #include "SpaceStationState.h"
 #include "SFML\Window\Event.hpp"
 #include "StateManger.h"
+#include "..\..\TextureBank.h"
+#include "..\GUI\Cursor.h"
 
 void SpaceStationState::Load(GameData aData)
 {
 	State::Load(aData);
-	myText.SetString("In SpaceStation Press Space To Enter Space Again");
-	myText.SetOriginToMiddle(true, true);
-	myText.SetPosition({ static_cast<float>(myData.myGameWindow->getSize().x / 2), static_cast<float>(myData.myGameWindow->getSize().y / 2 )});
+
+	void(SpaceStationState::*function)();
+	
+	function = &SpaceStationState::Exit;
+	myExitButton.Init(GET_TEXTURE("ExitSpaceStationButton"), this, function);
+
+	function = &SpaceStationState::RepairShip;
+	myRepairButton.Init(GET_TEXTURE("RepairShipButton"), this, function);
+
+	Cursor::GetInstance().AttatchObserver(&myExitButton);
+	Cursor::GetInstance().AttatchObserver(&myRepairButton);
+
+	float winW = static_cast<float>(myData.myGameWindow->getSize().x);
+	float winH = static_cast<float>(myData.myGameWindow->getSize().y);
+	myRepairButton.SetPosition({ winW * 0.25f, winH / 2 });
+	myExitButton.SetPosition({ winW * 0.75f, winH / 2 });
+}
+
+void SpaceStationState::Unload()
+{
+	myRepairButton.Destroy();
+	myExitButton.Destroy();
 }
 
 void SpaceStationState::Update(float aDeltaTime)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
-	{
-		StateManager::GetInstance().ChangeState(GameState::Flying, myData);
-	}
+
 }
 
 void SpaceStationState::Render()
 {
-	myText.Render(*myData.myGameWindow);
+	myExitButton.Render(*myData.myGameWindow);
+	myRepairButton.Render(*myData.myGameWindow);
+}
+
+void SpaceStationState::Exit()
+{
+	StateManager::GetInstance().ChangeState(GameState::Flying, myData);
+}
+
+void SpaceStationState::RepairShip()
+{
+	myData.myPlayer->GetShip()->Repair();
 }

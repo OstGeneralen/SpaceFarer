@@ -36,7 +36,7 @@ void ShipTypes::CreateBlueprints(const std::string & aJsonPath)
 	}
 }
 
-ShipFittings* ShipTypes::Build(ShipModel aShipModel)
+ShipFittings ShipTypes::Build(ShipModel aShipModel)
 {
-	return &myShipModels[static_cast<int>(aShipModel)];
+	return myShipModels[static_cast<int>(aShipModel)];
 }

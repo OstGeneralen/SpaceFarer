@@ -7,7 +7,7 @@
 #include "SFML\Graphics\RenderWindow.hpp"
 #include "..\States\StateManger.h"
 
-Ship::Ship(ShipFittings* aFittings)
+Ship::Ship(ShipFittings aFittings)
 {
 	/*
 	myFittings.myHasInertia = aFittings.myHasInertia;
@@ -23,12 +23,12 @@ Ship::Ship(ShipFittings* aFittings)
 
 	myFittings = aFittings;
 
-	myCurrentFuel = myFittings->myFuelTank;
+	myCurrentFuel = myFittings.myFuelTank;
 }
 
 void Ship::Init()
 {
-	Actor::Init(GET_TEXTURE(myFittings->myName), true, { 0, 0 }, myFittings->myMass);
+	Actor::Init(GET_TEXTURE(myFittings.myName), true, { 0, 0 }, myFittings.myMass);
 	GiveCollider(new CircleCollider(myPosition, myTexture->getSize().x / 2.f));
 }
 
@@ -37,7 +37,7 @@ void Ship::SetUp(const bool aOwnedByPlayer)
 	NotifyObservers(EVENT_PLAYER_NEW_BALANCE, 0);
 	NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, 0, 0);
-	myWeapon = WeaponFactory::GetInstance().CreateWeapon(myFittings->myWeaponType, this, {75, 0}, aOwnedByPlayer);
+	myWeapon = WeaponFactory::GetInstance().CreateWeapon(myFittings.myWeaponType, this, {75, 0}, aOwnedByPlayer);
 	myHealthBar.Init(GET_TEXTURE("HealthBar"));
 }
 
@@ -58,7 +58,7 @@ void Ship::Update(float aDeltaTime)
 	{
 		DoMovement(aDeltaTime);
 
-		if (myFittings->myHasInertia)
+		if (myFittings.myHasInertia)
 		{
 			UpdateInertia(aDeltaTime);
 		}
@@ -90,20 +90,26 @@ void Ship::Render(sf::RenderWindow & aGameWindow)
 
 const std::string& Ship::GetName() const
 {
-	return myFittings->myName;
+	return myFittings.myName;
 }
 
 void Ship::TakeDamage(float aDamage)
 {
-	myFittings->myCurrentHealth -= aDamage;
-	myFittings->myCurrentHealth = MT::Clamp(myFittings->myCurrentHealth, 0.f, myFittings->myMaxHealth);
-	myHealthBar.SetHealth(myFittings->myCurrentHealth, myFittings->myMaxHealth);
+	myFittings.myCurrentHealth -= aDamage;
+	myFittings.myCurrentHealth = MT::Clamp(myFittings.myCurrentHealth, 0.f, myFittings.myMaxHealth);
+	myHealthBar.SetHealth(myFittings.myCurrentHealth, myFittings.myMaxHealth);
 
 }
 
 bool Ship::GetIsDead() const
 {
-	return myFittings->myCurrentHealth <= 0;
+	return myFittings.myCurrentHealth <= 0;
+}
+
+void Ship::Repair()
+{
+	myFittings.myCurrentHealth = myFittings.myMaxHealth;
+	myHealthBar.SetHealth(myFittings.myCurrentHealth, myFittings.myMaxHealth);
 }
 
 void Ship::DoMovement(float aDeltaTime)
@@ -112,33 +118,33 @@ void Ship::DoMovement(float aDeltaTime)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
-		myTransform.rotate(myFittings->myTurnSpeed * aDeltaTime);
+		myTransform.rotate(myFittings.myTurnSpeed * aDeltaTime);
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 	{
-		myTransform.rotate(-(myFittings->myTurnSpeed * aDeltaTime));
+		myTransform.rotate(-(myFittings.myTurnSpeed * aDeltaTime));
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 	{
-		myVelocity += myDirection * myFittings->myAcceleration * aDeltaTime;
-		usedFuel += myFittings->myFuelUsage * aDeltaTime;
+		myVelocity += myDirection * myFittings.myAcceleration * aDeltaTime;
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 	{
-		myVelocity -= myDirection * myFittings->myAcceleration * aDeltaTime;
-		usedFuel += myFittings->myFuelUsage * aDeltaTime;
+		myVelocity -= myDirection * myFittings.myAcceleration * aDeltaTime;
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
-		myVelocity -= mySideDirection * myFittings->myAcceleration * aDeltaTime;
-		usedFuel += myFittings->myFuelUsage * aDeltaTime;
+		myVelocity -= mySideDirection * myFittings.myAcceleration * aDeltaTime;
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
 	{
-		myVelocity += mySideDirection * myFittings->myAcceleration * aDeltaTime;
-		usedFuel += myFittings->myFuelUsage * aDeltaTime;
+		myVelocity += mySideDirection * myFittings.myAcceleration * aDeltaTime;
+		usedFuel += myFittings.myFuelUsage * aDeltaTime;
 	}
 
 	myCurrentFuel -= usedFuel;
@@ -169,13 +175,13 @@ void Ship::UpdateInertia(float aDeltaTime)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::I))
 	{
 			myInertiaEnabled = true;
-			myCurrentFuel -= myFittings->myFuelUsage * 2 * aDeltaTime;
+			myCurrentFuel -= myFittings.myFuelUsage * 2 * aDeltaTime;
 			NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
 	}
 
 	if (myInertiaEnabled)
 	{
-		myVelocity = MathTools::Lerp(myVelocity, { 0,0 }, myFittings->myInertiaFactor * aDeltaTime);
+		myVelocity = MathTools::Lerp(myVelocity, { 0,0 }, myFittings.myInertiaFactor * aDeltaTime);
 
 		if (abs(myVelocity.x - 0.f) < 0.1f)
 		{

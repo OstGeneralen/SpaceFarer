@@ -23,6 +23,8 @@
 	"22": "cargo-player.png",
 	"23": "speeder-player.png",
 	"24": "standard-player.png",
+  "25": "ExitSpaceStationButton-ExitSpaceStation.png",
+  "26": "RepairShipButton-RepairShip.png",
 
   "Anim1": "TestAnim-Animations/Test.png",
   "Anim2": "SmallExplosion-Animations/SmallExplosion.png"
