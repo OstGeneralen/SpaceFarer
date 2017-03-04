@@ -7,6 +7,7 @@
 
 Background::Background()
 {
+	myIsDisabled = false;
 }
 
 void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
@@ -42,132 +43,151 @@ void Background::CreateBackground(const sf::RenderWindow & aRenderWindow)
 	myLastRenderPosition = aRenderWindow.getView().getCenter();
 	myUpdateRadius = 1000;
 	myScenery.clear();
-	for (unsigned i = 0; i < 100; i++)
+	if (!myIsDisabled)
 	{
-		SceneryData tmpScenery;
-		float angle = static_cast<float>(rand());
-		tmpScenery.myPosition.x = -myLastRenderPosition.x + 4000.f * sinf(static_cast<float>(rand()));
-		tmpScenery.myPosition.y = -myLastRenderPosition.y + 4000.f * cosf(static_cast<float>(rand()));
-		tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
-		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
-		tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
-		tmpScenery.myType = static_cast<SceneryType>(rand() % static_cast<int>(SceneryType::Size));
-		myScenery.push_back(tmpScenery);
+		for (unsigned i = 0; i < 100; i++)
+		{
+			SceneryData tmpScenery;
+			float angle = static_cast<float>(rand());
+			tmpScenery.myPosition.x = -myLastRenderPosition.x + 4000.f * sinf(static_cast<float>(rand()));
+			tmpScenery.myPosition.y = -myLastRenderPosition.y + 4000.f * cosf(static_cast<float>(rand()));
+			tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
+			tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
+			tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
+			tmpScenery.myType = static_cast<SceneryType>(rand() % static_cast<int>(SceneryType::Size));
+			myScenery.push_back(tmpScenery);
+		}
 	}
 }
 
 void Background::Render(sf::RenderWindow & aRenderWindow, Camera& aGameCamera)
 { 
-	int windowW = aRenderWindow.getSize().x;
-	int windowH = aRenderWindow.getSize().y;
-	int cameraX = static_cast<int>(aRenderWindow.getView().getCenter().x);
-	int cameraY = static_cast<int>(aRenderWindow.getView().getCenter().y);
-	/*
-	for (unsigned int index = 0; index < myRenderPositions.size(); ++index)
+	if (!myIsDisabled)
 	{
-		
-		
-		if (myRenderPositions[index].x <= cameraX - (windowW / 2) - 256)
+		int windowW = aRenderWindow.getSize().x;
+		int windowH = aRenderWindow.getSize().y;
+		int cameraX = static_cast<int>(aRenderWindow.getView().getCenter().x);
+		int cameraY = static_cast<int>(aRenderWindow.getView().getCenter().y);
+		/*
+		for (unsigned int index = 0; index < myRenderPositions.size(); ++index)
 		{
-			myRenderPositions[index].x = cameraX + windowW / 2;
+
+
+			if (myRenderPositions[index].x <= cameraX - (windowW / 2) - 256)
+			{
+				myRenderPositions[index].x = cameraX + windowW / 2;
+			}
+			else if (myRenderPositions[index].x >= ((cameraX + (windowW / 2)) + 128))
+			{
+				myRenderPositions[index].x = cameraX - (windowW / 2) - 128;
+			}
+
+			if (myRenderPositions[index].y <= cameraY - (windowH / 2) - 256)
+			{
+				myRenderPositions[index].y = cameraY + windowH / 2;
+			}
+			else if (myRenderPositions[index].y >= ((cameraY + (windowH / 2)) + 128))
+			{
+				myRenderPositions[index].y = cameraY - (windowH / 2) - 128;
+			}
+
+
+			myLayerOneSprite.setPosition(myRenderPositions[index]);
+			aRenderWindow.draw(myLayerOneSprite);
 		}
-		else if (myRenderPositions[index].x >= ((cameraX + (windowW / 2)) + 128))
+		*/
+
+		if (MT::Length(sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY)) - myLastRenderPosition) > myUpdateRadius / 2)
 		{
-			myRenderPositions[index].x = cameraX - (windowW / 2) - 128;
+			myLastRenderPosition = sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
+			UpdateStars(aGameCamera);
 		}
 
-		if (myRenderPositions[index].y <= cameraY - (windowH / 2) - 256)
+		sf::Sprite renderingSprite;
+		for (unsigned i = 0; i < myScenery.size(); ++i)
 		{
-			myRenderPositions[index].y = cameraY + windowH / 2;
-		}
-		else if (myRenderPositions[index].y >= ((cameraY + (windowH / 2)) + 128))
-		{
-			myRenderPositions[index].y = cameraY - (windowH / 2) - 128;
-		}
-		
+			switch (myScenery[i].myType)
+			{
+			case SceneryType::SmallStar:
+				renderingSprite.setTexture(*GET_TEXTURE("smallStar"), true);
+				break;
+			case SceneryType::Planet:
+				renderingSprite.setTexture(*GET_TEXTURE("shot"), true);
+				break;
+			default:
+				assert(false && "Non-existing type :D");
+				break;
+			}
+			renderingSprite.setOrigin(0.5f, 0.5f);
+			renderingSprite.setScale(myScenery[i].myScale);
 
-		myLayerOneSprite.setPosition(myRenderPositions[index]);
-		aRenderWindow.draw(myLayerOneSprite);
-	}
-	*/
+			sf::Vector2f posInCameraSpace = sf::Vector2f(myScenery[i].myPosition.x, myScenery[i].myPosition.y) + sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
+			posInCameraSpace.x /= -myScenery[i].myPosition.z;
+			posInCameraSpace.y /= -myScenery[i].myPosition.z;
 
-	if (MT::Length(sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY)) - myLastRenderPosition) > myUpdateRadius / 2)
-	{
-		myLastRenderPosition = sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
-		UpdateStars(aGameCamera);
-	}
-
-	sf::Sprite renderingSprite;
-	for (unsigned i = 0; i < myScenery.size(); ++i)
-	{
-		switch (myScenery[i].myType)
-		{
-		case SceneryType::SmallStar:
-			renderingSprite.setTexture(*GET_TEXTURE("smallStar"), true);
-			break;
-		case SceneryType::Planet:
-			renderingSprite.setTexture(*GET_TEXTURE("shot"), true);
-			break;
-		default:
-			assert(false && "Non-existing type :D");
-			break;
-		}
-		renderingSprite.setOrigin(0.5f, 0.5f);
-		renderingSprite.setScale(myScenery[i].myScale);
-
-		sf::Vector2f posInCameraSpace = sf::Vector2f(myScenery[i].myPosition.x, myScenery[i].myPosition.y) + sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
-		posInCameraSpace.x /= -myScenery[i].myPosition.z;
-		posInCameraSpace.y /= -myScenery[i].myPosition.z;
-
-		posInCameraSpace += sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
-		renderingSprite.setPosition(posInCameraSpace);
-		renderingSprite.setRotation(myScenery[i].myRotation);
-		if (aGameCamera.CanSee(posInCameraSpace))
-		{
-			aRenderWindow.draw(renderingSprite);
+			posInCameraSpace += sf::Vector2f(static_cast<float>(cameraX), static_cast<float>(cameraY));
+			renderingSprite.setPosition(posInCameraSpace);
+			renderingSprite.setRotation(myScenery[i].myRotation);
+			if (aGameCamera.CanSee(posInCameraSpace))
+			{
+				aRenderWindow.draw(renderingSprite);
+			}
 		}
 	}
 }
 
+void Background::Disable()
+{
+	myIsDisabled = true;
+}
+
+void Background::Activate()
+{
+	myIsDisabled = false;
+}
+
 void Background::UpdateStars(const Camera& aGameCamera)
 {
-	//Remove stars outside the screen
-	for (int i = myScenery.size() - 1; i >= 0; --i)
+	if (!myIsDisabled)
 	{
-		sf::Vector2f posInCameraSpace = sf::Vector2f(myScenery[i].myPosition.x, myScenery[i].myPosition.y) + myLastRenderPosition;
-		posInCameraSpace.x /= -myScenery[i].myPosition.z;
-		posInCameraSpace.y /= -myScenery[i].myPosition.z;
+		//Remove stars outside the screen
+		for (int i = myScenery.size() - 1; i >= 0; --i)
+		{
+			sf::Vector2f posInCameraSpace = sf::Vector2f(myScenery[i].myPosition.x, myScenery[i].myPosition.y) + myLastRenderPosition;
+			posInCameraSpace.x /= -myScenery[i].myPosition.z;
+			posInCameraSpace.y /= -myScenery[i].myPosition.z;
 
-		posInCameraSpace += myLastRenderPosition;
-		float distanceFromCenter = MT::Length(aGameCamera.GetCenter() - posInCameraSpace);
-		float cameraRadius = MT::Length(aGameCamera.GetDimensions() * 0.5f);
-		if (distanceFromCenter > cameraRadius)
-		{
-			myScenery[i] = myScenery.back();
-			myScenery.pop_back();
+			posInCameraSpace += myLastRenderPosition;
+			float distanceFromCenter = MT::Length(aGameCamera.GetCenter() - posInCameraSpace);
+			float cameraRadius = MT::Length(aGameCamera.GetDimensions() * 0.5f);
+			if (distanceFromCenter > cameraRadius)
+			{
+				myScenery[i] = myScenery.back();
+				myScenery.pop_back();
+			}
 		}
-	}
 
-	// Add new ones
-	for (unsigned i = 0; i < 250; i++)
-	{
-		SceneryData tmpScenery;
-		float distanceX = aGameCamera.GetDimensions().x + 1000;
-		float distanceY = aGameCamera.GetDimensions().y + 1000;
-		float angle = static_cast<float>(rand());
-		tmpScenery.myPosition.x = -myLastRenderPosition.x + cos(angle) * distanceX + cos(angle) * MT::Randf() * distanceX;
-		tmpScenery.myPosition.y = -myLastRenderPosition.y + -sin(angle) * distanceY + -sin(angle) * MT::Randf() * distanceY;
-		tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
-		tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
-		tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
-		if (MT::Chance(15))
+		// Add new ones
+		for (unsigned i = 0; i < 250; i++)
 		{
-			tmpScenery.myType = SceneryType::Planet;
+			SceneryData tmpScenery;
+			float distanceX = aGameCamera.GetDimensions().x + 1000;
+			float distanceY = aGameCamera.GetDimensions().y + 1000;
+			float angle = static_cast<float>(rand());
+			tmpScenery.myPosition.x = -myLastRenderPosition.x + cos(angle) * distanceX + cos(angle) * MT::Randf() * distanceX;
+			tmpScenery.myPosition.y = -myLastRenderPosition.y + -sin(angle) * distanceY + -sin(angle) * MT::Randf() * distanceY;
+			tmpScenery.myPosition.z = 2.f + 0.5f * MT::Randf();
+			tmpScenery.myRotation = 2 * MT_PI * MT::Randf();
+			tmpScenery.myScale = sf::Vector2f(1, 1) / 5.f * tmpScenery.myPosition.z;
+			if (MT::Chance(15))
+			{
+				tmpScenery.myType = SceneryType::Planet;
+			}
+			else
+			{
+				tmpScenery.myType = SceneryType::SmallStar;
+			}
+			myScenery.push_back(tmpScenery);
 		}
-		else
-		{
-			tmpScenery.myType = SceneryType::SmallStar;
-		}
-		myScenery.push_back(tmpScenery);
 	}
 }

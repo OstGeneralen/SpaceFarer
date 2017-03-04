@@ -34,6 +34,8 @@ public:
 	//void						Update(float aDeltaTime);
 	void						CreateBackground(const sf::RenderWindow& aRenderWindow);
 	void						Render(sf::RenderWindow& aRenderWindow, Camera& aGameCamera);
+	void						Disable();
+	void						Activate();
 private:
 	sf::Sprite					myLayerOneSprite;
 	sf::Sprite					myLayerTwoSprite;
@@ -43,6 +45,7 @@ private:
 	sf::Vector2f				myLastRenderPosition;
 	std::vector<SceneryData>	myScenery;
 	float						myUpdateRadius;
+	bool						myIsDisabled;
 
 	void						UpdateStars(const Camera& aGameCamera);
 };

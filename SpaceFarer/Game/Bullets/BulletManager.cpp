@@ -17,11 +17,13 @@ void BulletManager::Init()
 
 void BulletManager::AddPlayerBullet(Projectile * aProjectilePointer)
 {
+	aProjectilePointer->GiveCollider(new CircleCollider(aProjectilePointer->GetPosition(), aProjectilePointer->GetRadius()));
 	myPlayerProjectiles.push_back(aProjectilePointer);
 }
 
 void BulletManager::AddEnemyBullet(Projectile * aProjectilePointer)
 {
+	aProjectilePointer->GiveCollider(new CircleCollider(aProjectilePointer->GetPosition(), aProjectilePointer->GetRadius()));
 	myEnemyProjectiles.push_back(aProjectilePointer);
 }
 

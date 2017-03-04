@@ -53,6 +53,14 @@ void FlyingState::Unload()
 
 void FlyingState::Update(float aDeltaTime)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F3))
+	{
+		myBackground.Activate();
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F4))
+	{
+		myBackground.Disable();
+	}
 	myGameCamera.Update(aDeltaTime);
 
 	myData.myPlayer->Update(aDeltaTime);
