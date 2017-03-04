@@ -36,7 +36,13 @@ void Player::SetTarget(const sf::Vector2f & aTargetPosition)
 	NotifyObservers(EVENT_PLAYER_NEW_WAYPOINT, aTargetPosition.x, aTargetPosition.y);
 }
 
+
 Ship & Player::GetShip() const
 {
 	return *myShip;
+}
+
+Wallet & Player::GetWallet()
+{
+	return myWallet;
 }

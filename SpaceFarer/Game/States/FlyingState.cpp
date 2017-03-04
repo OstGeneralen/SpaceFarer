@@ -79,7 +79,7 @@ void FlyingState::Update(float aDeltaTime)
 			StateManager::GetInstance().ChangeState(GameState::SpaceStation, myData);
 		}
 	}
-
+	myGui.SetPositions(*myData.myGameWindow);
 }
 
 void FlyingState::Render()
