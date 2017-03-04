@@ -30,7 +30,6 @@
     <ClCompile Include="Game\GUI\HealthBar.cpp" />
     <ClCompile Include="Game\SplashElement.cpp" />
     <ClCompile Include="Game\States\SplashState.cpp" />
-    <ClCompile Include="Game\Wallet.cpp" />
     <ClCompile Include="Game\Weapons\BurstFireWeapon.cpp" />
     <ClCompile Include="Engine\DebugTools\VersionStamp.cpp" />
     <ClCompile Include="Engine\Drawable.cpp" />
@@ -82,7 +81,6 @@
     <ClInclude Include="Game\GUI\HealthBar.h" />
     <ClInclude Include="Game\SplashElement.h" />
     <ClInclude Include="Game\States\SplashState.h" />
-    <ClInclude Include="Game\Wallet.h" />
     <ClInclude Include="Game\Weapons\BurstFireWeapon.h" />
     <ClInclude Include="Engine\DebugTools\VersionStamp.h" />
     <ClInclude Include="Engine\Drawable.h" />

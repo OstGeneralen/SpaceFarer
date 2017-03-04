@@ -29,6 +29,7 @@ Ship::Ship(ShipFittings aFittings)
 void Ship::SetUp(const bool aOwnedByPlayer)
 {
 	NotifyObservers(EVENT_PLAYER_NEW_BALANCE, 0);
+	NotifyObservers(EVENT_PLAYER_NEW_FUEL_AMOUNT, static_cast<int>(myCurrentFuel));
 	NotifyObservers(EVENT_PLAYER_NEW_VELOCITY, 0, 0);
 	myWeapon = WeaponFactory::GetInstance().CreateWeapon(myFittings.myWeaponType, this, {75, 0}, aOwnedByPlayer);
 	myHealthBar.Init(GET_TEXTURE("HealthBar"));

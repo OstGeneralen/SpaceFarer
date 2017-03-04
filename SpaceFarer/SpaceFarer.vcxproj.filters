@@ -64,7 +64,6 @@
     <ClCompile Include="Engine\Animation\AnimationFactory.cpp" />
     <ClCompile Include="Engine\Colliders\CircleCollider.cpp" />
     <ClCompile Include="Engine\Colliders\AABBCollider.cpp" />
-    <ClCompile Include="Game\Wallet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\MathTools.h" />
@@ -127,7 +126,6 @@
     <ClInclude Include="Engine\Colliders\Colliders.h" />
     <ClInclude Include="Game\GUI\Button.h" />
     <ClInclude Include="Game\GameData.h" />
-    <ClInclude Include="Game\Wallet.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
