@@ -21,7 +21,6 @@ void FlyingState::Load(GameData aData)
 	myGuiCamera = Camera(*myData.myGameWindow);
 	
 	myGui.Load();
-	myGui.SetPositions(*myData.myGameWindow);
 
 	mySpaceStation.Init(GET_TEXTURE("spaceStation"), true, { 800,900 }, 100000);
 
@@ -45,6 +44,7 @@ void FlyingState::Load(GameData aData)
 	CollisionManager::GetInstance().SetPlayer(myData.myPlayer);
 
 	myBackground.CreateBackground(*myData.myGameWindow);
+	myGui.SetPositions(*myData.myGameWindow);
 }
 
 void FlyingState::Unload()
